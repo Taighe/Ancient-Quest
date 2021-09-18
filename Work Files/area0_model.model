@@ -1,0 +1,43 @@
+# Made using Asset Forge (2.1.1)
+
+:materials
+
+[name:stoneDark;color:RGBA(0.724, 0.586, 0.504, 1.000);scale:(0.9, 0.9);texture:Patterns/checkerboard.png;shader:Unlit;]
+[name:foliage;color:RGBA(0.000, 0.655, 0.486, 1.000);scale:(1.0, 1.0);texture:Patterns/waves.png;shader:Unlit;]
+[name:_defaultMat;color:RGBA(1.000, 0.000, 0.000, 1.000);scale:(1.0, 1.0);shader:Default;valueA:0.35;valueB:0.25;]
+[name:stoneLight;color:RGBA(0.710, 0.701, 0.840, 1.000);scale:(1.0, 1.0);shader:Default;valueA:0.25;valueB:0.25;]
+
+:models
+
+[name:;collection:Primitives;type:cylinder_half;position:(-0.5000, 2.0000, 0.0000);rotation:(0.0000, 270.0000, 0.0000);scale:(1.0015, 0.0990, 1.0015);group:;locked:False;hidden:False;materials:stoneDark;]
+[name:;collection:Primitives;type:block;position:(-8.1440, 4.5000, -0.6700);rotation:(0.0000, 0.0000, 0.0000);scale:(13.6080, 1.1000, 7.1400);group:;locked:False;hidden:False;materials:_defaultMat;]
+[name:;collection:Primitives;type:block;position:(0.5588, 1.0012, -0.3041);rotation:(0.0000, 0.0000, 45.0000);scale:(0.1188, 1.4702, 0.5082);group:;locked:False;hidden:False;materials:foliage;]
+[name:;collection:Primitives;type:wedge;position:(0.0000, 1.0000, -0.3300);rotation:(0.0000, 90.0000, 0.0000);scale:(0.3401, 1.0000, 1.0007);group:;locked:False;hidden:False;materials:stoneDark;]
+[name:;collection:Primitives;type:wedge;position:(-1.0000, 1.0000, -0.3300);rotation:(0.0000, 270.0000, 0.0000);scale:(0.3401, 1.0000, 1.0007);group:;locked:False;hidden:False;materials:stoneDark;]
+[name:;collection:Primitives;type:block;position:(-1.5588, 1.0012, -0.1358);rotation:(0.0000, 180.0000, 45.0000);scale:(0.1188, 1.4702, 0.2520);group:;locked:False;hidden:False;materials:foliage;]
+[name:;collection:Dungeons;type:wall_half;position:(-3.0000, 1.4500, 0.0000);rotation:(0.0000, 270.0000, 0.0000);scale:(1.0006, 1.1713, 1.0006);group:;locked:False;hidden:False;materials:stoneLight;]
+[name:;collection:Dungeons;type:wall_half;position:(-4.0000, 1.4500, 0.0000);rotation:(0.0000, 270.0000, 0.0000);scale:(1.0006, 1.1713, 1.0006);group:;locked:False;hidden:False;materials:stoneLight;]
+[name:;collection:Dungeons;type:wall_half;position:(-4.0000, 1.0000, 0.0000);rotation:(0.0000, 270.0000, 0.0000);scale:(1.0005, 0.9680, 1.0005);group:;locked:False;hidden:False;materials:stoneLight;]
+[name:;collection:Dungeons;type:wall_half;position:(-3.0000, 1.0000, 0.0000);rotation:(0.0000, 270.0000, 0.0000);scale:(1.0005, 0.9680, 1.0005);group:;locked:False;hidden:False;materials:stoneLight;]
+[name:;collection:Primitives;type:cylinder_half;position:(-3.5000, 2.0000, 0.0000);rotation:(0.0000, 90.0000, 0.0000);scale:(1.0021, 1.0000, 1.0021);group:;locked:False;hidden:False;materials:stoneDark;]
+[name:;collection:Dungeons;type:floor;position:(-2.7500, 2.0000, 0.0000);rotation:(0.0000, 180.0000, 0.0000);scale:(0.5000, 1.0000, 1.0000);group:;locked:False;hidden:False;materials:stoneDark+stoneDark;]
+[name:;collection:Dungeons;type:floor;position:(-2.7500, 3.0000, 0.0000);rotation:(0.0000, 180.0000, 0.0000);scale:(0.5000, 1.0000, 1.0000);group:;locked:False;hidden:False;materials:stoneDark+foliage;]
+[name:;collection:Primitives;type:cylinder_half;position:(-3.5000, 3.0000, 0.0000);rotation:(0.0000, 90.0000, 0.0000);scale:(1.0026, 0.9000, 1.0026);group:;locked:False;hidden:False;materials:stoneDark;]
+[name:;collection:Primitives;type:cylinder_half;position:(-3.5000, 3.9000, 0.0000);rotation:(0.0000, 90.0000, 0.0000);scale:(1.0022, 0.0990, 1.0022);group:;locked:False;hidden:False;materials:foliage;]
+[name:;collection:Dungeons;type:floor;position:(-2.0000, 3.0000, 0.0000);rotation:(0.0000, 0.0000, 0.0000);scale:(1.0000, 1.0000, 1.0000);group:;locked:False;hidden:False;materials:stoneDark+foliage;]
+[name:;collection:Dungeons;type:floor;position:(-1.2328, 3.0000, 0.0000);rotation:(0.0000, 0.0000, 0.0000);scale:(0.5445, 1.0000, 1.0000);group:;locked:False;hidden:False;materials:stoneDark+foliage;]
+[name:;collection:Primitives;type:cylinder_half;position:(-0.5000, 3.0000, 0.0000);rotation:(0.0000, 270.0000, 0.0000);scale:(1.0028, 0.9000, 1.0028);group:;locked:False;hidden:False;materials:stoneDark;]
+[name:;collection:Primitives;type:cylinder_half;position:(-0.5000, 3.9000, 0.0000);rotation:(0.0000, 270.0000, 0.0000);scale:(1.0024, 0.0990, 1.0024);group:;locked:False;hidden:False;materials:foliage;]
+[name:;collection:Primitives;type:cylinder_half;position:(-0.5000, 3.9000, 0.0000);rotation:(0.0000, 90.0000, 0.0000);scale:(1.0028, 0.0990, 1.0028);group:;locked:False;hidden:False;materials:foliage;]
+[name:;collection:Primitives;type:cylinder_half;position:(0.5000, 3.9000, 0.0000);rotation:(0.0000, 270.0000, 0.0000);scale:(1.0031, 0.0990, 1.0031);group:;locked:False;hidden:False;materials:foliage;]
+[name:;collection:Primitives;type:cylinder_half;position:(0.5000, 3.0000, 0.0000);rotation:(0.0000, 270.0000, 0.0000);scale:(1.0032, 0.9000, 1.0032);group:;locked:False;hidden:False;materials:stoneDark;]
+[name:;collection:Primitives;type:cylinder_half;position:(-0.5000, 3.0000, 0.0000);rotation:(0.0000, 90.0000, 0.0000);scale:(1.0031, 0.9000, 1.0031);group:;locked:False;hidden:False;materials:stoneDark;]
+[name:;collection:Dungeons;type:floor;position:(-2.0000, 2.0000, 0.0000);rotation:(0.0000, 0.0000, 0.0000);scale:(1.0000, 1.0000, 1.0000);group:;locked:False;hidden:False;materials:stoneDark+stoneDark;]
+[name:;collection:Dungeons;type:floor;position:(-1.2328, 2.0000, 0.0000);rotation:(0.0000, 0.0000, 0.0000);scale:(0.5445, 1.0000, 1.0000);group:;locked:False;hidden:False;materials:stoneDark+stoneDark;]
+[name:;collection:Primitives;type:cylinder_half;position:(-0.5000, 2.0000, 0.0000);rotation:(0.0000, 270.0000, 0.0000);scale:(1.0024, 0.9000, 1.0024);group:;locked:False;hidden:False;materials:stoneDark;]
+[name:;collection:Primitives;type:cylinder_half;position:(-0.5000, 2.0000, 0.0000);rotation:(0.0000, 90.0000, 0.0000);scale:(1.0028, 0.9000, 1.0028);group:;locked:False;hidden:False;materials:stoneDark;]
+[name:;collection:Primitives;type:cylinder_half;position:(0.5000, 2.0000, 0.0000);rotation:(0.0000, 270.0000, 0.0000);scale:(1.0028, 0.9000, 1.0028);group:;locked:False;hidden:False;materials:stoneDark;]
+[name:;collection:Primitives;type:cylinder_half;position:(0.5000, 2.9000, 0.0000);rotation:(0.0000, 270.0000, 0.0000);scale:(1.0024, 0.0990, 1.0024);group:;locked:False;hidden:False;materials:stoneDark;]
+[name:;collection:Primitives;type:cylinder_half;position:(-0.5000, 2.9000, 0.0000);rotation:(0.0000, 90.0000, 0.0000);scale:(1.0024, 0.0990, 1.0024);group:;locked:False;hidden:False;materials:stoneDark;]
+[name:;collection:Primitives;type:cylinder_half;position:(-0.5000, 2.9000, 0.0000);rotation:(0.0000, 270.0000, 0.0000);scale:(1.0023, 0.0990, 1.0023);group:;locked:False;hidden:False;materials:stoneDark;]
+[name:;collection:Primitives;type:block;position:(0.0000, 0.9000, 0.0000);rotation:(0.0000, 0.0000, 0.0000);scale:(1.0000, 0.1000, 1.0000);group:;locked:False;hidden:False;materials:_defaultMat;]
