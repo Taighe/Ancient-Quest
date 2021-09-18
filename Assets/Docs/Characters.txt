@@ -1,0 +1,9 @@
+Hero: David: 2 units height
+
+Enemies: Blue Pigs, Eye Monsters, Stone Hoplites
+
+Bosses: Medusa, Cetus (Sea Dragon), Cyclops, Pig Chieftan, Minatour, Cerberus
+
+Optional Bosses: Zeus, Hades
+
+Goal: To reach the top of the Tower of Babel to defeat the villian. Magic stones/relics gathered from defeating the world's bosses are required to enter the tower.

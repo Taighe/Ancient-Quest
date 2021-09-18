@@ -1,0 +1,6 @@
+# Created by Kenney (www.kenney.nl)
+
+newmtl custom5(Clone)
+Kd 1 0.9952351 0.9636363
+map_Kd Textures/custom5(Clone).png
+

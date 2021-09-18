@@ -1,0 +1,11 @@
+Sword: Enables attacking enemies infront/above of the player.
+
+Shield: Protects the player from most projectile attacks in front of the player. (Only works while standing still)
+
+Slingshot: Gives the player a ranged attack. Slings a pebble stone at enemies. Damage is the same as jumping and attacking with the sword.
+
+Hermes Sandals: These sandals give a speed bonus to the player. Allowing the player to move faster.
+
+When player is damaged the powerup is lost but prevents the player from taking a hit to hp. 
+
+The player can only have one powerup either sword or sling active at a time. The last powerup is discarded but can be re-aquired by moving towards it. The only execption is the shield powerup, which can be active with sword or sling. The shield will always be discarded before sword or sling on hit, which can be used to protect the player from losing an offensive powerup.

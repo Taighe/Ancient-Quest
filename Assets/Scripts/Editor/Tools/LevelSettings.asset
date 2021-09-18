@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07c38a8a3f7212d4ea3558aca952eeab, type: 3}
+  m_Name: LevelSettings
+  m_EditorClassIdentifier: 
+  BoundaryWidth: 29
+  BoundaryHeight: 9
+  CameraDistance: 38
+  FieldOfView: 15
+  PlayerPrefab: {fileID: 6799936128359615769, guid: 5a798fdcb7f048d4ab17998675fb1bc2, type: 3}
+  CanvasPrefab: {fileID: 4012903589409021535, guid: 6ef0a94dde48fd54eaf4ac7a581e0779, type: 3}
+  EventSystemPrefab: {fileID: 7117304707559160302, guid: 9702071aaf4be1642a72180d496786d7, type: 3}
+  SkyPrefab: {fileID: 4247467619140741546, guid: 9300647bfe6dc7244a86d62c59bbccea, type: 3}
