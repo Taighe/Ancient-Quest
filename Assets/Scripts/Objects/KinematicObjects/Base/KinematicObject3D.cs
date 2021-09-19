@@ -18,6 +18,7 @@ public class KinematicObject3D : MonoBehaviour
 {
     public ActorData Data;
     public Direction Direction;
+    protected bool _isPassenger;
     public Vector2 Velocity 
     {
         get
@@ -91,6 +92,29 @@ public class KinematicObject3D : MonoBehaviour
     {
         Direction = direction;
         transform.rotation = Quaternion.Euler(0, (float)Direction, 0);
+    }
+
+    public void AddAsPassenger(Transform trans)
+    {
+        if(_isPassenger == false)
+        {
+            transform.parent = trans;
+            _isPassenger = true;
+        }
+    }
+
+    public void RemovePassenger()
+    {
+        if (_isPassenger == true)
+        {
+            transform.parent = null;
+            _isPassenger = false;
+        }
+    }
+
+    public void Move(Vector3 move, bool includeDeltaTime = true)
+    {
+        _cController.SimpleMove(move * (includeDeltaTime ? Time.deltaTime : 1));
     }
 
     public bool IsGrounded()

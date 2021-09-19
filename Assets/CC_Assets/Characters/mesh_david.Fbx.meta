@@ -21,6 +21,9 @@ ModelImporter:
   - first:
       74: 1095411610623993509
     second: david_fall
+  - first:
+      74: -5865420658507849003
+    second: david_crouch
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -131,37 +134,42 @@ ModelImporter:
     rigImportErrors: 
     rigImportWarnings: 
     animationImportErrors: 
-    animationImportWarnings: "\nClip 'david_idle' has import animation warnings that
+    animationImportWarnings: "\nClip 'david_run' has import animation warnings that
       might lower retargeting quality:\nNote: Activate translation DOF on avatar
       to improve retargeting quality.\n\t'CC_Base_NeckTwist02' is inbetween humanoid
       transforms and has rotation animation that will be discarded.\n\nClip 'david_misc1'
       has import animation warnings that might lower retargeting quality:\nNote:
       Activate translation DOF on avatar to improve retargeting quality.\n\t'CC_Base_NeckTwist02'
       is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
-      'david_run' has import animation warnings that might lower retargeting quality:\nNote:
-      Activate translation DOF on avatar to improve retargeting quality.\n\t'CC_Base_NeckTwist02'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
       'david_jump' has import animation warnings that might lower retargeting quality:\nNote:
       Activate translation DOF on avatar to improve retargeting quality.\n\t'CC_Base_NeckTwist02'
       is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
+      'david_idle' has import animation warnings that might lower retargeting quality:\nNote:
+      Activate translation DOF on avatar to improve retargeting quality.\n\t'CC_Base_NeckTwist02'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
       'david_fall' has import animation warnings that might lower retargeting quality:\nNote:
+      Activate translation DOF on avatar to improve retargeting quality.\n\t'CC_Base_NeckTwist02'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
+      'david_crouch' has import animation warnings that might lower retargeting quality:\nNote:
       Activate translation DOF on avatar to improve retargeting quality.\n\t'CC_Base_NeckTwist02'
       is inbetween humanoid transforms and has rotation animation that will be discarded.\n"
     animationRetargetingWarnings: "\nRetargeting quality report for clip '0_T-Pose':\n\tLeftLowerLeg
       average position error 2.1 mm and maximum position error 2.1 mm at time 0:
       0 (0.0%) Frame 0\n\tRightLowerLeg average position error 2.0 mm and maximum
       position error 2.0 mm at time 0: 0 (0.0%) Frame 0\n\nRetargeting quality report
-      for clip 'david_idle':\n\tHead average position error 1.2 mm and maximum position
-      error 1.8 mm at time 3:47 (60.1%) Frame 227\n\nRetargeting quality report for
+      for clip 'david_run':\n\tHead average position error 1.3 mm and maximum position
+      error 1.7 mm at time 0:24 (70.5%) Frame 24\n\nRetargeting quality report for
       clip 'david_misc1':\n\tRightLowerLeg average position error 1.0 mm and maximum
       position error 3.3 mm at time 5:42 (72.3%) Frame 342\n\tHead average position
       error 4.2 mm and maximum position error 5.8 mm at time 3:24 (43.1%) Frame 204\n\nRetargeting
-      quality report for clip 'david_run':\n\tHead average position error 1.3 mm
-      and maximum position error 1.7 mm at time 0:24 (70.5%) Frame 24\n\nRetargeting
       quality report for clip 'david_jump':\n\tHead average position error 4.8 mm
       and maximum position error 7.2 mm at time 0:29 (100.0%) Frame 29\n\nRetargeting
+      quality report for clip 'david_idle':\n\tHead average position error 1.2 mm
+      and maximum position error 1.8 mm at time 3:47 (60.1%) Frame 227\n\nRetargeting
       quality report for clip 'david_fall':\n\tHead average position error 5.8 mm
-      and maximum position error 7.2 mm at time 0: 0 (0.0%) Frame 0\n"
+      and maximum position error 7.2 mm at time 0: 0 (0.0%) Frame 0\n\nRetargeting
+      quality report for clip 'david_crouch':\n\tHead average position error 8.5
+      mm and maximum position error 9.2 mm at time 3:41 (58.5%) Frame 221\n"
     animationDoRetargetingWarnings: 1
     importAnimatedCustomProperties: 0
     importConstraints: 0
@@ -203,8 +211,8 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: david_idle
-      takeName: david_idle
+      name: david_run
+      takeName: david_run
       internalID: 0
       firstFrame: 0
       lastFrame: 474
@@ -261,35 +269,6 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: david_run
-      takeName: david_run
-      internalID: 0
-      firstFrame: 0
-      lastFrame: 35
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 1
-      loopBlend: 0
-      loopBlendOrientation: 1
-      loopBlendPositionY: 1
-      loopBlendPositionXZ: 1
-      keepOriginalOrientation: 1
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 1
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
       name: david_jump
       takeName: david_jump
       internalID: 0
@@ -319,10 +298,39 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
+      name: david_idle
+      takeName: david_idle
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 474
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
       name: david_fall
       takeName: david_fall
       internalID: 0
-      firstFrame: 5
+      firstFrame: 0
       lastFrame: 474
       wrapMode: 0
       orientationOffsetY: 0
@@ -331,6 +339,35 @@ ModelImporter:
       loop: 0
       hasAdditiveReferencePose: 0
       loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: david_crouch
+      takeName: david_crouch
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 474
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 1
       loopBlendPositionY: 1

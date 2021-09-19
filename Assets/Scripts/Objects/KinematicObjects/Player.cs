@@ -6,9 +6,19 @@ using System;
 using UnityEditor;
 #endif
 
+[RequireComponent(typeof(PlayerAnimator))]
 public class Player : KinematicObject3D
 {
     private PlayerData _playerData;
+    private PlayerAnimator _animator;
+    // Crouching
+    public bool IsCrouching => _isCrouching;
+    private bool _isCrouching;
+    private float _originHeight;
+    private float _originOffsetY;
+    private float _crouchHeight;
+    private float _crouchOffsetY;
+    //
 
     public override void Awake()
     {
@@ -17,12 +27,14 @@ public class Player : KinematicObject3D
             _playerData = (PlayerData)Data;
         }
 
+        _animator = GetComponent<PlayerAnimator>();
         base.Awake();
     }
 
     public override void Start()
     {
-        Debug.Log("Player Start " + _playerData.IsWarping);
+        _originOffsetY = _cController.center.y;
+        _originHeight = _cController.height;
         AfterWarp();
     }
 
@@ -41,11 +53,26 @@ public class Player : KinematicObject3D
     }
     public override void Update()
     {
+        _crouchHeight = _originHeight;
+        _crouchOffsetY = _originOffsetY;
+
         bool isGrounded = _cController.isGrounded;
+        _isCrouching = false;
         _velocity = Velocity;
+        var axis = ControllerMaster.Input.GetAxis();
+        // Crouching
+        // Make sure pressing downwards has priority over pressing sidewards while crouching
+        Debug.Log(isGrounded);
+        if (axis.y < 0 && isGrounded) 
+        {
+            axis.x = 0;
+            _isCrouching = true;
+            _crouchHeight = _originHeight * 0.5f;
+            _crouchOffsetY = (_originOffsetY * 0.5f) - 0.01f;
+        }
 
         // Horizontal Movement
-        _velocity.x = ControllerMaster.Input.GetAxis().x * Data.Speed;
+        _velocity.x = axis.x * Data.Speed;
 
         float duration = 0;
         // Jumping
@@ -56,7 +83,11 @@ public class Player : KinematicObject3D
             PlaySFX(_playerData.JumpSfx);
         }
 
+        _cController.height = _crouchHeight;
+        _cController.center = new Vector3(_cController.center.x, _crouchOffsetY, _cController.center.z);
         base.Update();
+        // Update animation loop state machine.
+        _animator.UpdateAnimations();
     }
 
     public void WarpToPointNextScene(Vector3 point, Direction direction)

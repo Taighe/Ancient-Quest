@@ -7,17 +7,16 @@ using UnityEngine;
 public class AnimatorController : MonoBehaviour
 {
     public Animator Animator;
-    private KinematicObject3D _kinematicObj;
+    protected KinematicObject3D _kinematicObj;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         _kinematicObj = GetComponent<KinematicObject3D>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public virtual bool UpdateAnimations()
     {
-        if(Animator != null)
+        if (Animator != null)
         {
             int ground = Convert.ToInt32(_kinematicObj.IsGrounded());
             int air = Convert.ToInt32(!_kinematicObj.IsGrounded());
@@ -28,7 +27,10 @@ public class AnimatorController : MonoBehaviour
             Animator.SetFloat("velX", Mathf.Abs(_kinematicObj.Velocity.x));
             Animator.SetFloat("velY", _kinematicObj.Velocity.y);
             Animator.SetBool("canFidget", _kinematicObj.CanFidget());
-
+            return true;
         }
+
+        Debug.LogError($"{gameObject.name} Object: {_kinematicObj.GetType().Name} {GetType().Name} is null.");
+        return false;
     }
 }

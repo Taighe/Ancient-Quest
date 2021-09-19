@@ -34,7 +34,7 @@ public class ControllerMaster : InputMaster.IPlayerActions
     }
 
     public Vector2 GetAxis()
-    {      
+    {
         return _axis;
     }
 
