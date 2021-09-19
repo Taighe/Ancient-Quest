@@ -7,6 +7,9 @@ public class LinearMover : MonoBehaviour
 {
     [Range(0, 100)]
     public float Speed;
+    public float Width;
+    public float Height;
+    public float Distance;
     public Transform Point1;
     public Transform Point2;
     private float _time;
@@ -71,7 +74,8 @@ public class LinearMover : MonoBehaviour
     {
         if (Speed == 0) return;
 
-        RaycastHit[] hits = Physics.BoxCastAll(transform.position, new Vector3(1.1f, 0.1f, 0), transform.up, transform.rotation, 1, 1 << 6);
+
+        RaycastHit[] hits = Physics.BoxCastAll(transform.position, new Vector3(Width, Height, 0), transform.up, transform.rotation, Distance, 1 << 6);
         foreach(var p in _passengers.Values)
         {
             p.RemovePassenger();
@@ -114,8 +118,19 @@ public class LinearMover : MonoBehaviour
 #if UNITY_EDITOR
     void OnDrawGizmos()
     {
+        Vector3 min = Point1.position;
+        Vector3 max = Point2.position;
+
+        if (Application.isPlaying)
+        {
+            min = _min;
+            max = _max;
+        }
+
         Handles.color = Color.red;
-        Handles.DrawLine(Point1.position, Point2.position);
+        Handles.DrawLine(min, max);
+        Handles.color = Color.green;
+        Handles.DrawWireCube(transform.position, new Vector3(Width + Distance, Height + Distance));
     }
 #endif
 }
