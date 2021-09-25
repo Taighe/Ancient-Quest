@@ -88,7 +88,7 @@ public class LevelWarp : MonoBehaviour
         {
             if (PointWithinBox(_player.transform.position, Width, Height))
             {
-                if(ActivatedByButton && ControllerMaster.Input.GetAxis().y == 1 && _player.IsGrounded())
+                if(ActivatedByButton && ControllerMaster.Input.GetAxis().y == 1 && _player.IsGrounded)
                 {
                     WarpToScene();
                 }

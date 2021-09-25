@@ -15,7 +15,12 @@ public class LinearMover : MonoBehaviour
     private float _time;
     Vector3 _min;
     Vector3 _max;
+    Collider _collider;
     private Dictionary<GameObject, KinematicObject3D> _passengers;
+    private void Awake()
+    {
+        _collider = GetComponent<Collider>();
+    }
 
     private void Start()
     {
@@ -70,13 +75,10 @@ public class LinearMover : MonoBehaviour
         return true;
     }
 
-    void Update()
+    private void PassengerUpdate()
     {
-        if (Speed == 0) return;
-
-
         RaycastHit[] hits = Physics.BoxCastAll(transform.position, new Vector3(Width, Height, 0), transform.up, transform.rotation, Distance, 1 << 6);
-        foreach(var p in _passengers.Values)
+        foreach (var p in _passengers.Values)
         {
             p.RemovePassenger();
         }
@@ -100,8 +102,22 @@ public class LinearMover : MonoBehaviour
             //var point = passenger.transform.position - new Vector3(matrix.m03, matrix.m13, matrix.m23);
             //passenger.transform.position = new Vector3(matrix.m03, matrix.m13, matrix.m23);
             passenger.AddAsPassenger(transform);
-            passenger.Move(new Vector3(0.001f, 0));
+            float move = 0.001f;
+            var m = new Vector3(move, 0);
+            passenger.Move(m);
+            var dir = (_max - _min).normalized;
+            if (dir.y != 0 && passenger.Velocity.y == 0)
+            {
+                passenger.IsGrounded = true;
+            }
         }
+    }
+
+    void Update()
+    {
+        if (Speed == 0 ) return;
+        // Passenger update logic
+        PassengerUpdate();
 
         if(_time >= Speed)
         {
@@ -112,6 +128,7 @@ public class LinearMover : MonoBehaviour
         }
 
         transform.position = Vector3.Lerp(_min, _max, _time / Speed);
+        var pos = Vector3.Lerp(_min, _max, _time / Speed);
         _time += 1.0f * Time.deltaTime;
     }
 

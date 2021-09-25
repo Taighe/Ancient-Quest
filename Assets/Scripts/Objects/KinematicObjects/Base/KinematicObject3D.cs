@@ -11,19 +11,21 @@ public enum Direction
     LEFT = -180,
     RIGHT = 0
 }
-
+[RequireComponent(typeof(AnimatorController))]
 [RequireComponent(typeof(CharacterController))]
 [RequireComponent(typeof(AudioSource))]
-public class KinematicObject3D : MonoBehaviour
+public class KinematicObject3D : MonoBehaviour, IKinematicObject
 {
     public ActorData Data;
     public Direction Direction;
     protected bool _isPassenger;
+    protected AnimatorController _animator;
+
     public Vector2 Velocity 
     {
         get
         {
-            if (_cController.isGrounded && _velocity.y < 0)
+            if (IsGrounded && _velocity.y < 0)
                 _velocity.y = 0;
 
             return _velocity;
@@ -38,17 +40,31 @@ public class KinematicObject3D : MonoBehaviour
         }
     }
 
+    public bool IsGrounded
+    {
+        get
+        {
+            return _isGrounded;
+        }
+        set
+        {
+            _isGrounded = value;
+        }
+    }
+
     protected CharacterController _cController;
     protected AudioSource _audioSource;
     protected Vector2 _velocity;
     protected float _idleTime;
     protected bool _drawGizmos;
     protected float _zPos;
+    private bool _isGrounded;
 
     public virtual void Awake()
     {
         _audioSource = GetComponent<AudioSource>();
         _cController = GetComponent<CharacterController>();
+        _animator = GetComponent<AnimatorController>();
 
         if (Data == null)
             Data = new ActorData();
@@ -63,7 +79,14 @@ public class KinematicObject3D : MonoBehaviour
     }
 
     // Update is called once per frame
-    public virtual void Update()
+    private void Update()
+    {
+        GameUpdate();
+        AnimationUpdate();
+        PropertiesOverrideUpdate();
+    }
+
+    public virtual void GameUpdate()
     {
         _drawGizmos = true;
         _velocity = Velocity;
@@ -74,18 +97,28 @@ public class KinematicObject3D : MonoBehaviour
         _velocity.y += (Physics.gravity.y * Data.GravityModifier) * Time.deltaTime;
         _cController.Move(new Vector3(0, _velocity.y) * Time.deltaTime);
 
-        if(_velocity.x > 0)
+        if (_velocity.x > 0)
             Direction = Direction.RIGHT;
-        else if(_velocity.x < 0)
+        else if (_velocity.x < 0)
             Direction = Direction.LEFT;
 
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, (float)Direction, 0), Data.TurnSpeed * Time.deltaTime); 
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, (float)Direction, 0), Data.TurnSpeed * Time.deltaTime);
 
         if (Velocity.x == 0 & Velocity.y == 0)
         {
             _idleTime += 1.0f * Time.deltaTime;
         }
         transform.position = new Vector3(transform.position.x, transform.position.y, _zPos);
+    }
+
+    public virtual void AnimationUpdate()
+    {
+        _animator.UpdateAnimations();
+    }
+
+    public virtual void PropertiesOverrideUpdate()
+    {
+        _isGrounded = _cController.isGrounded;
     }
 
     public void SetDirectionInstant(Direction direction)
@@ -115,11 +148,7 @@ public class KinematicObject3D : MonoBehaviour
     public void Move(Vector3 move, bool includeDeltaTime = true)
     {
         _cController.SimpleMove(move * (includeDeltaTime ? Time.deltaTime : 1));
-    }
-
-    public bool IsGrounded()
-    {
-        return _cController.isGrounded;
+        //_cController.Move(move * (includeDeltaTime ? Time.deltaTime : 1));
     }
 
     public bool CanFidget()

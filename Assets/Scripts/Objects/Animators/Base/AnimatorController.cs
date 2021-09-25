@@ -18,12 +18,12 @@ public class AnimatorController : MonoBehaviour
     {
         if (Animator != null)
         {
-            int ground = Convert.ToInt32(_kinematicObj.IsGrounded());
-            int air = Convert.ToInt32(!_kinematicObj.IsGrounded());
+            int ground = Convert.ToInt32(_kinematicObj.IsGrounded);
+            int air = Convert.ToInt32(!_kinematicObj.IsGrounded);
 
             Animator.SetLayerWeight(0, ground);
             Animator.SetLayerWeight(1, air);
-            Animator.SetBool("isGrounded", _kinematicObj.IsGrounded());
+            Animator.SetBool("isGrounded", _kinematicObj.IsGrounded);
             Animator.SetFloat("velX", Mathf.Abs(_kinematicObj.Velocity.x));
             Animator.SetFloat("velY", _kinematicObj.Velocity.y);
             Animator.SetBool("canFidget", _kinematicObj.CanFidget());
