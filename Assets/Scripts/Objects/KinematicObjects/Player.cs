@@ -9,10 +9,10 @@ using UnityEditor;
 [RequireComponent(typeof(PlayerAnimator))]
 public class Player : KinematicObject3D
 {
-    private PlayerData _playerData;
-    private PlayerAnimator _animator;
     // Crouching
     public bool IsCrouching => _isCrouching;
+
+    private PlayerData _playerData;
     private bool _isCrouching;
     private float _originHeight;
     private float _originOffsetY;
@@ -27,7 +27,6 @@ public class Player : KinematicObject3D
             _playerData = (PlayerData)Data;
         }
 
-        _animator = GetComponent<PlayerAnimator>();
         base.Awake();
     }
 
@@ -51,19 +50,19 @@ public class Player : KinematicObject3D
             _playerData.IsWarping = false;
         }
     }
-    public override void Update()
+
+    public override void GameUpdate()
     {
         _crouchHeight = _originHeight;
         _crouchOffsetY = _originOffsetY;
 
-        bool isGrounded = _cController.isGrounded;
+        bool isGrounded = IsGrounded;
         _isCrouching = false;
         _velocity = Velocity;
         var axis = ControllerMaster.Input.GetAxis();
         // Crouching
         // Make sure pressing downwards has priority over pressing sidewards while crouching
-        Debug.Log(isGrounded);
-        if (axis.y < 0 && isGrounded) 
+        if (axis.y < 0 && isGrounded)
         {
             axis.x = 0;
             _isCrouching = true;
@@ -85,9 +84,8 @@ public class Player : KinematicObject3D
 
         _cController.height = _crouchHeight;
         _cController.center = new Vector3(_cController.center.x, _crouchOffsetY, _cController.center.z);
-        base.Update();
-        // Update animation loop state machine.
-        _animator.UpdateAnimations();
+
+        base.GameUpdate();
     }
 
     public void WarpToPointNextScene(Vector3 point, Direction direction)
