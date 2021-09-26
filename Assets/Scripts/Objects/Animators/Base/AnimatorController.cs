@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(KinematicObject3D))]
 public class AnimatorController : MonoBehaviour
 {
     public Animator Animator;

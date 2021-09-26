@@ -4,11 +4,16 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameUI : SingletonObject<GameUI>
+
+/// <summary>
+/// Game UI singleton class used for updating and managing the games GUI.
+/// </summary>
+public class GameGUI : SingletonObject<GameGUI>
 {
     public Image HitPointsBack;
     public Image HitPointsFront;
     public Image Fade;
+    private float _hpIconHeight;
     public bool IsTransitionDone 
     {
         get
@@ -19,6 +24,20 @@ public class GameUI : SingletonObject<GameUI>
 
     private float _counter;
     private float _time;
+
+    public override void Awake()
+    {
+        base.Awake();
+        _hpIconHeight = HitPointsBack.rectTransform.rect.height;
+    }
+
+    public void UpdateHitPoints(int hp, int hpMax)
+    {
+        var frontValue = _hpIconHeight * hp;
+        var backValue = _hpIconHeight * hpMax;
+        HitPointsBack.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, backValue);
+        HitPointsFront.rectTransform.sizeDelta = new Vector2(HitPointsFront.rectTransform.sizeDelta.x, -Mathf.Abs(backValue - frontValue) );
+    }
 
     public void TransitionFadeInByAmount(float amount)
     {

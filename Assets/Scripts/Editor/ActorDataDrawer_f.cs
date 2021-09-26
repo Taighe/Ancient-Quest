@@ -39,7 +39,6 @@ public class ActorDataDrawer : PropertyDrawer
             {
                 for (int i = 0; i < _dataFields.Count; i++)
                 {
-                    EditorGUI.BeginChangeCheck();
                     SerializedProperty sp = _dataFields[i];
                     pos.y += pos.height * 2.5f;
                     EditorGUI.PropertyField(pos, sp, new GUIContent(_dataFields[i].displayName), true);
@@ -53,6 +52,7 @@ public class ActorDataDrawer : PropertyDrawer
 
         EditorGUI.EndProperty();
     }
+
     private void UpdateFieldValue(FieldInfo field, object obj, SerializedProperty property)
     {
         switch (property.propertyType)

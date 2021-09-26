@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.Scripts.Globals;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
@@ -77,7 +78,7 @@ public class LinearMover : MonoBehaviour
 
     private void PassengerUpdate()
     {
-        RaycastHit[] hits = Physics.BoxCastAll(transform.position, new Vector3(Width, Height, 0), transform.up, transform.rotation, Distance, 1 << 6);
+        RaycastHit[] hits = Physics.BoxCastAll(transform.position, new Vector3(Width, Height, 0), transform.up, transform.rotation, Distance, 1 << (int)Layers.Kinematic);
         foreach (var p in _passengers.Values)
         {
             p.RemovePassenger();

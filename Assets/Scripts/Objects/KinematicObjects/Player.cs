@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using Assets.Scripts.Events;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -9,6 +10,11 @@ using UnityEditor;
 [RequireComponent(typeof(PlayerAnimator))]
 public class Player : KinematicObject3D
 {
+    [Header("Game Properties")]
+    [Range(0, 9999)]
+    public int HP;
+    [Range(0, 9999)]
+    public int MaxHP;
     // Crouching
     public bool IsCrouching => _isCrouching;
 
@@ -18,23 +24,56 @@ public class Player : KinematicObject3D
     private float _originOffsetY;
     private float _crouchHeight;
     private float _crouchOffsetY;
-    //
 
     public override void Awake()
     {
-        if(Data != null)
+        if (Data != null)
         {
             _playerData = (PlayerData)Data;
         }
 
         base.Awake();
+
+        HP = _playerData.HP;
+        MaxHP = _playerData.MaxHP;
+    }
+
+    public void SetHP(int value)
+    {
+        PlayerData d = _playerData != null ? _playerData : (PlayerData)Data;
+        HP = d.HP = value;
+        if (Application.isPlaying)
+        {
+            GameGUI.GetInstance().UpdateHitPoints(d.HP, d.MaxHP);
+        }
+    }
+
+    public void SetMaxHP(int value)
+    {
+        PlayerData d = _playerData != null ? _playerData : (PlayerData)Data;
+        MaxHP = d.MaxHP = value;
+    }
+
+    protected override void OnDamaged(int damage)
+    {
+        if(!IsInvulnerable)
+        {
+            SetHP(_playerData.HP - damage);
+        }
     }
 
     public override void Start()
     {
+        base.Start();
+        GameGUI.GetInstance().UpdateHitPoints(_playerData.HP, _playerData.MaxHP);
         _originOffsetY = _cController.center.y;
         _originHeight = _cController.height;
         AfterWarp();
+    }
+
+    protected override void Flash(bool visible)
+    {
+        Debug.Log($"Flash {visible}");
     }
 
     void AfterWarp()

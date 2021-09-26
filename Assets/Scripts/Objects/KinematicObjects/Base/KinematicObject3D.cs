@@ -11,10 +11,11 @@ public enum Direction
     LEFT = -180,
     RIGHT = 0
 }
+
 [RequireComponent(typeof(AnimatorController))]
 [RequireComponent(typeof(CharacterController))]
 [RequireComponent(typeof(AudioSource))]
-public class KinematicObject3D : MonoBehaviour, IKinematicObject
+public class KinematicObject3D : Object3D, IKinematicObject
 {
     public ActorData Data;
     public Direction Direction;
@@ -60,8 +61,9 @@ public class KinematicObject3D : MonoBehaviour, IKinematicObject
     protected float _zPos;
     private bool _isGrounded;
 
-    public virtual void Awake()
+    public override void Awake()
     {
+        base.Awake();
         _audioSource = GetComponent<AudioSource>();
         _cController = GetComponent<CharacterController>();
         _animator = GetComponent<AnimatorController>();
@@ -72,8 +74,7 @@ public class KinematicObject3D : MonoBehaviour, IKinematicObject
         _zPos = transform.position.z;
     }
 
-    // Start is called before the first frame update
-    public virtual void Start()
+    public override void Start()
     {
 
     }

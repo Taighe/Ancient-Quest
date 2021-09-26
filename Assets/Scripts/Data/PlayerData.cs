@@ -14,4 +14,30 @@ public class PlayerData : ActorData
     private Direction _exitDirection;
     public bool IsWarping { get { return _isWarping; } set { _isWarping = value; } }
     private bool _isWarping;
+
+    public int HP
+    {
+        get
+        {
+            return _hp;
+        }
+        set
+        {
+            _hp = Mathf.Clamp(value, 0, _maxHP);
+        }
+    }
+
+    private int _hp = 3;
+    public int MaxHP
+    {
+        get
+        {
+            return _maxHP < _hp ? _hp: _maxHP;
+        }
+        set
+        {
+            _maxHP = value >= _hp ? value : _maxHP;
+        }
+    }
+    private int _maxHP = 3;
 }

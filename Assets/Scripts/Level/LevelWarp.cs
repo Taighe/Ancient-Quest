@@ -61,7 +61,7 @@ public class LevelWarp : MonoBehaviour
     IEnumerator TransistionToSceneAsync()
     {
         Time.timeScale = 0;
-        var ui = GameUI.GetInstance();
+        var ui = GameGUI.GetInstance();
         StartCoroutine(ui.TransitionFade(TransitionTime));
         while (!ui.IsTransitionDone)
         {

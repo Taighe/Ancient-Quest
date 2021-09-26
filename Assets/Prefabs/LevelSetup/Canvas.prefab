@@ -36,7 +36,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 12, y: -68}
-  m_SizeDelta: {x: 43, y: 128}
+  m_SizeDelta: {x: 43, y: 43}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &4012903589383102993
 CanvasRenderer:
@@ -150,11 +150,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
-  m_ScreenMatchMode: 0
+  m_ScreenMatchMode: 2
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
@@ -187,7 +187,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4012903589409021535}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c51e8411e6f8d74c8708e7725982bb4, type: 3}
+  m_Script: {fileID: 11500000, guid: 9065fe3d2efe00d4c81f186a6b6370f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   HitPointsBack: {fileID: 4012903589383102994}

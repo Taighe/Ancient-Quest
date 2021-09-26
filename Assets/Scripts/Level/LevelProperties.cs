@@ -46,8 +46,8 @@ public class LevelProperties : SingletonObject<LevelProperties>
 
     private IEnumerator FadeOut()
     {        
-        StartCoroutine(GameUI.GetInstance().TransitionFade(FadeOutTime, true));
-        while (!GameUI.GetInstance().IsTransitionDone)
+        StartCoroutine(GameGUI.GetInstance().TransitionFade(FadeOutTime, true));
+        while (!GameGUI.GetInstance().IsTransitionDone)
         {
             yield return new WaitForEndOfFrame();
         }
