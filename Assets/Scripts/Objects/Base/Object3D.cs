@@ -45,23 +45,16 @@ public class Object3D : MonoBehaviour
     }
 
     private void Instance_Damaged(object sender, DamagedEventArgs e)
-    {
-        
+    {        
         if (DamageFinished)
         {
             OnDamaged(e.Damage);
             if(DamageDelay != 0)
-                StartCoroutine(Damaged());
+            {
+                _time = 0;
+                StartCoroutine(DamagedCoroutine());
+            }
         }
-    }
-
-    private IEnumerator Damaged()
-    {
-        _time = 0;
-
-        StartCoroutine(DamagedCoroutine());
-
-        yield return new WaitForEndOfFrame();
     }
 
     private IEnumerator DamagedCoroutine()
@@ -73,8 +66,8 @@ public class Object3D : MonoBehaviour
 
         while (_time < DamageDelay)
         {
-            _time += 1.0f * Time.deltaTime;
             yield return new WaitForEndOfFrame();
+            _time += 1.0f * Time.deltaTime;
         }
 
         _isFlashing = false;

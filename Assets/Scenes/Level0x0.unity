@@ -298,21 +298,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2839044063755399252, guid: 5a798fdcb7f048d4ab17998675fb1bc2, type: 3}
-      propertyPath: m_Enabled
-      value: 1
+    - target: {fileID: 6799936128359615764, guid: 5a798fdcb7f048d4ab17998675fb1bc2, type: 3}
+      propertyPath: HP
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6799936128359615764, guid: 5a798fdcb7f048d4ab17998675fb1bc2, type: 3}
-      propertyPath: FlashRate
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6799936128359615764, guid: 5a798fdcb7f048d4ab17998675fb1bc2, type: 3}
-      propertyPath: DamageDelay
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6799936128359615764, guid: 5a798fdcb7f048d4ab17998675fb1bc2, type: 3}
-      propertyPath: FlashDuringDelay
-      value: 1
+      propertyPath: MaxHP
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6799936128359615765, guid: 5a798fdcb7f048d4ab17998675fb1bc2, type: 3}
       propertyPath: m_RootOrder
@@ -361,10 +353,6 @@ PrefabInstance:
     - target: {fileID: 6799936128359615769, guid: 5a798fdcb7f048d4ab17998675fb1bc2, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 7589718022785103299, guid: 5a798fdcb7f048d4ab17998675fb1bc2, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5a798fdcb7f048d4ab17998675fb1bc2, type: 3}
