@@ -26,7 +26,7 @@ public class Enemy : MonoBehaviour
             if (dir.y >= 0.8f && dir.y <= 1.0f)
             {
                 gameObject.SetActive(false);
-                //GameEvents.Instance.OnHit();
+                GameEvents.Instance.OnHit(new DamagedEventArgs(hit.gameObject, gameObject, 0));
             }
             else
             {

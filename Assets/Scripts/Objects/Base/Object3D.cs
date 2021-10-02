@@ -57,19 +57,6 @@ public class Object3D : MonoBehaviour
         }
     }
 
-    protected void InstanceHit(object sender, DamagedEventArgs e)
-    {
-        if (DamageFinished)
-        {
-            OnDamaged(e.Damage);
-            if (DamageDelay != 0)
-            {
-                _time = 0;
-                StartCoroutine(DamagedCoroutine());
-            }
-        }
-    }
-
     private IEnumerator DamagedCoroutine()
     {
         if (FlashDuringDelay && !_isFlashing)

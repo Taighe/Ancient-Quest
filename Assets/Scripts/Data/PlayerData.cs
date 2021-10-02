@@ -8,6 +8,9 @@ public class PlayerData : ActorData
     [Header("Sounds")]
     public AudioClip JumpSfx;
 
+    [Header("Gameplay")]
+    public float BounceHeight = 10;
+
     public Vector3 WarpPoint { get{ return _warpPoint; } set { _warpPoint = value; } }
     private Vector3 _warpPoint;
     public Direction ExitDirection { get { return _exitDirection; } set { _exitDirection = value; } }

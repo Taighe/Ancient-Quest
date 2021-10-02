@@ -36,6 +36,14 @@ public class Player : KinematicObject3D
 
         HP = _playerData.HP;
         MaxHP = _playerData.MaxHP;
+        // Player Events
+        GameEvents.Instance.Damaged += Instance_Damaged;
+        GameEvents.Instance.Hit += Instance_Hit;
+    }
+
+    private void Instance_Hit(object sender, DamagedEventArgs e)
+    {
+        Jump(_playerData.BounceHeight);
     }
 
     public void SetHP(int value)
@@ -56,7 +64,8 @@ public class Player : KinematicObject3D
 
     protected override void OnDamaged(int damage)
     {
-        
+        _playerData.HP -= damage;
+        GameGUI.GetInstance().UpdateHitPoints(_playerData.HP, _playerData.MaxHP);
     }
 
     public override void Start()
