@@ -47,7 +47,6 @@ public class ControllerMaster : InputMaster.IPlayerActions
             duration = duration >= 0.95f ? Mathf.Round(duration) : duration;
         }
 
-        //Debug.Log(_inputMaster.Player.Jump.phase.ToString() + " " +  duration);
         return _jump > 0;
     }
 

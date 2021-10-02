@@ -13,7 +13,6 @@ public enum Direction
 }
 
 [RequireComponent(typeof(AnimatorController))]
-[RequireComponent(typeof(CharacterController))]
 [RequireComponent(typeof(AudioSource))]
 public class KinematicObject3D : Object3D, IKinematicObject
 {
@@ -146,10 +145,19 @@ public class KinematicObject3D : Object3D, IKinematicObject
         }
     }
 
-    public void Move(Vector3 move, bool includeDeltaTime = true)
+    public void SimpleMove(Vector3 move, bool includeDeltaTime = true)
     {
         _cController.SimpleMove(move * (includeDeltaTime ? Time.deltaTime : 1));
-        //_cController.Move(move * (includeDeltaTime ? Time.deltaTime : 1));
+    }
+
+    public void Move(Vector3 move, bool includeDeltaTime = true)
+    {
+        _cController.Move(move * (includeDeltaTime ? Time.deltaTime : 1));
+    }
+
+    public void Jump(float height)
+    {
+        _velocity.y = height;
     }
 
     public bool CanFidget()

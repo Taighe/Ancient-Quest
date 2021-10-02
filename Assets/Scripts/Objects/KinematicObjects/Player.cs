@@ -56,10 +56,7 @@ public class Player : KinematicObject3D
 
     protected override void OnDamaged(int damage)
     {
-        if(!IsInvulnerable)
-        {
-            SetHP(_playerData.HP - damage);
-        }
+        
     }
 
     public override void Start()

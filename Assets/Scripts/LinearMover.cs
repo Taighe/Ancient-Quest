@@ -105,7 +105,8 @@ public class LinearMover : MonoBehaviour
             passenger.AddAsPassenger(transform);
             float move = 0.001f;
             var m = new Vector3(move, 0);
-            passenger.Move(m);
+            // Call this function to force collision detection for passenger
+            passenger.SimpleMove(m);
             var dir = (_max - _min).normalized;
             if (dir.y != 0 && passenger.Velocity.y == 0)
             {

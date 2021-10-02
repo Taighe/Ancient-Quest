@@ -36,7 +36,7 @@ public class Object3D : MonoBehaviour
 
     public virtual void Awake()
     {
-        GameEvents.Instance.Damaged += Instance_Damaged;
+
     }
 
     protected virtual void OnDamaged(int damage)
@@ -44,12 +44,25 @@ public class Object3D : MonoBehaviour
 
     }
 
-    private void Instance_Damaged(object sender, DamagedEventArgs e)
+    protected void Instance_Damaged(object sender, DamagedEventArgs e)
     {        
         if (DamageFinished)
         {
             OnDamaged(e.Damage);
             if(DamageDelay != 0)
+            {
+                _time = 0;
+                StartCoroutine(DamagedCoroutine());
+            }
+        }
+    }
+
+    protected void InstanceHit(object sender, DamagedEventArgs e)
+    {
+        if (DamageFinished)
+        {
+            OnDamaged(e.Damage);
+            if (DamageDelay != 0)
             {
                 _time = 0;
                 StartCoroutine(DamagedCoroutine());
