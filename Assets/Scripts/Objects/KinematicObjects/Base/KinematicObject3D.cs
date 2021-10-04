@@ -12,16 +12,12 @@ public enum Direction
     RIGHT = 0
 }
 
-[RequireComponent(typeof(AnimatorController))]
-[RequireComponent(typeof(AudioSource))]
 public class KinematicObject3D : Object3D, IKinematicObject
 {
     public ActorData Data;
-    public Direction Direction;
     protected bool _isPassenger;
-    protected AnimatorController _animator;
 
-    public Vector2 Velocity 
+    public override Vector2 Velocity 
     {
         get
         {
@@ -53,11 +49,8 @@ public class KinematicObject3D : Object3D, IKinematicObject
     }
 
     protected CharacterController _cController;
-    protected AudioSource _audioSource;
-    protected Vector2 _velocity;
     protected float _idleTime;
     protected bool _drawGizmos;
-    protected float _zPos;
     private bool _isGrounded;
 
     public override void Awake()
@@ -65,12 +58,13 @@ public class KinematicObject3D : Object3D, IKinematicObject
         base.Awake();
         _audioSource = GetComponent<AudioSource>();
         _cController = GetComponent<CharacterController>();
-        _animator = GetComponent<AnimatorController>();
+        _animator = GetComponent<KinematicAnimatorController>();
 
         if (Data == null)
             Data = new ActorData();
 
         _zPos = transform.position.z;
+        CollisionBounds = _cController.bounds.size;
     }
 
     public override void Start()
@@ -78,15 +72,7 @@ public class KinematicObject3D : Object3D, IKinematicObject
 
     }
 
-    // Update is called once per frame
-    private void Update()
-    {
-        GameUpdate();
-        AnimationUpdate();
-        PropertiesOverrideUpdate();
-    }
-
-    public virtual void GameUpdate()
+    public override void GameUpdate()
     {
         _drawGizmos = true;
         _velocity = Velocity;
@@ -111,12 +97,12 @@ public class KinematicObject3D : Object3D, IKinematicObject
         transform.position = new Vector3(transform.position.x, transform.position.y, _zPos);
     }
 
-    public virtual void AnimationUpdate()
+    public override void AnimationUpdate()
     {
-        _animator.UpdateAnimations();
+        base.AnimationUpdate();
     }
 
-    public virtual void PropertiesOverrideUpdate()
+    public override void PropertiesOverrideUpdate()
     {
         _isGrounded = _cController.isGrounded;
     }
@@ -150,9 +136,10 @@ public class KinematicObject3D : Object3D, IKinematicObject
         _cController.SimpleMove(move * (includeDeltaTime ? Time.deltaTime : 1));
     }
 
-    public void Move(Vector3 move, bool includeDeltaTime = true)
+    public override void Move(Vector3 move)
     {
-        _cController.Move(move * (includeDeltaTime ? Time.deltaTime : 1));
+        _velocity.x = move.x;
+        _velocity.y = move.y;
     }
 
     public void Jump(float height)

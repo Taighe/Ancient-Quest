@@ -6,30 +6,23 @@ using UnityEngine;
 public class AnimatorController : MonoBehaviour
 {
     public Animator Animator;
-    protected KinematicObject3D _kinematicObj;
+    protected Object3D _obj3D;
     // Start is called before the first frame update
     void Awake()
     {
-        _kinematicObj = GetComponent<KinematicObject3D>();
+        _obj3D = GetComponent<Object3D>();
     }
 
     public virtual bool UpdateAnimations()
     {
         if (Animator != null)
         {
-            int ground = Convert.ToInt32(_kinematicObj.IsGrounded);
-            int air = Convert.ToInt32(!_kinematicObj.IsGrounded);
-
-            Animator.SetLayerWeight(0, ground);
-            Animator.SetLayerWeight(1, air);
-            Animator.SetBool("isGrounded", _kinematicObj.IsGrounded);
-            Animator.SetFloat("velX", Mathf.Abs(_kinematicObj.Velocity.x));
-            Animator.SetFloat("velY", _kinematicObj.Velocity.y);
-            Animator.SetBool("canFidget", _kinematicObj.CanFidget());
+            Animator.SetFloat("velX", Mathf.Abs(_obj3D.Velocity.x));
+            Animator.SetFloat("velY", _obj3D.Velocity.y);
             return true;
         }
 
-        Debug.LogError($"{gameObject.name} Object: {_kinematicObj.GetType().Name} {GetType().Name} is null.");
+        //Debug.LogError($"{gameObject.name} Object: {_obj3D.GetType().Name} {GetType().Name} is null.");
         return false;
     }
 }

@@ -298,14 +298,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6799936128359615764, guid: 5a798fdcb7f048d4ab17998675fb1bc2, type: 3}
-      propertyPath: HP
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6799936128359615764, guid: 5a798fdcb7f048d4ab17998675fb1bc2, type: 3}
-      propertyPath: MaxHP
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 6799936128359615765, guid: 5a798fdcb7f048d4ab17998675fb1bc2, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -3478,6 +3470,26 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: fcfb7b7af6a8bef46b28be9f2e62e11a, type: 3}
   m_PrefabInstance: {fileID: 795228373}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1548152915 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7838664583459658667, guid: c564bd3b60852ea45ad5bec1dbcd69f1, type: 3}
+  m_PrefabInstance: {fileID: 7838664583206697921}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1548152916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1548152915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98ddca7df52f4714f82ef1e7da0fba73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Speed: 1
+  MoveRange: 6
+  StartPoint: 0
 --- !u!43 &1567000585
 Mesh:
   m_ObjectHideFlags: 0
@@ -4196,7 +4208,7 @@ MonoBehaviour:
   ToSceneName: Level0x1
   TransitionTime: 0.3
   TransitionDelayTime: 0.1
-  ExitPoint: {x: 17, y: 8, z: 0}
+  ExitPoint: {x: 21.5, y: 8.5, z: 0}
   ExitDirection: 0
 --- !u!4 &1874822120
 Transform:
@@ -5289,6 +5301,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6232028729622649778, guid: c564bd3b60852ea45ad5bec1dbcd69f1, type: 3}
+      propertyPath: Direction
+      value: -180
+      objectReference: {fileID: 0}
+    - target: {fileID: 7838664583459658666, guid: c564bd3b60852ea45ad5bec1dbcd69f1, type: 3}
+      propertyPath: HP
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7838664583459658666, guid: c564bd3b60852ea45ad5bec1dbcd69f1, type: 3}
+      propertyPath: FlashRate
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 7838664583459658666, guid: c564bd3b60852ea45ad5bec1dbcd69f1, type: 3}
+      propertyPath: DamageDelay
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7838664583459658666, guid: c564bd3b60852ea45ad5bec1dbcd69f1, type: 3}
+      propertyPath: IsInvulnerableDuringDelay
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7838664583459658667, guid: c564bd3b60852ea45ad5bec1dbcd69f1, type: 3}
       propertyPath: m_Name
       value: Enemy
@@ -5299,7 +5331,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7838664583459658671, guid: c564bd3b60852ea45ad5bec1dbcd69f1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 28.5
+      value: 30.5
       objectReference: {fileID: 0}
     - target: {fileID: 7838664583459658671, guid: c564bd3b60852ea45ad5bec1dbcd69f1, type: 3}
       propertyPath: m_LocalPosition.y

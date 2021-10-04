@@ -67,11 +67,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DamageDelay: 1
   IsInvulnerableDuringDelay: 1
-  FlashRate: 0
-  Data: {fileID: 11400000, guid: 0b238f71d397e554483305ef81c47a1a, type: 2}
   Direction: 0
-  HP: 8
-  MaxHP: 8
+  FlashRate: 0.1
+  Data: {fileID: 11400000, guid: 0b238f71d397e554483305ef81c47a1a, type: 2}
+  HP: 3
+  MaxHP: 3
 --- !u!82 &6799936128359615771
 AudioSource:
   m_ObjectHideFlags: 0

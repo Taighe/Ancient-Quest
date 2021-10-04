@@ -7,16 +7,25 @@ using UnityEditor;
 #endif
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemy : Object3D
 {
     [Header("Game Properties")]
     [Range(0, 9999)]
     public int HP = 1;
     [Range(0, 9999)]
     public int Strength = 1;
-    public Vector3 CollisionBounds = new Vector3(1,1,1);
+    public new Vector3 CollisionBounds = new Vector3(1, 1, 1);
 
-    private void Update()
+    private MeshRenderer _meshRenderer;
+
+    public override void Awake()
+    {
+        base.Awake();
+        _meshRenderer = GetComponent<MeshRenderer>();
+        base.CollisionBounds = CollisionBounds;
+    }
+
+    public override void GameUpdate()
     {
         // Collision logic
         Collider hit = DetectCollision();
@@ -25,14 +34,31 @@ public class Enemy : MonoBehaviour
             var dir = (hit.ClosestPointOnBounds(transform.position) - transform.position).normalized;
             if (dir.y >= 0.8f && dir.y <= 1.0f)
             {
-                gameObject.SetActive(false);
-                GameEvents.Instance.OnHit(new DamagedEventArgs(hit.gameObject, gameObject, 0));
+                if(HP > 0 && !IsInvulnerable)
+                {
+                    GameEvents.Instance.OnHit(new DamagedEventArgs(hit.gameObject, gameObject, 0));
+                    Damaged(1);
+                }
             }
             else
             {
                 GameEvents.Instance.OnDamaged(new DamagedEventArgs(gameObject, hit.gameObject, Strength));
             }
         }
+
+        base.GameUpdate();
+    }
+
+    protected override void Flash(bool visible)
+    {
+        _meshRenderer.enabled = visible;
+    }
+
+    protected override void OnDamaged(int damage)
+    {
+        HP -= 1;
+        if(HP <= 0)
+            gameObject.SetActive(false);
     }
 
     private Collider DetectCollision()

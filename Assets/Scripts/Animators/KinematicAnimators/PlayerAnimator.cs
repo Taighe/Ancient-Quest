@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerAnimator : AnimatorController
+public class PlayerAnimator : KinematicAnimatorController
 {
     public override bool UpdateAnimations()
     {
