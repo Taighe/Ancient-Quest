@@ -1,111 +1,119 @@
 using System.Collections;
 using System.Collections.Generic;
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
 using UnityEngine;
 
-public class AI_Mover : MonoBehaviour
+namespace GameAI
 {
-    public float Speed;
-    [Range(0, 999)]
-    public float MoveRange;
-    [Range(0, 1)]
-    public float StartPoint;
-
-    private Object3D _object3D;
-    private KinematicObject3D _kinematicObject3D;
-    private Vector3 _moveMin;
-    private Vector3 _moveMax;
-    private Vector3 _move;
-
-    private void Awake()
+    public class AI_Mover : MonoBehaviour
     {
-        _object3D = GetComponent<Object3D>();
-        if (_object3D is KinematicObject3D)
-            _kinematicObject3D = _object3D as KinematicObject3D;
+        public float Speed;
+        public Transform Min;
+        public Transform Max;
+        [Range(0, 999)]
+        [HideInInspector]
+        public float MoveRange;
+        [Range(0, 1)]
+        [HideInInspector]
+        public float StartPoint = 0.5f;
 
-        InitMoveRange();
-    }
+        private Object3D _object3D;
+        private KinematicObject3D _kinematicObject3D;
+        private Vector3 _move;
+        private Vector3 _min;
+        private Vector3 _max;
 
-    private void Start()
-    {
-        if(MoveRange > 0)
-            transform.position = Vector3.Lerp(_moveMin, _moveMax, StartPoint);
-        
-        _move = new Vector3(Speed * (int)_object3D.Direction, 0, 0);
-    }
-
-    private void InitMoveRange()
-    {
-        if (MoveRange > 0)
+        private void Awake()
         {
-            _moveMin = transform.position - new Vector3(MoveRange, 0, 0);
-            _moveMax = transform.position + new Vector3(MoveRange, 0, 0);
-        }
-    }
+            _object3D = GetComponent<Object3D>();
+            if (_object3D is KinematicObject3D)
+                _kinematicObject3D = _object3D as KinematicObject3D;
 
-    private void Update()
-    {
-        if (_kinematicObject3D != null)
-            KinematicUpdate();
-        else
-            ObjectUpdate();
-    }
-        
-    private void ObjectUpdate()
-    {
-        var move = GetMoveDirection();
-        _object3D.Move(move);
-    }
-
-    private Vector3 GetMoveDirection()
-    {
-        var pos = transform.position;
-
-        if(MoveRange > 0)
-        {
-            if (pos.x <= _moveMin.x)
-                _object3D.Direction = Direction.RIGHT;
-            else if (pos.x >= _moveMax.x)
-                _object3D.Direction = Direction.LEFT;
-        }
-        else
-        {
-            if (CheckForWall())
-                _object3D.FlipDirection();
+            InitEditorValues();
         }
 
-        return _object3D.Direction == Direction.RIGHT ? new Vector3(Speed, 0, 0) : new Vector3(-Speed, 0, 0);
-    }
-
-    private bool CheckForWall()
-    {
-        var check = Physics.BoxCast(transform.position, _object3D.CollisionBounds * 0.5f, _object3D.GetDirectionVector(), transform.rotation, 0.1f, 1 << 0);
-        return check;
-    }
-
-    private void KinematicUpdate()
-    {
-
-    }
-
-#if UNITY_EDITOR
-    public void OnDrawGizmos()
-    {
-        if(!Application.isPlaying)
-            InitMoveRange();
-
-        if(MoveRange > 0)
+        void InitEditorValues()
         {
-            Handles.color = Color.blue;
-            if (Selection.activeGameObject == gameObject)
-                Handles.color = Color.red;
-
-            Handles.DrawLine(_moveMin, _moveMax);
-            Vector3 start = Vector3.Lerp(_moveMin, _moveMax, StartPoint);
-            Handles.DrawWireCube(start, new Vector3(1, 1, 1));
+            _min = Min.position;
+            _max = Max.position;
+            MoveRange = Vector3.Distance(_min, _max);
         }
+
+        public void InitMoveRange()
+        {
+            if(Min == null)
+            {
+                var min = new GameObject("Min");
+                min.transform.position = Vector3.zero;
+                min.transform.SetParent(transform);
+                Min = min.transform;
+            }
+
+            if (Max == null)
+            {
+                var max = new GameObject("Max");
+                max.transform.position = Vector3.zero;
+                max.transform.SetParent(transform);
+                Max = max.transform;
+            }
+        }
+
+        private void Start()
+        {
+            if (MoveRange > 0)
+                transform.position = Vector3.Lerp(_min, _max, StartPoint);
+
+            _move = new Vector3(Speed * (int)_object3D.Direction, 0, 0);
+        }
+
+        private void Update()
+        {
+            if (_kinematicObject3D != null)
+                KinematicUpdate();
+            else
+                ObjectUpdate();
+        }
+
+        private void ObjectUpdate()
+        {
+            var move = GetMoveDirection();
+            _object3D.Move(move);
+        }
+
+        private Vector3 GetMoveDirection()
+        {
+            var pos = transform.position;
+
+            if (MoveRange > 0)
+            {
+                if (pos.x <= _min.x)
+                    _object3D.Direction = Direction.RIGHT;
+                else if (pos.x >= _max.x)
+                    _object3D.Direction = Direction.LEFT;
+            }
+            else
+            {
+                if (CheckForWall())
+                    _object3D.FlipDirection();
+            }
+
+            return _object3D.Direction == Direction.RIGHT ? new Vector3(Speed, 0, 0) : new Vector3(-Speed, 0, 0);
+        }
+
+        private bool CheckForWall()
+        {
+            var check = Physics.BoxCast(transform.position, _object3D.CollisionBounds * 0.5f, _object3D.GetDirectionVector(), transform.rotation, 0.1f, 1 << 0);
+            return check;
+        }
+
+        private void KinematicUpdate()
+        {
+
+        }
+
+        public Vector3 GetStartPoint()
+        {
+            return Vector3.Lerp(_min, _max, StartPoint);
+        }
+
     }
-#endif
 }
