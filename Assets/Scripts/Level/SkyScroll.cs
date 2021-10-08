@@ -26,7 +26,7 @@ public class SkyScroll : MonoBehaviour
         var pos = Camera.main.transform.position;
 
         if (AutoScroll)
-            _offset = new Vector2(_offset.x + ScrollSpeed.x * Time.deltaTime, _offset.y + ScrollSpeed.y * Time.deltaTime);
+            _offset += ScrollSpeed * Time.deltaTime;
         else
         {
             var diff = _lastPosition - pos;

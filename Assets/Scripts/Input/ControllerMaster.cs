@@ -15,6 +15,8 @@ public class ControllerMaster : InputMaster.IPlayerActions
     private InputMaster _inputMaster;
     private double _jumpStartTime;
     private double _jumpMaxDuration;
+    private bool _usePressed;
+
     public static ControllerMaster Input 
     { 
         get
@@ -50,6 +52,17 @@ public class ControllerMaster : InputMaster.IPlayerActions
         return _jump > 0;
     }
 
+    public bool GetUseButton()
+    {
+        if (_usePressed)
+        {
+            _usePressed = false;
+            return true;
+        }
+        else
+            return false;
+    }
+
     public void OnJump(InputAction.CallbackContext context)
     {
         _jump = context.ReadValue<float>();
@@ -63,5 +76,13 @@ public class ControllerMaster : InputMaster.IPlayerActions
         _axis = Vector2.zero;
         _axis.x =_inputMaster.Player.Movement.ReadValue<Vector2>().x;
         _axis.y = _inputMaster.Player.Movement.ReadValue<Vector2>().y;
+    }
+
+    public void OnUse(InputAction.CallbackContext context)
+    {
+        if (_inputMaster.Player.Use.phase == InputActionPhase.Started)
+        {
+            _usePressed = context.ReadValueAsButton();
+        }
     }
 }

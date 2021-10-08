@@ -177,4 +177,9 @@ public class PlayerControllerDynamic : MonoBehaviour, InputMaster.IPlayerActions
             Debug.DrawLine(m_hitBuffer[i].point, m_hitBuffer[i].point + m_hitBuffer[i].normal * m_hitBuffer[i].distance, Color.red);                   
         }
     }
+
+    public void OnUse(InputAction.CallbackContext context)
+    {
+        throw new System.NotImplementedException();
+    }
 }

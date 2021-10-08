@@ -74,6 +74,7 @@ public class KinematicObject3D : Object3D, IKinematicObject
 
     public override void GameUpdate()
     {
+        _spawnRateTimer += IncreaseTimer(_spawnRateTimer, 0, _spawnRate);
         _drawGizmos = true;
         _velocity = Velocity;
         // Horizontal Movement
@@ -161,7 +162,7 @@ public class KinematicObject3D : Object3D, IKinematicObject
     }
 
 #if UNITY_EDITOR
-    public virtual void OnDrawGizmos()
+    public override void OnDrawGizmos()
     {
         transform.rotation = Quaternion.Euler(0, (float)Direction, 0);
         Handles.color = Color.green;

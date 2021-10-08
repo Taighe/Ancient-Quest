@@ -6,6 +6,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Events
 {
+    // Event Arguements
     public class DamagedEventArgs : EventArgs
     {
         public int Damage { get; set; }
@@ -20,11 +21,24 @@ namespace Assets.Scripts.Events
         }
     }
 
+    public class DeathEventArgs : EventArgs
+    {
+        public IInstanceObject Instance { get; }
+
+        public DeathEventArgs(IInstanceObject instance)
+        {
+            Instance = instance;
+        }
+    }
+    //
     public class GameEvents : MonoBehaviour
     {
         private Dictionary<string, Delegate> _instanceEvents;
         private object objectLock = new object();
+        // InstanceManager Events
+        public event EventHandler<DeathEventArgs> InstanceManager_Death;
 
+        // Instance Events
         private event EventHandler<DamagedEventArgs> _damaged;
         private event EventHandler<DamagedEventArgs> _instDamaged;
         public event EventHandler<DamagedEventArgs> Damaged
@@ -68,7 +82,7 @@ namespace Assets.Scripts.Events
                 }
             }
         }
-
+        //
         private static GameEvents _gameEvents;
         public static GameEvents Instance
         {
@@ -76,14 +90,49 @@ namespace Assets.Scripts.Events
             {
                 if (_gameEvents == null)
                 {
-                    _gameEvents = new GameObject("GameEvents").AddComponent<GameEvents>();
-                    _gameEvents._instanceEvents = new Dictionary<string, Delegate>();
-                    _gameEvents._damaged += _gameEvents._gameEvents__damaged;
-                    _gameEvents._hit += _gameEvents._gameEvents__hit;
+                    _gameEvents = new GameObject("GameEvents").AddComponent<GameEvents>().Init();
                 }
 
                 return _gameEvents;
             }
+        }
+
+        private GameEvents Init()
+        {
+            _instanceEvents = new Dictionary<string, Delegate>();
+            _damaged += _gameEvents__damaged;
+            _hit += _gameEvents__hit;
+            return this;
+        }
+
+        public void HandleEvent<T>(EventHandler<T> eventHandler, T eventArgs)
+        {
+            EventHandler<T> handler = eventHandler;
+            if (handler != null)
+            {
+                handler(this, eventArgs);
+            }
+        }
+        /// <summary>
+        /// Triggers the Damaged event for the defender listening to the event. 
+        /// </summary>
+        /// <param name="e"></param>
+        public void OnDamaged(DamagedEventArgs e)
+        {
+            HandleEvent(_damaged, e);
+        }
+        /// <summary>
+        /// Triggers the Hit event for the attacker listening to the event. 
+        /// </summary>
+        /// <param name="e"></param>
+        public void OnHit(DamagedEventArgs e)
+        {
+            HandleEvent(_hit, e);
+        }
+
+        public void InstanceManager_OnDeath(object sender, DeathEventArgs e)
+        {
+            HandleEvent(InstanceManager_Death, e);
         }
 
         private void _gameEvents__hit(object sender, DamagedEventArgs e)
@@ -125,31 +174,6 @@ namespace Assets.Scripts.Events
         private string GetInstanceEvent(GameObject gameObject, string eventName)
         {
             return $"{gameObject.GetInstanceID()}{eventName}";
-        }
-
-        public void HandleEvent<T>(EventHandler<T> eventHandler, T eventArgs)
-        {
-            EventHandler<T> handler = eventHandler;
-            if (handler != null)
-            {
-                handler(this, eventArgs);
-            }
-        }
-        /// <summary>
-        /// Triggers the Damaged event for the defender listening to the event. 
-        /// </summary>
-        /// <param name="e"></param>
-        public void OnDamaged(DamagedEventArgs e)
-        {
-            HandleEvent(_damaged, e);
-        }
-        /// <summary>
-        /// Triggers the Hit event for the attacker listening to the event. 
-        /// </summary>
-        /// <param name="e"></param>
-        public void OnHit(DamagedEventArgs e)
-        {
-            HandleEvent(_hit, e);
         }
     }
 }

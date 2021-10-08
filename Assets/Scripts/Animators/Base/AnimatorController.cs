@@ -15,7 +15,7 @@ public class AnimatorController : MonoBehaviour
 
     public virtual bool UpdateAnimations()
     {
-        if (Animator != null)
+        if (Animator != null && Animator.runtimeAnimatorController != null)
         {
             Animator.SetFloat("velX", Mathf.Abs(_obj3D.Velocity.x));
             Animator.SetFloat("velY", _obj3D.Velocity.y);

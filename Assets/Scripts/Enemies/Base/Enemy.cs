@@ -74,12 +74,4 @@ public class Enemy : Object3D
 
         return null;
     }
-
-#if UNITY_EDITOR
-    public void OnDrawGizmos()
-    {
-        Handles.color = Color.green;
-        Handles.DrawWireCube(transform.position, CollisionBounds);
-    }
-#endif
 }

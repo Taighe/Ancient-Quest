@@ -68,6 +68,8 @@ MonoBehaviour:
   DamageDelay: 1
   IsInvulnerableDuringDelay: 1
   Direction: 0
+  InstanceObjects:
+  - {fileID: 7556835970348950452, guid: 90d286e589bc5f3478108dfe7e7a48e3, type: 3}
   FlashRate: 0.1
   Data: {fileID: 11400000, guid: 0b238f71d397e554483305ef81c47a1a, type: 2}
   HP: 3

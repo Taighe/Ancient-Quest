@@ -3,6 +3,8 @@ using UnityEditor;
 using UnityEngine;
 using System;
 using System.Collections;
+using System.Collections.Generic;
+using Assets.Scripts.Managers;
 
 [RequireComponent(typeof(AnimatorController))]
 [RequireComponent(typeof(AudioSource))]
@@ -10,9 +12,22 @@ public class Object3D : MonoBehaviour
 {
     public float DamageDelay = 0.5f;
     public bool IsInvulnerableDuringDelay = true;
+    public bool CanSpawnInstance 
+    {
+        get
+        {
+            if(InstanceObjects.Count > 0)
+            {
+                return _spawnRateTimer == -1 || _spawnRateTimer >= _spawnRate;
+            }
+
+            return false;
+        }
+    }
     public Direction Direction;
     public Vector3 CollisionBounds { get; set; }
-
+    [Header("Projectiles/Spawner")]
+    public List<GameObject> InstanceObjects;
     public virtual Vector2 Velocity
     {
         get
@@ -49,15 +64,44 @@ public class Object3D : MonoBehaviour
     protected Vector2 _velocity;
     protected AudioSource _audioSource;
     protected float _zPos;
+    protected float _spawnRateTimer = -1;
+    protected float _spawnRate;
 
     private float _time = -1;
 
+    public virtual void SpawnInstance(int ownerID, int index, Vector3 origin, Vector3 dir, float spawnRate = 0)
+    {
+        Debug.Log(CanSpawnInstance);
+        if (CanSpawnInstance)
+        {
+            var inst = InstanceManager.Instance.SpawnInstance(ownerID, InstanceObjects[index], origin, dir);
+            if(inst != null)
+            {
+                _spawnRate = spawnRate != 0 ? spawnRate : inst.SpawnRate;
+                _spawnRateTimer = 0;
+            }
+        }
+    }
 
     public virtual void Awake()
     {
+        _spawnRateTimer = -1;
         _animator = GetComponent<AnimatorController>();
         _audioSource = GetComponent<AudioSource>();
-        var cb = CollisionBounds;
+        if(InstanceObjects.Count > 0)
+            InstanceManager.Instance.AddInstancePrefabs(GetInstanceID(), InstanceObjects);
+    }
+
+    public void ResetDamageDelay()
+    {
+        _time = -1;
+        _isFlashing = false;
+        Flash(true);
+    }
+
+    protected float IncreaseTimer(float timer, float min, float max)
+    {
+        return timer >= min && timer <= max ? 1 * Time.deltaTime : 0;
     }
 
     protected virtual void OnDamaged(int damage)
@@ -86,7 +130,8 @@ public class Object3D : MonoBehaviour
     {
         if (DamageFinished)
         {
-            OnDamaged(damage);
+            if(damage > 0)
+                OnDamaged(damage);
 
             if (DamageDelay != 0 && gameObject.activeSelf)
             {
@@ -116,7 +161,7 @@ public class Object3D : MonoBehaviour
 
         _isFlashing = false;
     }
-
+     
     private IEnumerator FlashCoroutine()
     {
         _isFlashing = true;
@@ -140,6 +185,7 @@ public class Object3D : MonoBehaviour
 
     public virtual void GameUpdate()
     {
+        _spawnRateTimer += IncreaseTimer(_spawnRateTimer, 0, _spawnRate);
         var pos = transform.position;
         pos.x += _velocity.x * Time.deltaTime;
         pos.y += _velocity.y * Time.deltaTime;
@@ -173,4 +219,23 @@ public class Object3D : MonoBehaviour
     {
 
     }
+
+    public bool DetectCollisonCast(Vector3 dir, float distance, int layerMask)
+    {
+        RaycastHit[] hits = Physics.BoxCastAll(transform.position, CollisionBounds * 0.5f, dir, transform.rotation, distance, layerMask);
+        if(hits.Length > 0) 
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+#if UNITY_EDITOR
+    public virtual void OnDrawGizmos()
+    {
+        Handles.color = Color.green;
+        Handles.DrawWireCube(transform.position, CollisionBounds);
+    }
+#endif
 }

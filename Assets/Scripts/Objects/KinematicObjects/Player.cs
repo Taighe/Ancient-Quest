@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using Assets.Scripts.Events;
+using Assets.Scripts.Managers;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -24,6 +25,7 @@ public class Player : KinematicObject3D
     private float _originOffsetY;
     private float _crouchHeight;
     private float _crouchOffsetY;
+    private int _id;
 
     public override void Awake()
     {
@@ -39,6 +41,7 @@ public class Player : KinematicObject3D
         // Player Events
         GameEvents.Instance.Damaged += Instance_Damaged;
         GameEvents.Instance.Hit += Instance_Hit;
+        _id = GetInstanceID();
     }
 
     private void Instance_Hit(object sender, DamagedEventArgs e)
@@ -105,6 +108,12 @@ public class Player : KinematicObject3D
         _isCrouching = false;
         _velocity = Velocity;
         var axis = ControllerMaster.Input.GetAxis();
+        // Use powerup
+        if(ControllerMaster.Input.GetUseButton())
+        {
+            SpawnInstance(_id, 0, transform.position + Vector3.up, GetDirectionVector());
+        }
+
         // Crouching
         // Make sure pressing downwards has priority over pressing sidewards while crouching
         if (axis.y < 0 && isGrounded)
