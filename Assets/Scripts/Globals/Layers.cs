@@ -6,13 +6,24 @@ using System.Threading.Tasks;
 
 namespace Assets.Scripts.Globals
 {
+    public enum LayersIndex
+    {
+        Default = 0,
+        TransparentFX = 1,
+        Kinematic = 6,
+        Object = 7,
+        Player = 8,
+        Hazard = 10
+    }
+
     public enum Layers 
     {
-        Default = 1 << 0,
-        TransparentFX = 1 << 1,
-        Kinematic = 1 << 6,
-        Object = 1 << 7,
-        Player = 1 << 8
+        Default = 1 << LayersIndex.Default,
+        TransparentFX = 1 << LayersIndex.TransparentFX,
+        Kinematic = 1 << LayersIndex.Kinematic,
+        Object = 1 << LayersIndex.Object,
+        Player = 1 << LayersIndex.Player,
+        Hazard = 1 << LayersIndex.Hazard
     }
 
     public static class LayerHelper

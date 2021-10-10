@@ -4,6 +4,7 @@ using UnityEngine;
 using System;
 using Assets.Scripts.Events;
 using Assets.Scripts.Managers;
+using Assets.Scripts.Globals;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -40,6 +41,12 @@ public class Player : KinematicObject3D
     private float _crouchOffsetY;
     private int _id;
 
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if(LayerHelper.LayerMask(hit.gameObject.layer) == (int)Layers.Hazard)
+            GameEvents.Instance.OnHit(new DamagedEventArgs(hit.gameObject, gameObject, 0));
+    }
+
     public override void Awake()
     {
         if (Data != null)
@@ -57,7 +64,7 @@ public class Player : KinematicObject3D
         MaxHP = _playerData.MaxHP;
         SlingPowerUp = HasPowerUp(PowerUps.Sling);
         SwordPowerUp = HasPowerUp(PowerUps.Sword);
-        SwordPowerUp = HasPowerUp(PowerUps.Shield);
+        ShieldPowerUp = HasPowerUp(PowerUps.Shield);
 
         // Player Events
         GameEvents.Instance.Damaged += Instance_Damaged;
@@ -82,18 +89,18 @@ public class Player : KinematicObject3D
 
     public void Editor_SetHP(int value)
     {
-        PlayerData d = _playerData != null ? _playerData : (PlayerData)Data;
-        HP = d.HP = value;
+        _playerData = _playerData != null ? _playerData : (PlayerData)Data;
+        HP = _playerData.HP = value;
         if (Application.isPlaying)
         {
-            GameGUI.GetInstance().UpdateHitPoints(d.HP, d.MaxHP);
+            GameGUI.GetInstance().UpdateHitPoints(_playerData.HP, _playerData.MaxHP);
         }
     }
 
     public void Editor_SetMaxHP(int value)
     {
-        PlayerData d = _playerData != null ? _playerData : (PlayerData)Data;
-        MaxHP = d.MaxHP = value;
+        _playerData = _playerData != null ? _playerData : (PlayerData)Data;
+        MaxHP = _playerData.MaxHP = value;
     }
 
     protected override void OnDamaged(int damage)
@@ -143,8 +150,8 @@ public class Player : KinematicObject3D
 
     public void Editor_RemoveAllPowerUps()
     {
-        PlayerData d = _playerData != null ? _playerData : (PlayerData)Data;
-        d.PowerUpMask = 0;
+        _playerData = _playerData != null ? _playerData : (PlayerData)Data;
+        _playerData.PowerUpMask = 0;
     }
 
     public bool HasPowerUp(PowerUps powerUp)

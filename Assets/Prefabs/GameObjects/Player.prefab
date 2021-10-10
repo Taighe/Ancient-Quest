@@ -74,6 +74,9 @@ MonoBehaviour:
   Data: {fileID: 11400000, guid: 0b238f71d397e554483305ef81c47a1a, type: 2}
   HP: 3
   MaxHP: 3
+  SlingPowerUp: 0
+  SwordPowerUp: 0
+  ShieldPowerUp: 0
 --- !u!82 &6799936128359615771
 AudioSource:
   m_ObjectHideFlags: 0
@@ -547,6 +550,10 @@ PrefabInstance:
       value: mesh_david
       objectReference: {fileID: 0}
     - target: {fileID: 3966019487350962444, guid: 377b461cb0e50d4439fad43f5e35708b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3966019487350962444, guid: 377b461cb0e50d4439fad43f5e35708b, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
@@ -817,6 +824,10 @@ PrefabInstance:
     - target: {fileID: 8722386222489771031, guid: 377b461cb0e50d4439fad43f5e35708b, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8734861671291075739, guid: 377b461cb0e50d4439fad43f5e35708b, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8734861671291075739, guid: 377b461cb0e50d4439fad43f5e35708b, type: 3}
       propertyPath: m_Controller
