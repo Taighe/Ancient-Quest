@@ -12,6 +12,7 @@ public enum Direction
     RIGHT = 0
 }
 
+[RequireComponent(typeof(KinematicAnimator), typeof(CharacterController))]
 public class KinematicObject3D : Object3D, IKinematicObject
 {
     public ActorData Data;
@@ -58,7 +59,7 @@ public class KinematicObject3D : Object3D, IKinematicObject
         base.Awake();
         _audioSource = GetComponent<AudioSource>();
         _cController = GetComponent<CharacterController>();
-        _animator = GetComponent<KinematicAnimatorController>();
+        _animator = GetComponent<KinematicAnimator>();
 
         if (Data == null)
             Data = new ActorData();
@@ -74,6 +75,9 @@ public class KinematicObject3D : Object3D, IKinematicObject
 
     public override void GameUpdate()
     {
+        if (NotActiveWhenFarFromCamera())
+            return;
+
         _spawnRateTimer += IncreaseTimer(_spawnRateTimer, 0, _spawnRate);
         _drawGizmos = true;
         _velocity = Velocity;

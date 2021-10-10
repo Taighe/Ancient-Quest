@@ -16,13 +16,12 @@ public class Enemy : Object3D
     public int Strength = 1;
     public new Vector3 CollisionBounds = new Vector3(1, 1, 1);
 
-    private MeshRenderer _meshRenderer;
-
     public override void Awake()
     {
         base.Awake();
-        _meshRenderer = GetComponent<MeshRenderer>();
         base.CollisionBounds = CollisionBounds;
+
+        GameEvents.Instance.Damaged += Instance_Damaged;
     }
 
     public override void GameUpdate()
@@ -51,7 +50,7 @@ public class Enemy : Object3D
 
     protected override void Flash(bool visible)
     {
-        _meshRenderer.enabled = visible;
+        _animator.Animator.gameObject.SetActive(visible);
     }
 
     protected override void OnDamaged(int damage)
@@ -63,7 +62,7 @@ public class Enemy : Object3D
 
     private Collider DetectCollision()
     {
-        var colliders = Physics.OverlapBox(transform.position, new Vector3(CollisionBounds.x * 0.5f, CollisionBounds.y * 0.6f, CollisionBounds.z), transform.rotation, 1 << (int)Layers.Kinematic);
+        var colliders = Physics.OverlapBox(transform.position, new Vector3(CollisionBounds.x * 0.5f, CollisionBounds.y * 0.6f, CollisionBounds.z), transform.rotation, (int)Layers.Player);
         foreach(var c in colliders)
         {
             if(c.CompareTag("Player"))
@@ -74,4 +73,12 @@ public class Enemy : Object3D
 
         return null;
     }
+
+#if UNITY_EDITOR
+    public override void OnDrawGizmos()
+    {
+        Handles.color = Color.blue;
+        Handles.DrawWireCube(transform.position, CollisionBounds);
+    }
+#endif
 }

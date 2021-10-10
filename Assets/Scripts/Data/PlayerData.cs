@@ -11,6 +11,8 @@ public class PlayerData : ActorData
     [Header("Gameplay")]
     public float BounceHeight = 10;
 
+    public int PowerUpMask { get { return _powerUpMask; } set { _powerUpMask = value; } }
+    private int _powerUpMask;
     public Vector3 WarpPoint { get{ return _warpPoint; } set { _warpPoint = value; } }
     private Vector3 _warpPoint;
     public Direction ExitDirection { get { return _exitDirection; } set { _exitDirection = value; } }

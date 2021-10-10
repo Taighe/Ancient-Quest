@@ -11,7 +11,8 @@ public class PlayerEditor : Editor
     {
         var obj = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         // Init Player variables
-        obj.SetHP(obj.HP);
-        obj.SetMaxHP(obj.MaxHP);
+        obj.Editor_SetHP(obj.HP);
+        obj.Editor_SetMaxHP(obj.MaxHP);
+        obj.Editor_RemoveAllPowerUps();
     }
 }

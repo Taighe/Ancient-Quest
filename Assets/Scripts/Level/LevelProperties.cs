@@ -1,3 +1,5 @@
+using Assets.Scripts.Events;
+using Assets.Scripts.Globals;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -10,9 +12,19 @@ public class LevelProperties : SingletonObject<LevelProperties>
     public AudioClip BackgroundMusic;
     public float FadeOutTime = 0.3f;
     private AudioSource _audSource;
-    
+    private Camera _camera;
+    private float _activeWidth = 35;
+    private float _activeHeight = 15;
+    private int _lastNumberActive;
+
     // Start is called before the first frame update
-    public void Start()
+    public override void Awake()
+    {
+        base.Awake();
+        _camera = Camera.main;
+    }
+
+    private void Start()
     {
         if (Data == null)
         {
@@ -21,7 +33,7 @@ public class LevelProperties : SingletonObject<LevelProperties>
 
         _audSource = GetComponent<AudioSource>();
         _audSource.clip = BackgroundMusic;
-         
+
         if (_audSource.clip != null)
         {
             if (string.IsNullOrEmpty(Data.PreviousBackgroundMusic) || _audSource.clip.name != Data.PreviousBackgroundMusic)
@@ -39,7 +51,7 @@ public class LevelProperties : SingletonObject<LevelProperties>
         }
         else
         {
-            Data.PreviousBackgroundMusic = null;       
+            Data.PreviousBackgroundMusic = null;
         }
         StartCoroutine(FadeOut());
     }
@@ -62,5 +74,53 @@ public class LevelProperties : SingletonObject<LevelProperties>
             Data.PreviousBackgroundMusic = _audSource.clip.name;
             Data.PreviousAudioTime = _audSource.time;
         }
+    }
+
+    public bool CloseToCamera(Vector3 instancePosition)
+    {
+        var activeSize = new Vector2(_activeWidth, _activeHeight);
+        var minX = _camera.transform.position.x - activeSize.x * 0.5f;
+        var maxX = _camera.transform.position.x + activeSize.x * 0.5f;
+        var minY = _camera.transform.position.y - activeSize.y * 0.5f;
+        var maxY = _camera.transform.position.y + activeSize.y * 0.5f;
+
+        var pos = instancePosition;
+        if ((pos.x >= minX && pos.x <= maxX) && (pos.y >= minY && pos.y <= maxY))
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    public bool CloseToCamera(Vector3 instancePosition, Vector2 size)
+    {
+        var activeSize = size == Vector2.zero ? new Vector2(_activeWidth, _activeHeight) : size;
+        var minX = _camera.transform.position.x - activeSize.x * 0.5f;
+        var maxX = _camera.transform.position.x + activeSize.x * 0.5f;
+        var minY = _camera.transform.position.y - activeSize.y * 0.5f;
+        var maxY = _camera.transform.position.y + activeSize.y * 0.5f;
+
+        var pos = instancePosition;
+        if ( (pos.x >= minX && pos.x <= maxX) && (pos.y >= minY && pos.y <= maxY) )
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    public void Update()
+    {
+        int layerMask = LayerHelper.LayerMask(Layers.Object, Layers.Kinematic);
+        var pos = _camera.transform.position;
+        var colliders = Physics.OverlapBox(new Vector3(pos.x, pos.y, 0), new Vector3(_activeWidth * 0.5f, _activeHeight * 0.5f, 1), Quaternion.identity, layerMask, QueryTriggerInteraction.Collide);
+
+        foreach (var collider in colliders)
+        {
+            GameEvents.Instance.OnActive(new ActiveEventArgs(collider.gameObject));
+        }
+
+        _lastNumberActive = colliders.Length;
     }
 }

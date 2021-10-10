@@ -1,22 +1,26 @@
 using Assets.Scripts.Events;
+using Assets.Scripts.Globals;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SlingPellet : Object3D, IInstanceObject
+public class Projectile : Object3D, IInstanceObject
 {
+    public LayerMask CollisionMask;
     public float Speed;
     public float ImpactForce;
     public float ResetDelay;
     public new Vector3 CollisionBounds = new Vector3(1,1,1);
     private Rigidbody _rigidbody;
-    private Collider _collider;
     private Vector3 _positionOrigin;
     private Quaternion _rotationOrigin;
     private Vector3 _moveDirection = Vector3.right;
     public int ProjectileMaxInstancesAlive;
     public float ProjectileSpawnRate;
+    public int ProjectileStrength;
     private const float _flashDelay = 0.5f;
+    private const float _width = 19;
+    private const float _height = 10;
 
     public int MaxInstancesAlive { get { return ProjectileMaxInstancesAlive; } set { ProjectileMaxInstancesAlive = value; } }
     public float SpawnRate { get { return ProjectileSpawnRate; } set { ProjectileSpawnRate = value; } }
@@ -27,11 +31,12 @@ public class SlingPellet : Object3D, IInstanceObject
     IInstanceObject _prefab;
     public IInstanceObject Prefab => _prefab;
 
+    public int Strength { get { return ProjectileStrength; } set { ProjectileStrength = value; } }
+
     public override void Awake()
     {
         base.Awake();
         _rigidbody = GetComponent<Rigidbody>();
-        _collider = GetComponent<Collider>();
     }
 
     // Start is called before the first frame update
@@ -53,18 +58,37 @@ public class SlingPellet : Object3D, IInstanceObject
 
     public override void GameUpdate()
     {
+        if(!LevelProperties.GetInstance().CloseToCamera(transform.position, new Vector2(_width, _height) ))
+        {
+            Death();
+            DeSpawn();
+            return;
+        }
+
         if(!IsRigidBodyActive())
         {
             base.CollisionBounds = CollisionBounds;
             var dir = _velocity.normalized;
-            if (DetectCollisonCast(dir, 0.1f, 1 << 0))
+            RaycastHit hit;
+
+            if (DetectCollisonCast(_ownerID, dir, 0.1f, CollisionMask.value, out hit))
             {
-                PhysicsMode(true);
-                return;
+                int layer;
+                OnHit(hit, out layer);
             }
 
             Move(_moveDirection * Speed);
             base.GameUpdate();
+        }
+    }
+
+    public virtual void OnHit(RaycastHit hit, out int layer)
+    {
+        layer = LayerHelper.LayerMask(hit.collider.gameObject.layer);
+        if(layer == (int)Layers.Default)
+        {
+            PhysicsMode(true);
+            return;
         }
     }
 
@@ -121,7 +145,7 @@ public class SlingPellet : Object3D, IInstanceObject
     public IInstanceObject SetInstance(int ownerID)
     {
         _ownerID = ownerID;
-        var inst = Instantiate(gameObject, transform.position, Quaternion.identity).GetComponent<SlingPellet>();
+        var inst = Instantiate(gameObject, transform.position, Quaternion.identity).GetComponent<Projectile>();
         inst._prefab = this;
         inst._ownerID = ownerID;
         return inst;
@@ -140,7 +164,7 @@ public class SlingPellet : Object3D, IInstanceObject
     {
         if (Prefab != null)
         {
-            GameEvents.Instance.InstanceManager_OnDeath(this, new DeathEventArgs(this));
+            GameEvents.Instance.InstanceManager_OnDeath(new DeathEventArgs(this));
         }
     }
 

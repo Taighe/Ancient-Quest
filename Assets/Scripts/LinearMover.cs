@@ -78,7 +78,7 @@ public class LinearMover : MonoBehaviour
 
     private void PassengerUpdate()
     {
-        RaycastHit[] hits = Physics.BoxCastAll(transform.position, new Vector3(Width, Height, 0), transform.up, transform.rotation, Distance, 1 << (int)Layers.Kinematic);
+        RaycastHit[] hits = Physics.BoxCastAll(transform.position, new Vector3(Width, Height, 0), transform.up, transform.rotation, Distance, LayerHelper.LayerMask(Layers.Kinematic, Layers.Player));
         foreach (var p in _passengers.Values)
         {
             p.RemovePassenger();

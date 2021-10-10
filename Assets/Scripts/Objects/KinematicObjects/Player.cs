@@ -8,6 +8,15 @@ using Assets.Scripts.Managers;
 using UnityEditor;
 #endif
 
+public enum PowerUps
+{
+    None,
+    Sling = 1 << 1,
+    Sword = 1 << 2,
+    Shield = 1 << 3
+}
+
+[SelectionBase]
 [RequireComponent(typeof(PlayerAnimator))]
 public class Player : KinematicObject3D
 {
@@ -16,6 +25,10 @@ public class Player : KinematicObject3D
     public int HP;
     [Range(0, 9999)]
     public int MaxHP;
+    public bool SlingPowerUp;
+    public bool SwordPowerUp;
+    public bool ShieldPowerUp;
+
     // Crouching
     public bool IsCrouching => _isCrouching;
 
@@ -35,13 +48,31 @@ public class Player : KinematicObject3D
         }
 
         base.Awake();
+        Init();
+    }
 
+    private void Init()
+    {
         HP = _playerData.HP;
         MaxHP = _playerData.MaxHP;
+        SlingPowerUp = HasPowerUp(PowerUps.Sling);
+        SwordPowerUp = HasPowerUp(PowerUps.Sword);
+        SwordPowerUp = HasPowerUp(PowerUps.Shield);
+
         // Player Events
         GameEvents.Instance.Damaged += Instance_Damaged;
         GameEvents.Instance.Hit += Instance_Hit;
+        GameEvents.Instance.Player_Collect += Instance_Player_Collect;
+
         _id = GetInstanceID();
+    }
+
+    private void Instance_Player_Collect(object sender, CollectEventArgs e)
+    {
+        if(e.Instance.PowerUpType != PowerUps.None)
+        {
+            AddPowerUp(e.Instance.PowerUpType);
+        }
     }
 
     private void Instance_Hit(object sender, DamagedEventArgs e)
@@ -49,7 +80,7 @@ public class Player : KinematicObject3D
         Jump(_playerData.BounceHeight);
     }
 
-    public void SetHP(int value)
+    public void Editor_SetHP(int value)
     {
         PlayerData d = _playerData != null ? _playerData : (PlayerData)Data;
         HP = d.HP = value;
@@ -59,7 +90,7 @@ public class Player : KinematicObject3D
         }
     }
 
-    public void SetMaxHP(int value)
+    public void Editor_SetMaxHP(int value)
     {
         PlayerData d = _playerData != null ? _playerData : (PlayerData)Data;
         MaxHP = d.MaxHP = value;
@@ -68,6 +99,7 @@ public class Player : KinematicObject3D
     protected override void OnDamaged(int damage)
     {
         _playerData.HP -= damage;
+        RemovePowerUp();
         GameGUI.GetInstance().UpdateHitPoints(_playerData.HP, _playerData.MaxHP);
     }
 
@@ -99,6 +131,45 @@ public class Player : KinematicObject3D
         }
     }
 
+    public void AddPowerUp(PowerUps powerUp)
+    {
+        _playerData.PowerUpMask |= (int)powerUp;
+        if (powerUp == PowerUps.Sling)
+            _playerData.PowerUpMask &= ~(int)PowerUps.Sword;
+
+        if (powerUp == PowerUps.Sword)
+            _playerData.PowerUpMask &= ~(int)PowerUps.Sling;
+    }
+
+    public void Editor_RemoveAllPowerUps()
+    {
+        PlayerData d = _playerData != null ? _playerData : (PlayerData)Data;
+        d.PowerUpMask = 0;
+    }
+
+    public bool HasPowerUp(PowerUps powerUp)
+    {
+        bool check = ((byte)_playerData.PowerUpMask & (int)powerUp) != 0;
+        return check;
+    }
+
+    public void Use()
+    {
+        if(HasPowerUp(PowerUps.Sling))
+            SpawnInstance(_id, 0, transform.position + Vector3.up, GetDirectionVector());
+    }
+
+    public void RemovePowerUp()
+    {
+        if(HasPowerUp(PowerUps.Shield))
+        {
+            _playerData.PowerUpMask &= ~(int)PowerUps.Shield;
+            return;
+        }
+
+        _playerData.PowerUpMask = 0;
+    }
+
     public override void GameUpdate()
     {
         _crouchHeight = _originHeight;
@@ -108,12 +179,6 @@ public class Player : KinematicObject3D
         _isCrouching = false;
         _velocity = Velocity;
         var axis = ControllerMaster.Input.GetAxis();
-        // Use powerup
-        if(ControllerMaster.Input.GetUseButton())
-        {
-            SpawnInstance(_id, 0, transform.position + Vector3.up, GetDirectionVector());
-        }
-
         // Crouching
         // Make sure pressing downwards has priority over pressing sidewards while crouching
         if (axis.y < 0 && isGrounded)
@@ -122,6 +187,12 @@ public class Player : KinematicObject3D
             _isCrouching = true;
             _crouchHeight = _originHeight * 0.5f;
             _crouchOffsetY = (_originOffsetY * 0.5f) - 0.01f;
+        }
+
+        // Use powerup
+        if (ControllerMaster.Input.GetUseButton())
+        {
+            Use();
         }
 
         // Horizontal Movement

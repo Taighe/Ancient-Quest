@@ -5,6 +5,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+[SelectionBase]
 public class LevelWarp : MonoBehaviour
 {
     public float Width = 3;

@@ -8,6 +8,7 @@ using UnityEngine;
 public interface IInstanceObject
 {
     public int MaxInstancesAlive { get; set; }
+    public int Strength { get; set; }
     public float SpawnRate { get; set; }
     public GameObject GameObject { get; }
     public IInstanceObject Prefab { get; }

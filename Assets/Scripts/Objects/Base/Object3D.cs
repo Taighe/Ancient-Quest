@@ -10,8 +10,17 @@ using Assets.Scripts.Managers;
 [RequireComponent(typeof(AudioSource))]
 public class Object3D : MonoBehaviour
 {
+    private bool _alwaysActive;
+    public bool AlwaysActive 
+    {
+        get
+        {
+            return _alwaysActive;
+        }
+    }
     public float DamageDelay = 0.5f;
     public bool IsInvulnerableDuringDelay = true;
+    protected Collider _collider;
     public bool CanSpawnInstance 
     {
         get
@@ -71,7 +80,6 @@ public class Object3D : MonoBehaviour
 
     public virtual void SpawnInstance(int ownerID, int index, Vector3 origin, Vector3 dir, float spawnRate = 0)
     {
-        Debug.Log(CanSpawnInstance);
         if (CanSpawnInstance)
         {
             var inst = InstanceManager.Instance.SpawnInstance(ownerID, InstanceObjects[index], origin, dir);
@@ -83,13 +91,26 @@ public class Object3D : MonoBehaviour
         }
     }
 
+    public virtual void DisableObject(bool disable)
+    {
+        _animator.enabled = !disable;
+        _animator.Animator.gameObject.SetActive(!disable);
+        _audioSource.enabled = !disable;
+        enabled = !disable;
+        _collider.enabled = true;
+    }
+
     public virtual void Awake()
     {
         _spawnRateTimer = -1;
+        _alwaysActive = GetComponent<ActiveObjectByCameraModifier>() != null ? false : true;
         _animator = GetComponent<AnimatorController>();
         _audioSource = GetComponent<AudioSource>();
-        if(InstanceObjects.Count > 0)
+        _collider = GetComponent<Collider>();
+
+        if (InstanceObjects.Count > 0)
             InstanceManager.Instance.AddInstancePrefabs(GetInstanceID(), InstanceObjects);
+
     }
 
     public void ResetDamageDelay()
@@ -183,8 +204,22 @@ public class Object3D : MonoBehaviour
         PropertiesOverrideUpdate();
     }
 
+    protected bool NotActiveWhenFarFromCamera()
+    {
+        if (!LevelProperties.GetInstance().CloseToCamera(transform.position) && !AlwaysActive)
+        {
+            DisableObject(true);
+            return true;
+        }
+
+        return false;
+    }
+
     public virtual void GameUpdate()
     {
+        if (NotActiveWhenFarFromCamera())
+            return;
+
         _spawnRateTimer += IncreaseTimer(_spawnRateTimer, 0, _spawnRate);
         var pos = transform.position;
         pos.x += _velocity.x * Time.deltaTime;
@@ -220,21 +255,35 @@ public class Object3D : MonoBehaviour
 
     }
 
-    public bool DetectCollisonCast(Vector3 dir, float distance, int layerMask)
+    public bool DetectCollisonCast(int instanceID, Vector3 dir, float distance, int layerMask, out RaycastHit hitInfo)
     {
-        RaycastHit[] hits = Physics.BoxCastAll(transform.position, CollisionBounds * 0.5f, dir, transform.rotation, distance, layerMask);
-        if(hits.Length > 0) 
+        if(Physics.BoxCast(transform.position, CollisionBounds * 0.5f, dir, out hitInfo, transform.rotation, distance, layerMask))
         {
-            return true;
+            if (hitInfo.collider.gameObject.GetInstanceID() != instanceID)
+                return true;
         }
 
+        return false;
+    }
+
+    public bool DetectCollisonCast(int instanceID, int layerMask, out Collider hit)
+    {
+        var colliders = Physics.OverlapBox(transform.position, CollisionBounds * 0.5f, transform.rotation, layerMask);
+        if (colliders.Length > 0)
+        {
+            hit = colliders[0];
+            if(hit.gameObject.gameObject.GetInstanceID() != instanceID)
+                return true;
+        }
+
+        hit = null;
         return false;
     }
 
 #if UNITY_EDITOR
     public virtual void OnDrawGizmos()
     {
-        Handles.color = Color.green;
+        Handles.color = Color.blue;
         Handles.DrawWireCube(transform.position, CollisionBounds);
     }
 #endif

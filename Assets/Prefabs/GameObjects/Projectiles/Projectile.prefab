@@ -162,12 +162,16 @@ MonoBehaviour:
   Direction: 0
   InstanceObjects: []
   FlashRate: 0.1
+  CollisionMask:
+    serializedVersion: 2
+    m_Bits: 1
   Speed: 8
   ImpactForce: 5
   ResetDelay: 2
   CollisionBounds: {x: 0.5, y: 0.5, z: 0.5}
-  ProjectileMaxInstancesAlive: 1
-  ProjectileSpawnRate: 0.1
+  ProjectileMaxInstancesAlive: 2
+  ProjectileSpawnRate: 0.2
+  ProjectileStrength: 1
 --- !u!54 &7556835970348950451
 Rigidbody:
   m_ObjectHideFlags: 0

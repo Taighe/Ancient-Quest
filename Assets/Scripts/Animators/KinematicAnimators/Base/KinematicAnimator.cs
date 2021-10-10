@@ -3,18 +3,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KinematicAnimatorController : AnimatorController
+public class KinematicAnimator : AnimatorController
 {
     protected KinematicObject3D _kinematicObj;
-    // Start is called before the first frame update
-    void Awake()
+
+    public override void Awake()
     {
         _kinematicObj = GetComponent<KinematicObject3D>();
     }
 
     public override bool UpdateAnimations()
     {
-        if (Animator != null)
+        if (Animator != null && Animator.runtimeAnimatorController != null)
         {
             int ground = Convert.ToInt32(_kinematicObj.IsGrounded);
             int air = Convert.ToInt32(!_kinematicObj.IsGrounded);
@@ -28,7 +28,7 @@ public class KinematicAnimatorController : AnimatorController
             return true;
         }
 
-        Debug.LogError($"{gameObject.name} Object: {_kinematicObj.GetType().Name} {GetType().Name} is null.");
+        //Debug.LogError($"{gameObject.name} Object: {_kinematicObj.GetType().Name} {GetType().Name} is null.");
         return false;
     }
 }

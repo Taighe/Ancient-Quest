@@ -8,7 +8,7 @@ public class AnimatorController : MonoBehaviour
     public Animator Animator;
     protected Object3D _obj3D;
     // Start is called before the first frame update
-    void Awake()
+    public virtual void Awake()
     {
         _obj3D = GetComponent<Object3D>();
     }
