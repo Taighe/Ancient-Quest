@@ -10,6 +10,7 @@ public class Projectile : Object3D, IInstanceObject
     public float Speed;
     public float ImpactForce;
     public float ResetDelay;
+    public bool CompareTags = false;
     public new Vector3 CollisionBounds = new Vector3(1,1,1);
     private Rigidbody _rigidbody;
     private Vector3 _positionOrigin;
@@ -69,12 +70,22 @@ public class Projectile : Object3D, IInstanceObject
         {
             base.CollisionBounds = CollisionBounds;
             var dir = _velocity.normalized;
-            RaycastHit hit;
+            Collider hit;
 
-            if (DetectCollisonCast(_ownerID, dir, 0.1f, CollisionMask.value, out hit))
+            if (DetectCollisonCast(_ownerID, CollisionMask.value, out hit))
             {
-                int layer;
-                OnHit(hit, out layer);
+                int layer;                
+                if(CompareTags)
+                {
+                    if (!CompareTag(hit.tag))
+                    {
+                        OnHit(hit, out layer);
+                    }
+                }
+                else
+                {
+                    OnHit(hit, out layer);
+                }
             }
 
             Move(_moveDirection * Speed);
@@ -86,6 +97,16 @@ public class Projectile : Object3D, IInstanceObject
     {
         layer = LayerHelper.LayerMask(hit.collider.gameObject.layer);
         if(layer == (int)Layers.Default)
+        {
+            PhysicsMode(true);
+            return;
+        }
+    }
+
+    public virtual void OnHit(Collider hit, out int layer)
+    {
+        layer = LayerHelper.LayerMask(hit.gameObject.layer);
+        if (layer == (int)Layers.Default)
         {
             PhysicsMode(true);
             return;

@@ -16,6 +16,7 @@ MonoBehaviour:
   BoundaryHeight: 9
   CameraDistance: 38
   FieldOfView: 15
+  Offset: {x: 0, y: 0.5}
   PlayerPrefab: {fileID: 6799936128359615769, guid: 5a798fdcb7f048d4ab17998675fb1bc2, type: 3}
   CanvasPrefab: {fileID: 4012903589409021535, guid: 6ef0a94dde48fd54eaf4ac7a581e0779, type: 3}
   EventSystemPrefab: {fileID: 7117304707559160302, guid: 9702071aaf4be1642a72180d496786d7, type: 3}

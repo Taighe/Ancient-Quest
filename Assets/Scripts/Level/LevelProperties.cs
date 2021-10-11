@@ -26,6 +26,8 @@ public class LevelProperties : SingletonObject<LevelProperties>
 
     private void Start()
     {
+        Application.targetFrameRate = 60;
+
         if (Data == null)
         {
             Data = new LevelPropertiesData();

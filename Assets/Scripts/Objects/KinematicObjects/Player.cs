@@ -121,7 +121,7 @@ public class Player : KinematicObject3D
 
     protected override void Flash(bool visible)
     {
-        _animator.Animator.gameObject.SetActive(visible);
+        _animator.Animator.transform.GetChild(0).gameObject.SetActive(visible);
     }
 
     void AfterWarp()

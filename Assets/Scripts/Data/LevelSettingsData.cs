@@ -8,6 +8,8 @@ public class LevelSettingsData : ScriptableObject
     public int BoundaryHeight = 5;
     public float CameraDistance = 18;
     public float FieldOfView = 30;
+    public Vector2 Offset = new Vector2(0, 0.5f);
+
     public Object PlayerPrefab;
     public Object CanvasPrefab;
     public Object EventSystemPrefab;
@@ -26,7 +28,7 @@ public class LevelSettingsData : ScriptableObject
         SkyPrefab = data.SkyPrefab;
     }
 
-    public void SetLevelSettingsData(int width, int height, float cameraDistance, float fieldOfView, Object playerPrefab, Object canvasPrefab, Object eventPrefab, Object skyPrefab)
+    public void SetLevelSettingsData(int width, int height, float cameraDistance, float fieldOfView, Object playerPrefab, Object canvasPrefab, Object eventPrefab, Object skyPrefab, Vector2 offset)
     {
         BoundaryWidth = width;
         BoundaryHeight = height;
@@ -36,5 +38,6 @@ public class LevelSettingsData : ScriptableObject
         CanvasPrefab = canvasPrefab;
         EventSystemPrefab = eventPrefab;
         SkyPrefab = skyPrefab;
+        Offset = offset;
     }
 }

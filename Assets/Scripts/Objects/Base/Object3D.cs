@@ -199,6 +199,11 @@ public class Object3D : MonoBehaviour
 
     protected virtual void Update()
     {
+
+    }
+
+    protected virtual void FixedUpdate()
+    {
         GameUpdate();
         AnimationUpdate();
         PropertiesOverrideUpdate();

@@ -1,15 +1,18 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Object = UnityEngine.Object;
 
 public class LevelTools : EditorWindow
 {
     static int _boundaryWidth;
     static int _boundaryHeight;
+    static Vector2 _offset;
     static float _cameraDist;
     static float _fieldOfView;
     private static LevelSettingsData _asset;
@@ -44,6 +47,7 @@ public class LevelTools : EditorWindow
         _canvasPrefab = _asset.CanvasPrefab;
         _eventPrefab = _asset.EventSystemPrefab;
         _skyPrefab = _asset.SkyPrefab;
+        _offset = _asset.Offset;
     }
 
     [MenuItem("Tools/Level Tools/Level Settings")]
@@ -59,6 +63,7 @@ public class LevelTools : EditorWindow
     private void OnGUI()
     {
         // Update fields
+        _offset = EditorGUILayout.Vector2Field("Offset", _offset);
         _boundaryWidth = (int)EditorGUILayout.Slider("Width", _boundaryWidth, 29, 9999);
         _boundaryHeight = (int)EditorGUILayout.Slider("Height", _boundaryHeight, 9, 9999);
         _cameraDist = EditorGUILayout.Slider("Camera Distance", _cameraDist, 0, 9999);
@@ -79,7 +84,8 @@ public class LevelTools : EditorWindow
         if (_asset != null)
         {
             LevelSettingsData newData = CreateInstance<LevelSettingsData>();
-            newData.SetLevelSettingsData(_boundaryWidth, _boundaryHeight, _cameraDist, _fieldOfView, _playerPrefab, _canvasPrefab, _eventPrefab, _skyPrefab);
+            newData.SetLevelSettingsData(_boundaryWidth, _boundaryHeight, _cameraDist, _fieldOfView, _playerPrefab, _canvasPrefab, _eventPrefab, _skyPrefab, 
+                _offset);
             AssetDatabase.DeleteAsset(_path);
             AssetDatabase.CreateAsset(newData, _path);
             _asset = newData;
@@ -168,7 +174,7 @@ public class LevelTools : EditorWindow
 
             FollowCamera followCam = cam.gameObject.GetComponent<FollowCamera>();
             followCam = followCam != null ? ObjectExists<FollowCamera>(followCam, "FollowCamera component already exists.") : cam.gameObject.AddComponent<FollowCamera>();
-            
+            followCam.Offset = _offset;
             UpdateDisplayProgress(title, info, 0.2f);
 
             // Add Sky object to main camera.
@@ -210,6 +216,13 @@ public class LevelTools : EditorWindow
             GameObject eSystem = GameObject.Find("EventSystem");
             eSystem = eSystem != null ? ObjectExists<GameObject>(eSystem, "EventSystem already exists in scene.") : (GameObject)PrefabUtility.InstantiatePrefab(_eventPrefab);
 
+            UpdateDisplayProgress(title, info, 0.9f);
+            var scenes = EditorBuildSettings.scenes.ToList();
+            var scene = new EditorBuildSettingsScene(SceneManager.GetActiveScene().path, true);
+            if (scenes.Where(s => s.path == scene.path).Count() == 0)
+                scenes.Add(scene);
+
+            EditorBuildSettings.scenes = scenes.ToArray();
             UpdateDisplayProgress(title, info, 1.0f);
 
             EditorUtility.ClearProgressBar();

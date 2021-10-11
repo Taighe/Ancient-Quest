@@ -115,7 +115,7 @@ public class LinearMover : MonoBehaviour
         }
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (Speed == 0 ) return;
         // Passenger update logic

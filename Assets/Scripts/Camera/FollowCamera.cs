@@ -8,6 +8,7 @@ public class FollowCamera : MonoBehaviour
 {
     public GameObject Player;
     public LevelBounds CameraBounds;
+    public Vector2 Offset;
     private Camera _camera;
     private Vector2 _previousPos;
     private float _cornerDistX;
@@ -37,7 +38,7 @@ public class FollowCamera : MonoBehaviour
         float zPos = transform.position.z;
         if (Player != null)
         {
-            Vector3 pPos = Player.transform.position;
+            Vector3 pPos = Player.transform.position + new Vector3(Offset.x, Offset.y, 0);
             newPos = pPos;
         }
 

@@ -35,6 +35,12 @@ namespace GameAI
         {
             _min = Min.position;
             _max = Max.position;
+            if(_min.x > _max.x)
+            {
+                float x = _min.x;
+                _min.x = _max.x;
+                _max.x = x;
+            }
             MoveRange = Vector3.Distance(_min, _max);
         }
 
