@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
-
+using TMPro;
 
 /// <summary>
 /// Game UI singleton class used for updating and managing the games GUI.
@@ -13,6 +13,7 @@ public class GameGUI : SingletonObject<GameGUI>
     public Image HitPointsBack;
     public Image HitPointsFront;
     public Image Fade;
+    public TextMeshProUGUI LevelName;
     private float _hpIconHeight;
     public bool IsTransitionDone 
     {
@@ -37,6 +38,11 @@ public class GameGUI : SingletonObject<GameGUI>
         var backValue = _hpIconHeight * hpMax;
         HitPointsBack.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, backValue);
         HitPointsFront.rectTransform.sizeDelta = new Vector2(HitPointsFront.rectTransform.sizeDelta.x, -Mathf.Abs(backValue - frontValue) );
+    }
+
+    public void UpdateLevelName(string name)
+    {
+        LevelName.text = name;
     }
 
     public void TransitionFadeInByAmount(float amount)

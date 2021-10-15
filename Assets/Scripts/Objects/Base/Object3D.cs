@@ -75,7 +75,7 @@ public class Object3D : MonoBehaviour
     protected float _zPos;
     protected float _spawnRateTimer = -1;
     protected float _spawnRate;
-
+    private Vector3 _origin;
     private float _time = -1;
 
     public virtual void SpawnInstance(int ownerID, int index, Vector3 origin, Vector3 dir, float spawnRate = 0)
@@ -89,6 +89,11 @@ public class Object3D : MonoBehaviour
                 _spawnRateTimer = 0;
             }
         }
+    }
+
+    public void OnEnable()
+    {
+        transform.position = _origin;
     }
 
     public virtual void DisableObject(bool disable)
@@ -111,6 +116,7 @@ public class Object3D : MonoBehaviour
         if (InstanceObjects.Count > 0)
             InstanceManager.Instance.AddInstancePrefabs(GetInstanceID(), InstanceObjects);
 
+        _origin = transform.position;
     }
 
     public void ResetDamageDelay()

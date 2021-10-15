@@ -9,6 +9,7 @@ using UnityEngine;
 public class LevelProperties : SingletonObject<LevelProperties>
 {
     public LevelPropertiesData Data;
+    public string LevelName;
     public AudioClip BackgroundMusic;
     public float FadeOutTime = 0.3f;
     private AudioSource _audSource;
@@ -26,6 +27,7 @@ public class LevelProperties : SingletonObject<LevelProperties>
 
     private void Start()
     {
+        GameGUI.GetInstance().UpdateLevelName(LevelName);
         Application.targetFrameRate = 60;
 
         if (Data == null)
