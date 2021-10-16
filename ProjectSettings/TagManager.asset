@@ -7,6 +7,7 @@ TagManager:
   - Moving Platform
   - UI
   - Player Bullet
+  - Enemy Bullet
   layers:
   - Default
   - TransparentFX

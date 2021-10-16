@@ -168,7 +168,7 @@ public class Object3D : MonoBehaviour
         }
     }
 
-    public void Instance_Damaged(object sender, DamagedEventArgs e)
+    public virtual void Instance_Damaged(object sender, DamagedEventArgs e)
     {
         Damaged(e.Damage);
     }

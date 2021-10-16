@@ -4,19 +4,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SlingPellet : Projectile
+public class EnemyBullet : Projectile
 {
     public override void OnHit(Collider hit, out int layer)
     {
         base.OnHit(hit, out layer);
-        if (layer == (int)Layers.Kinematic || layer == (int)Layers.Object)
+        if (layer == (int)Layers.Player)
         {
-            if (hit.CompareTag("Enemy Bullet"))
-                return;
-
             GameEvents.Instance.OnDamaged(new DamagedEventArgs(gameObject, hit.gameObject, Strength));
             Death();
-            DeSpawn();
+            TriggerReset();
+            return;
         }
     }
 }

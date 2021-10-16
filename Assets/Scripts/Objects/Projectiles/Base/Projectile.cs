@@ -22,7 +22,7 @@ public class Projectile : Object3D, IInstanceObject
     private const float _flashDelay = 0.5f;
     private const float _width = 19;
     private const float _height = 10;
-
+    private bool _resetTriggered;
     public int MaxInstancesAlive { get { return ProjectileMaxInstancesAlive; } set { ProjectileMaxInstancesAlive = value; } }
     public float SpawnRate { get { return ProjectileSpawnRate; } set { ProjectileSpawnRate = value; } }
 
@@ -38,18 +38,19 @@ public class Projectile : Object3D, IInstanceObject
     {
         base.Awake();
         _rigidbody = GetComponent<Rigidbody>();
+        _moveDirection = GetDirectionVector();
     }
 
     // Start is called before the first frame update
     public override void Start()
     {
-        SetRigidBodyActive(false);
         _positionOrigin = transform.position;
         _rotationOrigin = transform.rotation;
     }
 
     public void ResetProjectile()
     {
+        _resetTriggered = false;
         StopAllCoroutines();
         ResetDamageDelay();
         PhysicsMode(false);
@@ -96,7 +97,8 @@ public class Projectile : Object3D, IInstanceObject
     public virtual void OnHit(RaycastHit hit, out int layer)
     {
         layer = LayerHelper.LayerMask(hit.collider.gameObject.layer);
-        if(layer == (int)Layers.Default)
+
+        if (layer == (int)Layers.Default)
         {
             PhysicsMode(true);
             return;
@@ -110,6 +112,15 @@ public class Projectile : Object3D, IInstanceObject
         {
             PhysicsMode(true);
             return;
+        }
+    }
+
+    public void TriggerReset()
+    {
+        if(_resetTriggered == false)
+        {
+            _resetTriggered = true;
+            StartCoroutine(TriggerResetDelay());
         }
     }
 
@@ -160,7 +171,7 @@ public class Projectile : Object3D, IInstanceObject
     {
         _rigidbody.isKinematic = !value;
         _rigidbody.useGravity = value;
-        _collider.enabled = value;
+        _collider.isTrigger = !value;
     }
 
     public IInstanceObject SetInstance(int ownerID)

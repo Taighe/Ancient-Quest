@@ -539,6 +539,9 @@ AnimatorController:
     - serializedVersion: 2
       m_State: {fileID: -4477125300779307533}
       m_Motion: {fileID: 6408269481204603237, guid: a9810f7ebd07e08448f389cea6d9d667, type: 3}
+    - serializedVersion: 2
+      m_State: {fileID: 7132749917017541963}
+      m_Motion: {fileID: 4150877203566765687, guid: a9810f7ebd07e08448f389cea6d9d667, type: 3}
     m_Behaviours: []
     m_BlendingMode: 0
     m_SyncedLayerIndex: 0
@@ -1094,7 +1097,7 @@ AnimatorState:
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
-  m_TimeParameter: 
+  m_TimeParameter: velX
 --- !u!1102 &7565229321264660152
 AnimatorState:
   serializedVersion: 6

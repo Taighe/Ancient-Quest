@@ -30,6 +30,14 @@ public class Player : KinematicObject3D
     public bool SwordPowerUp;
     public bool ShieldPowerUp;
 
+    public bool IsStandingStill
+    {
+        get
+        {
+            return _velocity.x == 0 && IsGrounded;
+        }
+    }
+
     // Crouching
     public bool IsCrouching => _isCrouching;
 
@@ -72,6 +80,18 @@ public class Player : KinematicObject3D
         GameEvents.Instance.Player_Collect += Instance_Player_Collect;
 
         _id = GetInstanceID();
+    }
+
+    public override void Instance_Damaged(object sender, DamagedEventArgs e)
+    {
+        // PowerUp Shield front protection (only works if standing still, but can crouch.)
+        Vector3 offset = IsCrouching ? new Vector3(0.1f, 0) : new Vector3(0.1f, 0.25f);
+        if (ShieldFrontProtection(offset, e.Attacker))
+        {
+            return;
+        }
+
+        Damaged(e.Damage);
     }
 
     private void Instance_Player_Collect(object sender, CollectEventArgs e)
@@ -186,6 +206,7 @@ public class Player : KinematicObject3D
         _isCrouching = false;
         _velocity = Velocity;
         var axis = ControllerMaster.Input.GetAxis();
+            
         // Crouching
         // Make sure pressing downwards has priority over pressing sidewards while crouching
         if (axis.y < 0 && isGrounded)
@@ -218,6 +239,25 @@ public class Player : KinematicObject3D
         _cController.center = new Vector3(_cController.center.x, _crouchOffsetY, _cController.center.z);
 
         base.GameUpdate();
+    }
+
+    public bool ShieldFrontProtection(Vector3 offset, GameObject projectile)
+    {
+        if (HasPowerUp(PowerUps.Shield) && IsStandingStill)
+        {
+            var layerMask = LayerHelper.LayerMask(projectile.layer);
+            var center = _collider.bounds.center + new Vector3(offset.x * GetDirectionVector().x, offset.y, offset.z);
+            var colliders = Physics.OverlapBox(center, new Vector3(_collider.bounds.extents.x * 0.5f, _collider.bounds.extents.y * 0.5f, 1), 
+                transform.rotation, layerMask, QueryTriggerInteraction.Collide);
+
+            foreach(var collider in colliders)
+            {
+                if (collider.gameObject.GetInstanceID() == projectile.GetInstanceID())
+                    return true;
+            }
+        }
+
+        return false;
     }
 
     public void WarpToPointNextScene(Vector3 point, Direction direction)

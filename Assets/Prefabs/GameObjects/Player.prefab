@@ -237,6 +237,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Animator: {fileID: 4020023173951440622}
+  ShieldMesh: {fileID: 4111235894970693239}
 --- !u!1001 &5760430104741889238
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -308,11 +309,20 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 963317147e8caac468b3dc80c28fc0d4, type: 2}
+    - target: {fileID: 8574611706167915169, guid: f2c29ced725f635448502b76e59bc1b4, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5866666021909216657, guid: f2c29ced725f635448502b76e59bc1b4, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f2c29ced725f635448502b76e59bc1b4, type: 3}
 --- !u!4 &5222928534668190525 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f2c29ced725f635448502b76e59bc1b4, type: 3}
+  m_PrefabInstance: {fileID: 5760430104741889238}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &4111235894970693239 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 8574611706167915169, guid: f2c29ced725f635448502b76e59bc1b4, type: 3}
   m_PrefabInstance: {fileID: 5760430104741889238}
   m_PrefabAsset: {fileID: 0}

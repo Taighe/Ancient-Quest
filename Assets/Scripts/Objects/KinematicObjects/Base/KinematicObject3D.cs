@@ -94,11 +94,16 @@ public class KinematicObject3D : Object3D, IKinematicObject
             Direction = Direction.LEFT;
 
         transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, (float)Direction, 0), Data.TurnSpeed * Time.deltaTime);
-
+        
         if (Velocity.x == 0 & Velocity.y == 0)
         {
             _idleTime += 1.0f * Time.deltaTime;
         }
+        else
+            _idleTime = 0;
+
+        _idleTime = Data.FidgetTime > 0 && _idleTime > Data.FidgetTime ? 0 : _idleTime; // Reset _idleTime if the object can play it's fidget animation.
+
         transform.position = new Vector3(transform.position.x, transform.position.y, _zPos);
     }
 
@@ -154,8 +159,7 @@ public class KinematicObject3D : Object3D, IKinematicObject
 
     public bool CanFidget()
     {
-        bool fidget = Data.FidgetTime > 0 && _idleTime >= Data.FidgetTime;
-        _idleTime = fidget ? 0 : _idleTime; // Reset _idleTime if the object can play it's fidget animation.
+        bool fidget = Data.FidgetTime > 0 && (Data.FidgetTime - _idleTime) < 0.1f;
         return fidget;
     }
 
