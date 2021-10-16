@@ -1,4 +1,4 @@
 # Ancient-Quest
 
  ## Download
-https://github.com/Taighe/Ancient-Quest/releases
+[Download here]https://github.com/Taighe/Ancient-Quest/releases
