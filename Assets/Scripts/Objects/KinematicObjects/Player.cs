@@ -232,7 +232,6 @@ public class Player : KinematicObject3D
         {
             Vector3 pos = transform.position;
             StartCoroutine(Jump(duration, pos.y + Data.MinJumpHeight, pos.y + Data.MaxJumpHeight));
-            PlaySFX(_playerData.JumpSfx);
         }
 
         _cController.height = _crouchHeight;
@@ -279,8 +278,10 @@ public class Player : KinematicObject3D
             float moveY = Mathf.Sqrt(diffY * (-3.0f * Data.GravityModifier) * Physics.gravity.y);
             _velocity.y = moveY;
             yield return new WaitForEndOfFrame();
-
+            _audioSource.pitch = Mathf.Lerp(1.5f, 1.0f, duration);
         } while (ControllerMaster.Input.GetJumpButton(out duration) && varJumpHeight);
+
+        PlaySFX(_playerData.JumpSfx);
     }
 #if UNITY_EDITOR
     public override void OnDrawGizmos()

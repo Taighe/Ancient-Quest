@@ -299,18 +299,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6799936128359615764, guid: 5a798fdcb7f048d4ab17998675fb1bc2, type: 3}
-      propertyPath: SlingPowerUp
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6799936128359615764, guid: 5a798fdcb7f048d4ab17998675fb1bc2, type: 3}
-      propertyPath: InstanceObjects.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6799936128359615764, guid: 5a798fdcb7f048d4ab17998675fb1bc2, type: 3}
-      propertyPath: InstanceObjects.Array.data[1]
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 6799936128359615765, guid: 5a798fdcb7f048d4ab17998675fb1bc2, type: 3}
       propertyPath: m_RootOrder
       value: 3
