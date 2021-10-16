@@ -1,1 +1,1 @@
-[Download here](https://github.com/Taighe/Ancient-Quest/zipball/main?token=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)
+[Download here](https://github.com/Taighe/Ancient-Quest/zipball/main?token=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)
