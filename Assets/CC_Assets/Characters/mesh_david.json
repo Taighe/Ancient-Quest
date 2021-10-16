@@ -540,6 +540,37 @@
                                 "Capsule Length": 16.580228805541993
                             }
                         },
+                        "default": {
+                            "": {
+                                "Bone Active": false,
+                                "Bound Type": "Box",
+                                "Bound Axis": "Y",
+                                "Margin": 0.800000011920929,
+                                "Friction": 0.05000000074505806,
+                                "Elasticity": 0.5,
+                                "WorldTranslate": [
+                                    0.0,
+                                    0.0,
+                                    0.0
+                                ],
+                                "WorldRotationQ": [
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    1.0
+                                ],
+                                "WorldScale": [
+                                    1.0,
+                                    1.0,
+                                    1.0
+                                ],
+                                "Extent": [
+                                    0.0,
+                                    0.0,
+                                    0.0
+                                ]
+                            }
+                        },
                         "Mesh_0021": {
                             "": {
                                 "Bone Active": false,
@@ -647,7 +678,7 @@
                                         ]
                                     },
                                     "Glow": {
-                                        "Texture Path": "",
+                                        "Texture Path": "./textures/mesh_david/mesh_david/CC_Base_Body/Skin_Body_Pbr/Skin_Body_Pbr_Glow.png",
                                         "Strength": 100.0,
                                         "Offset": [
                                             0.0,
@@ -659,7 +690,7 @@
                                         ]
                                     },
                                     "Displacement": {
-                                        "Texture Path": "",
+                                        "Texture Path": "./textures/mesh_david/mesh_david/CC_Base_Body/Skin_Body_Pbr/Skin_Body_Pbr_Displacement.png",
                                         "Strength": 100.0,
                                         "Offset": [
                                             0.0,
@@ -699,7 +730,7 @@
                                         ]
                                     },
                                     "AO": {
-                                        "Texture Path": "",
+                                        "Texture Path": "./textures/mesh_david/mesh_david/CC_Base_Body/Skin_Body_Pbr/Skin_Body_Pbr_ao.png",
                                         "Strength": 100.0,
                                         "Offset": [
                                             0.0,
@@ -789,7 +820,7 @@
                                         ]
                                     },
                                     "Glow": {
-                                        "Texture Path": "",
+                                        "Texture Path": "./textures/mesh_david/mesh_david/CC_Base_Body/Skin_Head_Pbr/Skin_Head_Pbr_Glow.png",
                                         "Strength": 100.0,
                                         "Offset": [
                                             0.0,
@@ -801,7 +832,7 @@
                                         ]
                                     },
                                     "Displacement": {
-                                        "Texture Path": "",
+                                        "Texture Path": "./textures/mesh_david/mesh_david/CC_Base_Body/Skin_Head_Pbr/Skin_Head_Pbr_Displacement.png",
                                         "Strength": 100.0,
                                         "Offset": [
                                             0.0,
@@ -829,7 +860,7 @@
                                         ]
                                     },
                                     "AO": {
-                                        "Texture Path": "",
+                                        "Texture Path": "./textures/mesh_david/mesh_david/CC_Base_Body/Skin_Head_Pbr/Skin_Head_Pbr_ao.png",
                                         "Strength": 100.0,
                                         "Offset": [
                                             0.0,
@@ -918,18 +949,6 @@
                                             1.0
                                         ]
                                     },
-                                    "Glow": {
-                                        "Texture Path": "",
-                                        "Strength": 100.0,
-                                        "Offset": [
-                                            0.0,
-                                            0.0
-                                        ],
-                                        "Tiling": [
-                                            1.0,
-                                            1.0
-                                        ]
-                                    },
                                     "Opacity": {
                                         "Texture Path": ".kingDirectory/Eyelash_Pbr_Diffuse.png",
                                         "Strength": 100.0,
@@ -955,7 +974,7 @@
                                         ]
                                     },
                                     "AO": {
-                                        "Texture Path": "",
+                                        "Texture Path": "./textures/mesh_david/mesh_david/CC_Base_Body/Eyelash_Pbr/Eyelash_Pbr_ao.jpg",
                                         "Strength": 100.0,
                                         "Offset": [
                                             0.0,
@@ -996,20 +1015,8 @@
                                 "Opacity": 1.0,
                                 "Self Illumination": 0.0,
                                 "Textures": {
-                                    "Metallic": {
-                                        "Texture Path": "",
-                                        "Strength": 100.0,
-                                        "Offset": [
-                                            0.0,
-                                            0.0
-                                        ],
-                                        "Tiling": [
-                                            1.0,
-                                            1.0
-                                        ]
-                                    },
                                     "Base Color": {
-                                        "Texture Path": ".kingDirectory/Fingernail_Pbr_Diffuse.png",
+                                        "Texture Path": ".kingDirectory/Fingernail_Pbr_Diffuse.jpg",
                                         "Strength": 100.0,
                                         "Offset": [
                                             0.0,
@@ -1044,18 +1051,6 @@
                                             1.0
                                         ]
                                     },
-                                    "Glow": {
-                                        "Texture Path": "",
-                                        "Strength": 100.0,
-                                        "Offset": [
-                                            0.0,
-                                            0.0
-                                        ],
-                                        "Tiling": [
-                                            1.0,
-                                            1.0
-                                        ]
-                                    },
                                     "Normal": {
                                         "Texture Path": ".kingDirectory/Fingernail_Pbr_Normal.png",
                                         "Strength": 100.0,
@@ -1069,7 +1064,7 @@
                                         ]
                                     },
                                     "AO": {
-                                        "Texture Path": "",
+                                        "Texture Path": "./textures/mesh_david/mesh_david/CC_Base_Body/Fingernail_Pbr/Fingernail_Pbr_ao.jpg",
                                         "Strength": 100.0,
                                         "Offset": [
                                             0.0,
@@ -1110,20 +1105,8 @@
                                 "Opacity": 1.0,
                                 "Self Illumination": 0.0,
                                 "Textures": {
-                                    "Metallic": {
-                                        "Texture Path": "",
-                                        "Strength": 100.0,
-                                        "Offset": [
-                                            0.0,
-                                            0.0
-                                        ],
-                                        "Tiling": [
-                                            1.0,
-                                            1.0
-                                        ]
-                                    },
                                     "Base Color": {
-                                        "Texture Path": ".kingDirectory/Toenail_Pbr_Diffuse.png",
+                                        "Texture Path": ".kingDirectory/Toenail_Pbr_Diffuse.jpg",
                                         "Strength": 100.0,
                                         "Offset": [
                                             0.0,
@@ -1159,7 +1142,7 @@
                                         ]
                                     },
                                     "Glow": {
-                                        "Texture Path": "",
+                                        "Texture Path": "./textures/mesh_david/mesh_david/CC_Base_Body/Toenail_Pbr/Toenail_Pbr_Glow.jpg",
                                         "Strength": 100.0,
                                         "Offset": [
                                             0.0,
@@ -1183,7 +1166,7 @@
                                         ]
                                     },
                                     "AO": {
-                                        "Texture Path": "",
+                                        "Texture Path": "./textures/mesh_david/mesh_david/CC_Base_Body/Toenail_Pbr/Toenail_Pbr_ao.jpg",
                                         "Strength": 100.0,
                                         "Offset": [
                                             0.0,
@@ -1228,20 +1211,8 @@
                                 "Opacity": 1.0,
                                 "Self Illumination": 0.0,
                                 "Textures": {
-                                    "Metallic": {
-                                        "Texture Path": "",
-                                        "Strength": 100.0,
-                                        "Offset": [
-                                            0.0,
-                                            0.0
-                                        ],
-                                        "Tiling": [
-                                            1.0,
-                                            1.0
-                                        ]
-                                    },
                                     "Base Color": {
-                                        "Texture Path": ".kingDirectory/Tongue_Pbr_Diffuse.png",
+                                        "Texture Path": ".kingDirectory/Tongue_Pbr_Diffuse.jpg",
                                         "Strength": 100.0,
                                         "Offset": [
                                             0.0,
@@ -1277,7 +1248,7 @@
                                         ]
                                     },
                                     "Glow": {
-                                        "Texture Path": "",
+                                        "Texture Path": "./textures/mesh_david/mesh_david/CC_Base_Tongue/Tongue_Pbr/Tongue_Pbr_Glow.jpg",
                                         "Strength": 100.0,
                                         "Offset": [
                                             0.0,
@@ -1301,7 +1272,7 @@
                                         ]
                                     },
                                     "AO": {
-                                        "Texture Path": "",
+                                        "Texture Path": "./textures/mesh_david/mesh_david/CC_Base_Tongue/Tongue_Pbr/Tongue_Pbr_ao.jpg",
                                         "Strength": 100.0,
                                         "Offset": [
                                             0.0,
@@ -1383,7 +1354,7 @@
                                         ]
                                     },
                                     "Displacement": {
-                                        "Texture Path": "",
+                                        "Texture Path": "./textures/mesh_david/CC_Base_Eye/CC_Base_Eye/Eye_Pbr/Eye_Pbr_Displacement.jpg",
                                         "Strength": 100.0,
                                         "Offset": [
                                             0.0,
@@ -1399,7 +1370,7 @@
                                         "Gray-scale Base Value": 0.5
                                     },
                                     "Normal": {
-                                        "Texture Path": ".kingDirectory/Eye_Pbr_Normal.jpg",
+                                        "Texture Path": ".kingDirectory/Eye_Pbr_Normal.png",
                                         "Strength": 100.0,
                                         "Offset": [
                                             0.0,
@@ -1477,7 +1448,7 @@
                                         ]
                                     },
                                     "Displacement": {
-                                        "Texture Path": "",
+                                        "Texture Path": "./textures/mesh_david/CC_Base_Eye/CC_Base_Eye/Cornea_Pbr/Cornea_Pbr_Displacement.jpg",
                                         "Strength": 0.0,
                                         "Offset": [
                                             0.0,
@@ -1493,7 +1464,7 @@
                                         "Gray-scale Base Value": 0.5
                                     },
                                     "Normal": {
-                                        "Texture Path": ".kingDirectory/Cornea_Pbr_Normal.jpg",
+                                        "Texture Path": ".kingDirectory/Cornea_Pbr_Normal.png",
                                         "Strength": 100.0,
                                         "Offset": [
                                             0.0,
@@ -1538,20 +1509,8 @@
                                 "Opacity": 1.0,
                                 "Self Illumination": 0.0,
                                 "Textures": {
-                                    "Metallic": {
-                                        "Texture Path": "",
-                                        "Strength": 100.0,
-                                        "Offset": [
-                                            0.0,
-                                            0.0
-                                        ],
-                                        "Tiling": [
-                                            1.0,
-                                            1.0
-                                        ]
-                                    },
                                     "Base Color": {
-                                        "Texture Path": ".kingDirectory/Upper_Teeth_Pbr_Diffuse.png",
+                                        "Texture Path": ".kingDirectory/Upper_Teeth_Pbr_Diffuse.jpg",
                                         "Strength": 100.0,
                                         "Offset": [
                                             0.0,
@@ -1587,7 +1546,7 @@
                                         ]
                                     },
                                     "Glow": {
-                                        "Texture Path": "",
+                                        "Texture Path": "./textures/mesh_david/CC_Base_Teeth/CC_Base_Teeth/Upper_Teeth_Pbr/Upper_Teeth_Pbr_Glow.jpg",
                                         "Strength": 100.0,
                                         "Offset": [
                                             0.0,
@@ -1611,7 +1570,7 @@
                                         ]
                                     },
                                     "AO": {
-                                        "Texture Path": "",
+                                        "Texture Path": "./textures/mesh_david/CC_Base_Teeth/CC_Base_Teeth/Upper_Teeth_Pbr/Upper_Teeth_Pbr_ao.jpg",
                                         "Strength": 100.0,
                                         "Offset": [
                                             0.0,
@@ -1652,20 +1611,8 @@
                                 "Opacity": 1.0,
                                 "Self Illumination": 0.0,
                                 "Textures": {
-                                    "Metallic": {
-                                        "Texture Path": "",
-                                        "Strength": 100.0,
-                                        "Offset": [
-                                            0.0,
-                                            0.0
-                                        ],
-                                        "Tiling": [
-                                            1.0,
-                                            1.0
-                                        ]
-                                    },
                                     "Base Color": {
-                                        "Texture Path": ".kingDirectory/Lower_Teeth_Pbr_Diffuse.png",
+                                        "Texture Path": ".kingDirectory/Lower_Teeth_Pbr_Diffuse.jpg",
                                         "Strength": 100.0,
                                         "Offset": [
                                             0.0,
@@ -1701,7 +1648,7 @@
                                         ]
                                     },
                                     "Glow": {
-                                        "Texture Path": "",
+                                        "Texture Path": "./textures/mesh_david/CC_Base_Teeth/CC_Base_Teeth/Lower_Teeth_Pbr/Lower_Teeth_Pbr_Glow.jpg",
                                         "Strength": 100.0,
                                         "Offset": [
                                             0.0,
@@ -1725,7 +1672,7 @@
                                         ]
                                     },
                                     "AO": {
-                                        "Texture Path": "",
+                                        "Texture Path": "./textures/mesh_david/CC_Base_Teeth/CC_Base_Teeth/Lower_Teeth_Pbr/Lower_Teeth_Pbr_ao.jpg",
                                         "Strength": 100.0,
                                         "Offset": [
                                             0.0,
@@ -1819,7 +1766,7 @@
                                         ]
                                     },
                                     "Glow": {
-                                        "Texture Path": "",
+                                        "Texture Path": "./textures/mesh_david/chest/chest/obj_default_Pbr/obj_default_Pbr_Glow.png",
                                         "Strength": 100.0,
                                         "Offset": [
                                             0.0,
@@ -1831,7 +1778,7 @@
                                         ]
                                     },
                                     "Displacement": {
-                                        "Texture Path": "",
+                                        "Texture Path": "./textures/mesh_david/chest/chest/obj_default_Pbr/obj_default_Pbr_Displacement.png",
                                         "Strength": 100.0,
                                         "Offset": [
                                             0.0,
@@ -1871,7 +1818,7 @@
                                         ]
                                     },
                                     "AO": {
-                                        "Texture Path": "",
+                                        "Texture Path": "./textures/mesh_david/chest/chest/obj_default_Pbr/obj_default_Pbr_ao.png",
                                         "Strength": 100.0,
                                         "Offset": [
                                             0.0,
@@ -1965,7 +1912,7 @@
                                         ]
                                     },
                                     "Glow": {
-                                        "Texture Path": "",
+                                        "Texture Path": "./textures/mesh_david/legs/legs/obj_default_0_Pbr/obj_default_0_Pbr_Glow.png",
                                         "Strength": 100.0,
                                         "Offset": [
                                             0.0,
@@ -1977,7 +1924,7 @@
                                         ]
                                     },
                                     "Displacement": {
-                                        "Texture Path": "",
+                                        "Texture Path": "./textures/mesh_david/legs/legs/obj_default_0_Pbr/obj_default_0_Pbr_Displacement.png",
                                         "Strength": 100.0,
                                         "Offset": [
                                             0.0,
@@ -2017,7 +1964,7 @@
                                         ]
                                     },
                                     "AO": {
-                                        "Texture Path": "",
+                                        "Texture Path": "./textures/mesh_david/legs/legs/obj_default_0_Pbr/obj_default_0_Pbr_ao.png",
                                         "Strength": 100.0,
                                         "Offset": [
                                             0.0,
@@ -2111,7 +2058,7 @@
                                         ]
                                     },
                                     "Glow": {
-                                        "Texture Path": "",
+                                        "Texture Path": "./textures/mesh_david/beard/beard/obj_default_1_Pbr/obj_default_1_Pbr_Glow.png",
                                         "Strength": 100.0,
                                         "Offset": [
                                             0.0,
@@ -2123,7 +2070,7 @@
                                         ]
                                     },
                                     "Displacement": {
-                                        "Texture Path": "",
+                                        "Texture Path": "./textures/mesh_david/beard/beard/obj_default_1_Pbr/obj_default_1_Pbr_Displacement.png",
                                         "Strength": 100.0,
                                         "Offset": [
                                             0.0,
@@ -2163,7 +2110,7 @@
                                         ]
                                     },
                                     "AO": {
-                                        "Texture Path": "",
+                                        "Texture Path": "./textures/mesh_david/beard/beard/obj_default_1_Pbr/obj_default_1_Pbr_ao.png",
                                         "Strength": 100.0,
                                         "Offset": [
                                             0.0,
@@ -2257,7 +2204,7 @@
                                         ]
                                     },
                                     "Glow": {
-                                        "Texture Path": "",
+                                        "Texture Path": "./textures/mesh_david/bracers/bracers/obj_default_2_Pbr/obj_default_2_Pbr_Glow.png",
                                         "Strength": 100.0,
                                         "Offset": [
                                             0.0,
@@ -2269,7 +2216,7 @@
                                         ]
                                     },
                                     "Displacement": {
-                                        "Texture Path": "",
+                                        "Texture Path": "./textures/mesh_david/bracers/bracers/obj_default_2_Pbr/obj_default_2_Pbr_Displacement.png",
                                         "Strength": 100.0,
                                         "Offset": [
                                             0.0,
@@ -2309,7 +2256,7 @@
                                         ]
                                     },
                                     "AO": {
-                                        "Texture Path": "",
+                                        "Texture Path": "./textures/mesh_david/bracers/bracers/obj_default_2_Pbr/obj_default_2_Pbr_ao.png",
                                         "Strength": 100.0,
                                         "Offset": [
                                             0.0,
@@ -2399,7 +2346,7 @@
                                         ]
                                     },
                                     "Glow": {
-                                        "Texture Path": "",
+                                        "Texture Path": "./textures/mesh_david/bracers/bracers/obj_default_3_Pbr/obj_default_3_Pbr_Glow.png",
                                         "Strength": 100.0,
                                         "Offset": [
                                             0.0,
@@ -2411,7 +2358,7 @@
                                         ]
                                     },
                                     "Displacement": {
-                                        "Texture Path": "",
+                                        "Texture Path": "./textures/mesh_david/bracers/bracers/obj_default_3_Pbr/obj_default_3_Pbr_Displacement.png",
                                         "Strength": 100.0,
                                         "Offset": [
                                             0.0,
@@ -2451,7 +2398,7 @@
                                         ]
                                     },
                                     "AO": {
-                                        "Texture Path": "",
+                                        "Texture Path": "./textures/mesh_david/bracers/bracers/obj_default_3_Pbr/obj_default_3_Pbr_ao.png",
                                         "Strength": 100.0,
                                         "Offset": [
                                             0.0,
@@ -2545,7 +2492,7 @@
                                         ]
                                     },
                                     "Glow": {
-                                        "Texture Path": "",
+                                        "Texture Path": "./textures/mesh_david/feet/feet/obj_default_4_Pbr/obj_default_4_Pbr_Glow.png",
                                         "Strength": 100.0,
                                         "Offset": [
                                             0.0,
@@ -2557,7 +2504,7 @@
                                         ]
                                     },
                                     "Displacement": {
-                                        "Texture Path": "",
+                                        "Texture Path": "./textures/mesh_david/feet/feet/obj_default_4_Pbr/obj_default_4_Pbr_Displacement.png",
                                         "Strength": 100.0,
                                         "Offset": [
                                             0.0,
@@ -2597,7 +2544,7 @@
                                         ]
                                     },
                                     "AO": {
-                                        "Texture Path": "",
+                                        "Texture Path": "./textures/mesh_david/feet/feet/obj_default_4_Pbr/obj_default_4_Pbr_ao.png",
                                         "Strength": 100.0,
                                         "Offset": [
                                             0.0,
@@ -2687,7 +2634,7 @@
                                         ]
                                     },
                                     "Glow": {
-                                        "Texture Path": "",
+                                        "Texture Path": "./textures/mesh_david/feet/feet/obj_default_5_Pbr/obj_default_5_Pbr_Glow.png",
                                         "Strength": 100.0,
                                         "Offset": [
                                             0.0,
@@ -2699,7 +2646,7 @@
                                         ]
                                     },
                                     "Displacement": {
-                                        "Texture Path": "",
+                                        "Texture Path": "./textures/mesh_david/feet/feet/obj_default_5_Pbr/obj_default_5_Pbr_Displacement.png",
                                         "Strength": 100.0,
                                         "Offset": [
                                             0.0,
@@ -2739,7 +2686,7 @@
                                         ]
                                     },
                                     "AO": {
-                                        "Texture Path": "",
+                                        "Texture Path": "./textures/mesh_david/feet/feet/obj_default_5_Pbr/obj_default_5_Pbr_ao.png",
                                         "Strength": 100.0,
                                         "Offset": [
                                             0.0,
@@ -2834,7 +2781,7 @@
                                         ]
                                     },
                                     "Glow": {
-                                        "Texture Path": "",
+                                        "Texture Path": "./textures/mesh_david/hair/hair/obj_default_Transparency_Pbr/obj_default_Transparency_Pbr_Glow.png",
                                         "Strength": 100.0,
                                         "Offset": [
                                             0.0,
@@ -2846,7 +2793,7 @@
                                         ]
                                     },
                                     "Displacement": {
-                                        "Texture Path": "",
+                                        "Texture Path": "./textures/mesh_david/hair/hair/obj_default_Transparency_Pbr/obj_default_Transparency_Pbr_Displacement.png",
                                         "Strength": 100.0,
                                         "Offset": [
                                             0.0,
@@ -2886,7 +2833,7 @@
                                         ]
                                     },
                                     "AO": {
-                                        "Texture Path": "",
+                                        "Texture Path": "./textures/mesh_david/hair/hair/obj_default_Transparency_Pbr/obj_default_Transparency_Pbr_ao.png",
                                         "Strength": 100.0,
                                         "Offset": [
                                             0.0,
@@ -2902,6 +2849,88 @@
                                     },
                                     "HDRP": {
                                         "Texture Path": "./textures/mesh_david/hair/hair/obj_default_Transparency_Pbr/obj_default_Transparency_Pbr_HDRP.png"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "Materials": {
+                            "Material_Pbr": {
+                                "Material Type": "Pbr",
+                                "MultiUV Index": 0,
+                                "Two Side": true,
+                                "Diffuse Color": [
+                                    255.0,
+                                    255.0,
+                                    255.0
+                                ],
+                                "Ambient Color": [
+                                    255.0,
+                                    255.0,
+                                    255.0
+                                ],
+                                "Specular Color": [
+                                    255.0,
+                                    255.0,
+                                    255.0
+                                ],
+                                "Opacity": 1.0,
+                                "Self Illumination": 0.0,
+                                "Textures": {
+                                    "Metallic": {
+                                        "Texture Path": "",
+                                        "Strength": 100.0,
+                                        "Offset": [
+                                            0.0,
+                                            0.0
+                                        ],
+                                        "Tiling": [
+                                            1.0,
+                                            1.0
+                                        ]
+                                    },
+                                    "Base Color": {
+                                        "Texture Path": ".kingDirectory/Material_Pbr_Diffuse.png",
+                                        "Strength": 100.0,
+                                        "Offset": [
+                                            0.0,
+                                            0.0
+                                        ],
+                                        "Tiling": [
+                                            1.0,
+                                            1.0
+                                        ]
+                                    },
+                                    "Roughness": {
+                                        "Texture Path": "",
+                                        "Strength": 100.0,
+                                        "Offset": [
+                                            0.0,
+                                            0.0
+                                        ],
+                                        "Tiling": [
+                                            1.0,
+                                            1.0
+                                        ]
+                                    },
+                                    "Opacity": {
+                                        "Texture Path": ".kingDirectory/Material_Pbr_Diffuse.png",
+                                        "Strength": 100.0,
+                                        "Offset": [
+                                            0.0,
+                                            0.0
+                                        ],
+                                        "Tiling": [
+                                            1.0,
+                                            1.0
+                                        ]
+                                    },
+                                    "MetallicAlpha": {
+                                        "Texture Path": "./textures/mesh_david/default/default/Material_Pbr/Material_Pbr_MetallicAlpha.png"
+                                    },
+                                    "HDRP": {
+                                        "Texture Path": "./textures/mesh_david/default/default/Material_Pbr/Material_Pbr_HDRP.png"
                                     }
                                 }
                             }
@@ -2944,7 +2973,7 @@
                                         ]
                                     },
                                     "Base Color": {
-                                        "Texture Path": ".kingDirectory/obj_default_6_Pbr_Diffuse.png",
+                                        "Texture Path": ".kingDirectory/obj_default_6_Pbr_Diffuse.jpg",
                                         "Strength": 100.0,
                                         "Offset": [
                                             0.0,
@@ -2979,20 +3008,8 @@
                                             1.0
                                         ]
                                     },
-                                    "Glow": {
-                                        "Texture Path": "",
-                                        "Strength": 100.0,
-                                        "Offset": [
-                                            0.0,
-                                            0.0
-                                        ],
-                                        "Tiling": [
-                                            1.0,
-                                            1.0
-                                        ]
-                                    },
                                     "Displacement": {
-                                        "Texture Path": "",
+                                        "Texture Path": "./textures/mesh_david/Mesh_0021/Mesh_0021/obj_default_6_Pbr/obj_default_6_Pbr_Displacement.jpg",
                                         "Strength": 100.0,
                                         "Offset": [
                                             0.0,
@@ -3007,18 +3024,6 @@
                                         "Multiplier": 1.0,
                                         "Gray-scale Base Value": 0.5
                                     },
-                                    "Opacity": {
-                                        "Texture Path": ".kingDirectory/obj_default_6_Pbr_Diffuse.png",
-                                        "Strength": 100.0,
-                                        "Offset": [
-                                            0.0,
-                                            0.0
-                                        ],
-                                        "Tiling": [
-                                            1.0,
-                                            1.0
-                                        ]
-                                    },
                                     "Normal": {
                                         "Texture Path": ".kingDirectory/obj_default_6_Pbr_Normal.png",
                                         "Strength": 100.0,
@@ -3032,7 +3037,7 @@
                                         ]
                                     },
                                     "AO": {
-                                        "Texture Path": "",
+                                        "Texture Path": "./textures/mesh_david/Mesh_0021/Mesh_0021/obj_default_6_Pbr/obj_default_6_Pbr_ao.jpg",
                                         "Strength": 100.0,
                                         "Offset": [
                                             0.0,
