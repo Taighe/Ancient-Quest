@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-public interface IInstanceObject
+public interface IInstanceObject 
 {
     public int MaxInstancesAlive { get; set; }
     public int Strength { get; set; }

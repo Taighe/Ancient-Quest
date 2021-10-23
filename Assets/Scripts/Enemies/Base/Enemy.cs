@@ -16,6 +16,14 @@ public class Enemy : Object3D
     public int Strength = 1;
     public new Vector3 CollisionBounds = new Vector3(1, 1, 1);
 
+    public override bool IsAlive
+    {
+        get
+        {
+            return HP > 0;
+        }
+    }
+
     public override void Awake()
     {
         base.Awake();
@@ -26,6 +34,9 @@ public class Enemy : Object3D
 
     public override void GameUpdate()
     {
+        if (!IsAlive) 
+            return;
+
         // Collision logic
         Collider hit = DetectCollision();
         if (hit != null)
@@ -50,17 +61,17 @@ public class Enemy : Object3D
 
     protected override void Flash(bool visible)
     {
-        _animator.Animator.gameObject.SetActive(visible);
+        _animator.Animator.transform.GetChild(0).gameObject.SetActive(visible);
     }
 
     protected override void OnDamaged(int damage)
     {
         HP -= 1;
-        if(HP <= 0)
-            gameObject.SetActive(false);
+        if (HP <= 0)
+            TriggerDeath();
     }
 
-    private Collider DetectCollision()
+    protected Collider DetectCollision()
     {
         var colliders = Physics.OverlapBox(transform.position, new Vector3(CollisionBounds.x * 0.5f, CollisionBounds.y * 0.6f, CollisionBounds.z), transform.rotation, (int)Layers.Player);
         foreach(var c in colliders)
@@ -73,12 +84,17 @@ public class Enemy : Object3D
 
         return null;
     }
+    public override void OnDeathSpawn()
+    {
+        SpawnInstance(gameObject.GetInstanceID(), SpawnInstanceOnDeathIndex, _collider.bounds.center, Vector2.zero);
+    }
 
 #if UNITY_EDITOR
     public override void OnDrawGizmos()
     {
         Handles.color = Color.blue;
         Handles.DrawWireCube(transform.position, CollisionBounds);
+        transform.rotation = Quaternion.Euler(0, (float)Direction, 0);
     }
 #endif
 }

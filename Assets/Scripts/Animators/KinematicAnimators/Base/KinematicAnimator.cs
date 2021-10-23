@@ -14,6 +14,10 @@ public class KinematicAnimator : AnimatorController
 
     public override bool UpdateAnimations()
     {
+        // Facing towards direction
+        _kinematicObj.transform.rotation = Quaternion.RotateTowards(_kinematicObj.transform.rotation, Quaternion.Euler(0, (float)_kinematicObj.Direction, 0), TurnSpeed * Time.deltaTime);
+
+
         if (Animator != null && Animator.runtimeAnimatorController != null)
         {
             int ground = Convert.ToInt32(_kinematicObj.IsGrounded);

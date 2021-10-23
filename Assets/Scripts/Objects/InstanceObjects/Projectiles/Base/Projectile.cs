@@ -29,7 +29,7 @@ public class Projectile : Object3D, IInstanceObject
     public GameObject GameObject => gameObject;
     int _ownerID;
     public int OwnerID => _ownerID;
-    IInstanceObject _prefab;
+    private IInstanceObject _prefab;
     public IInstanceObject Prefab => _prefab;
 
     public int Strength { get { return ProjectileStrength; } set { ProjectileStrength = value; } }
@@ -172,6 +172,7 @@ public class Projectile : Object3D, IInstanceObject
         _rigidbody.isKinematic = !value;
         _rigidbody.useGravity = value;
         _collider.isTrigger = !value;
+        _collider.enabled = true;
     }
 
     public IInstanceObject SetInstance(int ownerID)

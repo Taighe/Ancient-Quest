@@ -70,7 +70,7 @@ public class KinematicObject3D : Object3D, IKinematicObject
 
     public override void Start()
     {
-
+        base.Start();
     }
 
     public override void GameUpdate()
@@ -92,8 +92,6 @@ public class KinematicObject3D : Object3D, IKinematicObject
             Direction = Direction.RIGHT;
         else if (_velocity.x < 0)
             Direction = Direction.LEFT;
-
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, (float)Direction, 0), Data.TurnSpeed * Time.deltaTime);
         
         if (Velocity.x == 0 & Velocity.y == 0)
         {

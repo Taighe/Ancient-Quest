@@ -21,6 +21,7 @@ public class PlayerAnimator : KinematicAnimator
 
     public override bool UpdateAnimations()
     {
+        TurnSpeed = _player.Data.TurnSpeed;
         if (!base.UpdateAnimations())
             return false;
 

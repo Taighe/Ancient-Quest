@@ -5,19 +5,23 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Assets.Scripts.Managers;
+using Assets.Scripts.Globals;
 
 [RequireComponent(typeof(AnimatorController))]
 [RequireComponent(typeof(AudioSource))]
 public class Object3D : MonoBehaviour
 {
     private bool _alwaysActive;
-    public bool AlwaysActive 
+    public bool AlwaysActive
     {
         get
         {
             return _alwaysActive;
         }
     }
+    public virtual bool IsAlive => true;
+    [Range(-1, 99)]
+    public int SpawnInstanceOnDeathIndex = -1;
     public float DamageDelay = 0.5f;
     public bool IsInvulnerableDuringDelay = true;
     protected Collider _collider;
@@ -53,6 +57,7 @@ public class Object3D : MonoBehaviour
         }
     }
     public float FlashRate = 0.2f;
+
     public bool IsInvulnerable
     {
         get
@@ -69,6 +74,8 @@ public class Object3D : MonoBehaviour
         }
     }
 
+    public float DeathDelay;
+
     protected AnimatorController _animator;
     protected Vector2 _velocity;
     protected AudioSource _audioSource;
@@ -77,6 +84,8 @@ public class Object3D : MonoBehaviour
     protected float _spawnRate;
     private Vector3 _origin;
     private float _time = -1;
+    private bool _isDying;
+    private int _originLayer;
 
     public virtual void SpawnInstance(int ownerID, int index, Vector3 origin, Vector3 dir, float spawnRate = 0)
     {
@@ -114,7 +123,7 @@ public class Object3D : MonoBehaviour
         _collider = GetComponent<Collider>();
 
         if (InstanceObjects.Count > 0)
-            InstanceManager.Instance.AddInstancePrefabs(GetInstanceID(), InstanceObjects);
+            InstanceManager.Instance.AddInstancePrefabs(gameObject.GetInstanceID(), InstanceObjects);
 
         _origin = transform.position;
     }
@@ -124,6 +133,36 @@ public class Object3D : MonoBehaviour
         _time = -1;
         _isFlashing = false;
         Flash(true);
+    }
+
+    public virtual void TriggerDeath()
+    {
+        if (!_isDying)
+        {
+            StartCoroutine(DeathCoroutine());
+            _isDying = true;
+        }
+    }
+
+    public virtual void OnDeathSpawn()
+    {
+
+    }
+
+    public virtual void OnDeath()
+    {
+        gameObject.layer = (int)LayersIndex.NoCollision;
+    }
+
+    protected IEnumerator DeathCoroutine()
+    {
+        OnDeath();
+        if(CanSpawnInstance && SpawnInstanceOnDeathIndex >= 0)
+        {
+            OnDeathSpawn();
+        }
+        yield return new WaitForSeconds(DeathDelay);
+        gameObject.SetActive(false);
     }
 
     protected float IncreaseTimer(float timer, float min, float max)
@@ -228,7 +267,7 @@ public class Object3D : MonoBehaviour
 
     public virtual void GameUpdate()
     {
-        if (NotActiveWhenFarFromCamera())
+        if (NotActiveWhenFarFromCamera() || !IsAlive)
             return;
 
         _spawnRateTimer += IncreaseTimer(_spawnRateTimer, 0, _spawnRate);
@@ -263,7 +302,7 @@ public class Object3D : MonoBehaviour
     // Start is called before the first frame update
     public virtual void Start()
     {
-
+        _originLayer = gameObject.layer;
     }
 
     public bool DetectCollisonCast(int instanceID, Vector3 dir, float distance, int layerMask, out RaycastHit hitInfo)

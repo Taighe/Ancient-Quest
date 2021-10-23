@@ -23,7 +23,7 @@ public class Player : KinematicObject3D
 {
     [Header("Game Properties")]
     [Range(0, 9999)]
-    public int HP;
+    public int HP = 1;
     [Range(0, 9999)]
     public int MaxHP;
     public bool SlingPowerUp;
@@ -79,7 +79,7 @@ public class Player : KinematicObject3D
         GameEvents.Instance.Hit += Instance_Hit;
         GameEvents.Instance.Player_Collect += Instance_Player_Collect;
 
-        _id = GetInstanceID();
+        _id = gameObject.GetInstanceID();
     }
 
     public override void Instance_Damaged(object sender, DamagedEventArgs e)

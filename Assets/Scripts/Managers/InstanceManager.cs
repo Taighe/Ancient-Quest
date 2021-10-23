@@ -44,14 +44,21 @@ namespace Assets.Scripts.Managers
 
         public void CycleInstance(int ownerID, int prefabID, int instanceID)
         {
-            var key = $"{ownerID}{instanceID}";
-            var prefabKey = $"{ownerID}{prefabID}";
-
-            if (_aliveInstanceCollection.Count() > 0)
+            try
             {
-                var inst = _aliveInstanceCollection[key];
-                _aliveInstanceCollection.Remove(key);
-                _instanceCollection[prefabKey].Enqueue(inst);
+                var key = $"{ownerID}{instanceID}";
+                var prefabKey = $"{ownerID}{prefabID}";
+
+                if (_aliveInstanceCollection.Count() > 0 && _aliveInstanceCollection.ContainsKey(key))
+                {
+                    var inst = _aliveInstanceCollection[key];
+                    _aliveInstanceCollection.Remove(key);
+                    _instanceCollection[prefabKey].Enqueue(inst);
+                }
+            }
+            catch(Exception e)
+            {
+                Debug.Log("Error " + e);
             }
         }
 

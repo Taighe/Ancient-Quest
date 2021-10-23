@@ -13,7 +13,8 @@ namespace Assets.Scripts.Globals
         Kinematic = 6,
         Object = 7,
         Player = 8,
-        Hazard = 10
+        Hazard = 10,
+        NoCollision = 11
     }
 
     public enum Layers 
@@ -23,7 +24,8 @@ namespace Assets.Scripts.Globals
         Kinematic = 1 << LayersIndex.Kinematic,
         Object = 1 << LayersIndex.Object,
         Player = 1 << LayersIndex.Player,
-        Hazard = 1 << LayersIndex.Hazard
+        Hazard = 1 << LayersIndex.Hazard,
+        NoCollision = 1 << LayersIndex.NoCollision
     }
 
     public static class LayerHelper
