@@ -58,7 +58,7 @@ namespace Assets.Scripts.Managers
             }
             catch(Exception e)
             {
-                Debug.Log("Error " + e);
+                Debug.LogError("Error: " + e);
             }
         }
 
