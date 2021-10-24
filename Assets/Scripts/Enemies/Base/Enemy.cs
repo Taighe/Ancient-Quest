@@ -15,6 +15,8 @@ public class Enemy : Object3D
     [Range(0, 9999)]
     public int Strength = 1;
     public new Vector3 CollisionBounds = new Vector3(1, 1, 1);
+    public int ProjectileIndex = -1;
+    public Vector3 ProjectileSpawnOffset;
 
     public override bool IsAlive
     {
@@ -54,6 +56,12 @@ public class Enemy : Object3D
             {
                 GameEvents.Instance.OnDamaged(new DamagedEventArgs(gameObject, hit.gameObject, Strength));
             }
+        }
+
+        if(ProjectileIndex >= 0)
+        {
+            Vector3 pos = transform.position;
+            SpawnInstance(gameObject.GetInstanceID(), ProjectileIndex, pos + ProjectileSpawnOffset, GetDirectionVector());
         }
 
         base.GameUpdate();

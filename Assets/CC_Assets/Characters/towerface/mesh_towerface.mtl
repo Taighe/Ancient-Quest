@@ -1,0 +1,130 @@
+# Blender MTL File: 'Tower Face.blend'
+# Material Count: 11
+
+newmtl Cornea
+Ns 62.999997
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.898039 0.898039 0.898039
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 0.800000
+illum 9
+map_Kd D:\\MyStuff\\Work\\Games\\Unity\\Ancient Quest\\Work Files\\Models\\Tower Face\\mesh_face\\Cornea_diffuse.png
+
+newmtl Eye
+Ns 40.000007
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.898039 0.898039 0.898039
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+
+newmtl Eyelash
+Ns 20.000005
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.898039 0.898039 0.898039
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd D:\\MyStuff\\Work\\Games\\Unity\\Ancient Quest\\Work Files\\Models\\Tower Face\\mesh_face\\Eyelash_diffuse.jpg
+map_Ks D:\\MyStuff\\Work\\Games\\Unity\\Ancient Quest\\Work Files\\Models\\Tower Face\\mesh_face\\Eyelash_specular.jpg
+map_d D:\\MyStuff\\Work\\Games\\Unity\\Ancient Quest\\Work Files\\Models\\Tower Face\\mesh_face\\Eyelash_opacity.jpg
+
+newmtl Lower_Teeth
+Ns 35.000008
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.898039 0.898039 0.898039
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd D:\\MyStuff\\Work\\Games\\Unity\\Ancient Quest\\Work Files\\Models\\Tower Face\\mesh_face\\Lower_Teeth_diffuse.png
+map_Ks D:\\MyStuff\\Work\\Games\\Unity\\Ancient Quest\\Work Files\\Models\\Tower Face\\mesh_face\\Lower_Teeth_specular.png
+
+newmtl Skin_Body
+Ns 20.000005
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.898039 0.898039 0.898039
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd D:\\MyStuff\\Work\\Games\\Unity\\Ancient Quest\\Work Files\\Models\\Tower Face\\mesh_face\\Skin_Body_diffuse.png
+map_Ks D:\\MyStuff\\Work\\Games\\Unity\\Ancient Quest\\Work Files\\Models\\Tower Face\\mesh_face\\Skin_Body_specular.png
+
+newmtl Skin_Head
+Ns 20.000005
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.898039 0.898039 0.898039
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd D:\\MyStuff\\Work\\Games\\Unity\\Ancient Quest\\Work Files\\Models\\Tower Face\\mesh_face\\Skin_Head_diffuse.png
+map_Ks D:\\MyStuff\\Work\\Games\\Unity\\Ancient Quest\\Work Files\\Models\\Tower Face\\mesh_face\\Skin_Head_specular.png
+
+newmtl Tongue
+Ns 30.000009
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.898039 0.898039 0.898039
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd D:\\MyStuff\\Work\\Games\\Unity\\Ancient Quest\\Work Files\\Models\\Tower Face\\mesh_face\\Tongue_diffuse.png
+map_Ks D:\\MyStuff\\Work\\Games\\Unity\\Ancient Quest\\Work Files\\Models\\Tower Face\\mesh_face\\Tongue_specular.png
+
+newmtl Upper_Teeth
+Ns 35.000008
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.898039 0.898039 0.898039
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd D:\\MyStuff\\Work\\Games\\Unity\\Ancient Quest\\Work Files\\Models\\Tower Face\\mesh_face\\Upper_Teeth_diffuse.png
+map_Ks D:\\MyStuff\\Work\\Games\\Unity\\Ancient Quest\\Work Files\\Models\\Tower Face\\mesh_face\\Upper_Teeth_specular.png
+
+newmtl obj_default
+Ns 10.000002
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd D:\\MyStuff\\Work\\Games\\Unity\\Ancient Quest\\Work Files\\Models\\Tower Face\\mesh_face\\obj_default_diffuse.png
+map_Ks D:\\MyStuff\\Work\\Games\\Unity\\Ancient Quest\\Work Files\\Models\\Tower Face\\mesh_face\\obj_default_specular.png
+
+newmtl stone(Clone)
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 1
+map_Kd D:\\MyStuff\\Work\\Games\\Unity\\Ancient Quest\\Work Files\\Models\\Tower Face\\Textures\\stone(Clone).png
+
+newmtl stoneDark(Clone)
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 0.999561 0.990909
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 1
+map_Kd D:\\MyStuff\\Work\\Games\\Unity\\Ancient Quest\\Work Files\\Models\\Tower Face\\Textures\\stoneDark(Clone).png

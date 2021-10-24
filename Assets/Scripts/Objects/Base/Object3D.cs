@@ -19,6 +19,9 @@ public class Object3D : MonoBehaviour
             return _alwaysActive;
         }
     }
+
+    public bool IsIndestructable;
+
     public virtual bool IsAlive => true;
     [Range(-1, 99)]
     public int SpawnInstanceOnDeathIndex = -1;
@@ -198,7 +201,7 @@ public class Object3D : MonoBehaviour
 
     public void Damaged(int damage)
     {
-        if (DamageFinished)
+        if (DamageFinished && !IsIndestructable)
         {
             if(damage > 0)
                 OnDamaged(damage);

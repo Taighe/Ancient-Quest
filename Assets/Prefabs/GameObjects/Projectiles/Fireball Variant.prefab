@@ -9619,9 +9619,17 @@ PrefabInstance:
       propertyPath: Speed
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 5996855489593530651, guid: 47df1abe83e5a3f4c9359bad5e145e1b, type: 3}
+      propertyPath: ProjectileSpawnRate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5996855489593530651, guid: 47df1abe83e5a3f4c9359bad5e145e1b, type: 3}
+      propertyPath: ProjectileMaxInstancesAlive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8848727121765054072, guid: 47df1abe83e5a3f4c9359bad5e145e1b, type: 3}
       propertyPath: m_Name
-      value: Fireball
+      value: Fireball Variant
       objectReference: {fileID: 0}
     - target: {fileID: 8848727121765054075, guid: 47df1abe83e5a3f4c9359bad5e145e1b, type: 3}
       propertyPath: m_RootOrder
@@ -9629,11 +9637,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8848727121765054075, guid: 47df1abe83e5a3f4c9359bad5e145e1b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 17
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8848727121765054075, guid: 47df1abe83e5a3f4c9359bad5e145e1b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8848727121765054075, guid: 47df1abe83e5a3f4c9359bad5e145e1b, type: 3}
       propertyPath: m_LocalPosition.z
