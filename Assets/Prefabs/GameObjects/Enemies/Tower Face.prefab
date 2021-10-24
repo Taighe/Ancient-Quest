@@ -201,7 +201,7 @@ MonoBehaviour:
   SpawnInstanceOnDeathIndex: -1
   DamageDelay: 0.5
   IsInvulnerableDuringDelay: 1
-  Direction: -180
+  Direction: 0
   InstanceObjects:
   - {fileID: 8225851320055230193, guid: caa086b315e2bc44b98b71ede338dc8e, type: 3}
   FlashRate: 0.2
@@ -211,6 +211,7 @@ MonoBehaviour:
   CollisionBounds: {x: 0, y: 0, z: 0}
   ProjectileIndex: 0
   ProjectileSpawnOffset: {x: 0, y: 0, z: 0}
+  FireRate: 1
 --- !u!114 &8909456264778188651
 MonoBehaviour:
   m_ObjectHideFlags: 0

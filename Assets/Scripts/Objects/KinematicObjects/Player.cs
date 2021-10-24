@@ -242,8 +242,38 @@ public class Player : KinematicObject3D
 
         _cController.height = _crouchHeight;
         _cController.center = new Vector3(_cController.center.x, _crouchOffsetY, _cController.center.z);
-
+        
+        PlatformDetection();
         base.GameUpdate();
+    }
+
+    public void PlatformDetection()
+    {
+        float distance = 2;
+        int layerMask = (int)Layers.Platform;
+        bool left = false;
+        bool right = false;
+        RaycastHit hitLeft;
+        // Left side
+        Physics.Raycast(new Vector3(_collider.bounds.min.x, transform.position.y, transform.position.z), Vector3.down, out hitLeft, distance, layerMask);
+        if (hitLeft.collider != null)
+        {
+            left = (hitLeft.collider.ClosestPointOnBounds(transform.position) - transform.position).normalized == new Vector3(0, -1, 0);
+        }
+
+        RaycastHit hitRight;
+        // Right side
+        Physics.Raycast(new Vector3(_collider.bounds.max.x, transform.position.y, transform.position.z), Vector3.down, out hitRight, distance, layerMask);
+        if (hitRight.collider != null)
+            right = (hitRight.collider.ClosestPointOnBounds(transform.position) - transform.position).normalized == new Vector3(0, -1, 0);
+        
+        bool ignoreCollision = !left && !right;
+        Physics.IgnoreLayerCollision((int)LayersIndex.Platform, (int)LayersIndex.Player, ignoreCollision);
+    }
+
+    protected override void Update()
+    {
+
     }
 
     public bool ShieldFrontProtection(Vector3 offset, GameObject projectile)

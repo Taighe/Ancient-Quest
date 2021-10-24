@@ -17,6 +17,7 @@ public class Enemy : Object3D
     public new Vector3 CollisionBounds = new Vector3(1, 1, 1);
     public int ProjectileIndex = -1;
     public Vector3 ProjectileSpawnOffset;
+    public float FireRate;
 
     public override bool IsAlive
     {
@@ -61,7 +62,7 @@ public class Enemy : Object3D
         if(ProjectileIndex >= 0)
         {
             Vector3 pos = transform.position;
-            SpawnInstance(gameObject.GetInstanceID(), ProjectileIndex, pos + ProjectileSpawnOffset, GetDirectionVector());
+            SpawnInstance(gameObject.GetInstanceID(), ProjectileIndex, pos + ProjectileSpawnOffset, GetDirectionVector(), FireRate);
         }
 
         base.GameUpdate();
