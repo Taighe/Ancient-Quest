@@ -40,6 +40,7 @@ public class Player : KinematicObject3D
 
     // Crouching
     public bool IsCrouching => _isCrouching;
+    public bool IsUsing => _isUsing;
 
     private PlayerData _playerData;
     private bool _isCrouching;
@@ -48,6 +49,7 @@ public class Player : KinematicObject3D
     private float _crouchHeight;
     private float _crouchOffsetY;
     private int _id;
+    private bool _isUsing;
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
@@ -183,7 +185,11 @@ public class Player : KinematicObject3D
     public void Use()
     {
         if(HasPowerUp(PowerUps.Sling))
-            SpawnInstance(_id, 0, transform.position + Vector3.up, GetDirectionVector());
+        {
+            var pos = transform.position;
+            Vector3 spawnOffset = _isCrouching ? new Vector3(pos.x, pos.y + 0.6f, pos.z) : new Vector3(pos.x, pos.y + 1.5f, pos.z);
+            _isUsing = SpawnInstance(_id, 0, spawnOffset, GetDirectionVector());
+        }
     }
 
     public void RemovePowerUp()
@@ -201,7 +207,7 @@ public class Player : KinematicObject3D
     {
         _crouchHeight = _originHeight;
         _crouchOffsetY = _originOffsetY;
-
+        _isUsing = false;
         bool isGrounded = IsGrounded;
         _isCrouching = false;
         _velocity = Velocity;

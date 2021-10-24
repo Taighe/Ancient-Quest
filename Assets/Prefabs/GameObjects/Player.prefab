@@ -45,7 +45,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 963317147e8caac468b3dc80c28fc0d4, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
@@ -116,12 +116,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 637b3c034799c5a4e8c21ade457dc677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SpawnInstanceOnDeathIndex: -1
   DamageDelay: 1
   IsInvulnerableDuringDelay: 1
   Direction: 0
   InstanceObjects:
   - {fileID: 4180133046805574723, guid: 6cb09a726a6263747990e77c0209680d, type: 3}
   FlashRate: 0.1
+  DeathDelay: 0
   Data: {fileID: 11400000, guid: 0b238f71d397e554483305ef81c47a1a, type: 2}
   HP: 3
   MaxHP: 3
@@ -237,7 +239,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Animator: {fileID: 4020023173951440622}
+  TurnSpeed: 0
   ShieldMesh: {fileID: 4111235894970693239}
+  SlingshotMesh: {fileID: 7821028633891637038}
 --- !u!1001 &5760430104741889238
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -324,5 +328,10 @@ Transform:
 --- !u!137 &4111235894970693239 stripped
 SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: 8574611706167915169, guid: f2c29ced725f635448502b76e59bc1b4, type: 3}
+  m_PrefabInstance: {fileID: 5760430104741889238}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &7821028633891637038 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2556013463413343224, guid: f2c29ced725f635448502b76e59bc1b4, type: 3}
   m_PrefabInstance: {fileID: 5760430104741889238}
   m_PrefabAsset: {fileID: 0}

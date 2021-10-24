@@ -36,19 +36,19 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
-        m_Texture: {fileID: 2800000, guid: 7ffed89984d3778449c974aee022bee0, type: 3}
+        m_Texture: {fileID: 2800000, guid: 9448198cdc5b078448cfbe82378c3954, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 058b8ec871dd94d4f9baaf9b718bb6cf, type: 3}
+        m_Texture: {fileID: 2800000, guid: 4c11d916a40e5df44bb313051eae60a6, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: f0b57551f0707e047bed8b950dcb1978, type: 3}
+        m_Texture: {fileID: 2800000, guid: 187f64484da254a458781ce61425105c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
-        m_Texture: {fileID: 2800000, guid: 5cb6b4d0226df704888a013b1789d97a, type: 3}
+        m_Texture: {fileID: 2800000, guid: 0ab933b9a9427c04fa11be673387c5ec, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:

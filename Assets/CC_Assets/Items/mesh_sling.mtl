@@ -1,0 +1,10 @@
+# Created by Kenney (www.kenney.nl)
+
+newmtl dark(Clone)
+Kd 0.277931 0.5612413 0.9862069
+map_Kd Textures/dark(Clone).png
+
+newmtl wood(Clone)
+Kd 1 0.6490229 0.5363636
+map_Kd Textures/wood(Clone).png
+

@@ -75,17 +75,20 @@ public class Projectile : Object3D, IInstanceObject
 
             if (DetectCollisonCast(_ownerID, CollisionMask.value, out hit))
             {
-                int layer;                
-                if(CompareTags)
+                int layer;           
+                if (!hit.CompareTag("No Projectile"))
                 {
-                    if (!CompareTag(hit.tag))
+                    if (CompareTags)
+                    {
+                        if (!CompareTag(hit.tag))
+                        {
+                            OnHit(hit, out layer);
+                        }
+                    }
+                    else
                     {
                         OnHit(hit, out layer);
                     }
-                }
-                else
-                {
-                    OnHit(hit, out layer);
                 }
             }
 

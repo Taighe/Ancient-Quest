@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerAnimator : KinematicAnimator
 {
     public SkinnedMeshRenderer ShieldMesh;
+    public SkinnedMeshRenderer SlingshotMesh;
     private Player _player;
 
     public override void Awake()
@@ -37,6 +38,18 @@ public class PlayerAnimator : KinematicAnimator
         float shield = _player.HasPowerUp(PowerUps.Shield) && _player.IsGrounded ? 1 : 0;
         ShieldMesh.enabled = _player.HasPowerUp(PowerUps.Shield);
         Animator.SetBool("canFidget", _player.CanFidget() && shield == 0);
-        Animator.SetLayerWeight(3, shield);
+        Animator.SetFloat("shieldPU", shield);
+        Animator.SetLayerWeight(5, shield);
+
+        float sling = _player.HasPowerUp(PowerUps.Sling) ? 1 : 0;
+        SlingshotMesh.enabled = sling == 1;
+        Animator.SetFloat("slingPU", shield);
+        Animator.SetLayerWeight(2, sling);
+        Animator.SetLayerWeight(3, sling);
+        Animator.SetLayerWeight(4, sling);
+        if (_player.IsUsing)
+        {
+            Animator.SetTrigger("useTrigger");
+        }
     }
 }

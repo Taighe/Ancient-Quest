@@ -87,7 +87,7 @@ public class Object3D : MonoBehaviour
     private bool _isDying;
     private int _originLayer;
 
-    public virtual void SpawnInstance(int ownerID, int index, Vector3 origin, Vector3 dir, float spawnRate = 0)
+    public virtual bool SpawnInstance(int ownerID, int index, Vector3 origin, Vector3 dir, float spawnRate = 0)
     {
         if (CanSpawnInstance)
         {
@@ -97,7 +97,11 @@ public class Object3D : MonoBehaviour
                 _spawnRate = spawnRate != 0 ? spawnRate : inst.SpawnRate;
                 _spawnRateTimer = 0;
             }
+
+            return true;
         }
+
+        return false;
     }
 
     public void OnEnable()

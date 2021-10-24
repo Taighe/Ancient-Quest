@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7364876458015536956}
   m_Layer: 7
   m_Name: Collectable
-  m_TagString: Untagged
+  m_TagString: No Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -61,11 +61,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7517fd4b8d48e94a87a2ef8d3ccf2d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SpawnInstanceOnDeathIndex: -1
   DamageDelay: 0.5
   IsInvulnerableDuringDelay: 1
   Direction: 0
   InstanceObjects: []
   FlashRate: 0.2
+  DeathDelay: 0
   Score: 0
   HP: 0
   Lives: 0
@@ -83,6 +85,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Animator: {fileID: 7364876458313864831}
+  TurnSpeed: 0
 --- !u!82 &7364876458015536898
 AudioSource:
   m_ObjectHideFlags: 0

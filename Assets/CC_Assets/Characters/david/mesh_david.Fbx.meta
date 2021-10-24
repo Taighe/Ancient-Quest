@@ -86,6 +86,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: dark_Clone__Pbr
+    second: {fileID: 2100000, guid: c40f0be91c21c9b40903313796315b05, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: obj_default_0_Pbr
     second: {fileID: 2100000, guid: 1dff042811b48ec4ba4fbc3ad29fdca2, type: 2}
   - first:
@@ -128,6 +133,11 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: obj_default_Transparency_Pbr
     second: {fileID: 2100000, guid: fe47c1333f4714447956b6ae82ea7732, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: wood_Clone__Pbr
+    second: {fileID: 2100000, guid: b2458cb4863bf8443bb1a2de1c4e4d0c, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

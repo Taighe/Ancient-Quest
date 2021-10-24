@@ -8,6 +8,7 @@ TagManager:
   - UI
   - Player Bullet
   - Enemy Bullet
+  - No Projectile
   layers:
   - Default
   - TransparentFX
