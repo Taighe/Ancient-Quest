@@ -18,7 +18,8 @@ public class Enemy : Object3D
     public int ProjectileIndex = -1;
     public Vector3 ProjectileSpawnOffset;
     public float FireRate;
-
+    public float FireDelay;
+    private float _fireDelayTimer;
     public override bool IsAlive
     {
         get
@@ -59,7 +60,9 @@ public class Enemy : Object3D
             }
         }
 
-        if(ProjectileIndex >= 0)
+        _fireDelayTimer = Mathf.Min(_fireDelayTimer + 1 * Time.deltaTime, FireDelay);
+
+        if(ProjectileIndex >= 0 && _fireDelayTimer >= FireDelay)
         {
             Vector3 pos = transform.position;
             SpawnInstance(gameObject.GetInstanceID(), ProjectileIndex, pos + ProjectileSpawnOffset, GetDirectionVector(), FireRate);

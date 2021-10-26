@@ -4448,7 +4448,7 @@ PrefabInstance:
       objectReference: {fileID: 102900000, guid: 6eab1e9de6d4b4140951297cf2a674cf, type: 3}
     - target: {fileID: 2385284907299935686, guid: 324f87b9923316846a6c0b4ea2b166c9, type: 3}
       propertyPath: ExitPoint.x
-      value: 14
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2385284907299935686, guid: 324f87b9923316846a6c0b4ea2b166c9, type: 3}
       propertyPath: ExitPoint.y

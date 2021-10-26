@@ -249,7 +249,7 @@ public class Player : KinematicObject3D
 
     public void PlatformDetection()
     {
-        float distance = 2;
+        float distance = 0.25f;
         int layerMask = (int)Layers.Platform;
         bool left = false;
         bool right = false;
