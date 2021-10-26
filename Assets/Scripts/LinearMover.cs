@@ -131,7 +131,7 @@ public class LinearMover : MonoBehaviour
 
         transform.position = Vector3.Lerp(_min, _max, _time / Speed);
         var pos = Vector3.Lerp(_min, _max, _time / Speed);
-        _time += 1.0f * Time.deltaTime;
+        _time += 1.0f * Time.fixedDeltaTime;
     }
 
 #if UNITY_EDITOR

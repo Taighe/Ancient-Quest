@@ -15,7 +15,7 @@ public class KinematicAnimator : AnimatorController
     public override bool UpdateAnimations()
     {
         // Facing towards direction
-        _kinematicObj.transform.rotation = Quaternion.RotateTowards(_kinematicObj.transform.rotation, Quaternion.Euler(0, (float)_kinematicObj.Direction, 0), TurnSpeed * Time.deltaTime);
+        _kinematicObj.transform.rotation = Quaternion.RotateTowards(_kinematicObj.transform.rotation, Quaternion.Euler(0, (float)_kinematicObj.Direction, 0), TurnSpeed * Time.fixedDeltaTime);
 
 
         if (Animator != null && Animator.runtimeAnimatorController != null)

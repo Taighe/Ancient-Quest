@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: InputSystem.inputsettings
   m_EditorClassIdentifier: 
   m_SupportedDevices:
+  - SwitchProControllerHID
   - XInputController
   - Keyboard
   - AndroidGamepad

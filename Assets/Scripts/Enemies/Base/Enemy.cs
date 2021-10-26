@@ -60,7 +60,7 @@ public class Enemy : Object3D
             }
         }
 
-        _fireDelayTimer = Mathf.Min(_fireDelayTimer + 1 * Time.deltaTime, FireDelay);
+        _fireDelayTimer = Mathf.Min(_fireDelayTimer + 1 * Time.fixedDeltaTime, FireDelay);
 
         if(ProjectileIndex >= 0 && _fireDelayTimer >= FireDelay)
         {

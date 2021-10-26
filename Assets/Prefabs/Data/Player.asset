@@ -19,6 +19,7 @@ MonoBehaviour:
   AccelerationTimeAirborne: 0.2
   AccelerationTimeGrounded: 0.1
   TurnSpeed: 1000
+  MaxFallSpeed: 12
   MaxClimbAngle: 70
   MaxDescendAngle: 70
   MinJumpHeight: 0.1
@@ -28,3 +29,4 @@ MonoBehaviour:
   IsFlying: 0
   FidgetTime: 20
   JumpSfx: {fileID: 8300000, guid: 7ea5af66300eb0b449f759a575f57917, type: 3}
+  BounceHeight: 10

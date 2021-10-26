@@ -174,7 +174,7 @@ public class Object3D : MonoBehaviour
 
     protected float IncreaseTimer(float timer, float min, float max)
     {
-        return timer >= min && timer <= max ? 1 * Time.deltaTime : 0;
+        return timer >= min && timer <= max ? 1 * Time.fixedDeltaTime : 0;
     }
 
     protected virtual void OnDamaged(int damage)
@@ -229,7 +229,7 @@ public class Object3D : MonoBehaviour
         while (_time < DamageDelay)
         {
             yield return new WaitForEndOfFrame();
-            _time += 1.0f * Time.deltaTime;
+            _time += 1.0f * Time.fixedDeltaTime;
         }
 
         _isFlashing = false;
@@ -279,8 +279,8 @@ public class Object3D : MonoBehaviour
 
         _spawnRateTimer += IncreaseTimer(_spawnRateTimer, 0, _spawnRate);
         var pos = transform.position;
-        pos.x += _velocity.x * Time.deltaTime;
-        pos.y += _velocity.y * Time.deltaTime;
+        pos.x += _velocity.x * Time.fixedDeltaTime;
+        pos.y += _velocity.y * Time.fixedDeltaTime;
 
         transform.position = pos;
     }

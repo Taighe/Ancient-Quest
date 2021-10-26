@@ -87,7 +87,7 @@ public class Player : KinematicObject3D
     public override void Instance_Damaged(object sender, DamagedEventArgs e)
     {
         // PowerUp Shield front protection (only works if standing still, but can crouch.)
-        Vector3 offset = IsCrouching ? new Vector3(0.1f, 0) : new Vector3(0.1f, 0.25f);
+        Vector3 offset = IsCrouching ? new Vector3(0.1f, 0.1f) : new Vector3(0.1f, 0.25f);
         if (ShieldFrontProtection(offset, e.Attacker))
         {
             return;
@@ -271,11 +271,6 @@ public class Player : KinematicObject3D
         Physics.IgnoreLayerCollision((int)LayersIndex.Platform, (int)LayersIndex.Player, ignoreCollision);
     }
 
-    protected override void Update()
-    {
-
-    }
-
     public bool ShieldFrontProtection(Vector3 offset, GameObject projectile)
     {
         if (HasPowerUp(PowerUps.Shield) && IsStandingStill)
@@ -310,7 +305,7 @@ public class Player : KinematicObject3D
             Vector3 pos = transform.position;
             float minMaxY = Mathf.Lerp(minPosY, maxPosY, duration);
             float diffY = Mathf.Abs(minMaxY - pos.y);
-            float deltaY = diffY * Time.deltaTime;
+            float deltaY = diffY * Time.fixedDeltaTime;
             float moveY = Mathf.Sqrt(diffY * (-3.0f * Data.GravityModifier) * Physics.gravity.y);
             _velocity.y = moveY;
             yield return new WaitForEndOfFrame();

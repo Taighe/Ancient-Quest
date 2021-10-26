@@ -17,7 +17,7 @@ public class AnimatorController : MonoBehaviour
     public virtual bool UpdateAnimations()
     {
         // Facing towards direction
-        _obj3D.transform.rotation = Quaternion.RotateTowards(_obj3D.transform.rotation, Quaternion.Euler(0, (float)_obj3D.Direction, 0), TurnSpeed * Time.deltaTime);
+        _obj3D.transform.rotation = Quaternion.RotateTowards(_obj3D.transform.rotation, Quaternion.Euler(0, (float)_obj3D.Direction, 0), TurnSpeed * Time.fixedDeltaTime);
 
         if (Animator != null && Animator.runtimeAnimatorController != null)
         {

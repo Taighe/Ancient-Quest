@@ -82,11 +82,14 @@ public class KinematicObject3D : Object3D, IKinematicObject
         _drawGizmos = true;
         _velocity = Velocity;
         // Horizontal Movement
-        _cController.Move(new Vector3(_velocity.x, 0) * Time.deltaTime);
+        _cController.Move(new Vector3(_velocity.x, 0) * Time.fixedDeltaTime);
 
         // Vertical Movement (Gravity, Jumping)
-        _velocity.y += (Physics.gravity.y * Data.GravityModifier) * Time.deltaTime;
-        _cController.Move(new Vector3(0, _velocity.y) * Time.deltaTime);
+        _velocity.y += (Physics.gravity.y * Data.GravityModifier) * Time.fixedDeltaTime;
+        if (_velocity.y < -Data.MaxFallSpeed)
+            _velocity.y = -Data.MaxFallSpeed;
+
+        _cController.Move(new Vector3(0, _velocity.y) * Time.fixedDeltaTime);
 
         if (_velocity.x > 0)
             Direction = Direction.RIGHT;
@@ -95,7 +98,7 @@ public class KinematicObject3D : Object3D, IKinematicObject
         
         if (Velocity.x == 0 & Velocity.y == 0)
         {
-            _idleTime += 1.0f * Time.deltaTime;
+            _idleTime += 1.0f * Time.fixedDeltaTime;
         }
         else
             _idleTime = 0;

@@ -15,6 +15,7 @@ public class ActorData : ScriptableObject
     public float AccelerationTimeAirborne = .2f;
     public float AccelerationTimeGrounded = .1f;
     public float TurnSpeed = 800;
+    public float MaxFallSpeed = 6;
     [Header("Slopes")]
     public float MaxClimbAngle = 80;
     public float MaxDescendAngle = 80;
