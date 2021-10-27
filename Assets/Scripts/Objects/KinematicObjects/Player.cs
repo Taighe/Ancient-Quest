@@ -80,7 +80,6 @@ public class Player : KinematicObject3D
         GameEvents.Instance.Damaged += Instance_Damaged;
         GameEvents.Instance.Hit += Instance_Hit;
         GameEvents.Instance.Player_Collect += Instance_Player_Collect;
-
         _id = gameObject.GetInstanceID();
     }
 
@@ -94,6 +93,20 @@ public class Player : KinematicObject3D
         }
 
         Damaged(e.Damage);
+        if(_playerData.HP <= 0)
+        {
+            TriggerDeath();
+        }
+    }
+
+    public override void OnDeath()
+    {
+        base.OnDeath();
+        StopAllCoroutines();
+        Flash(true);
+        Move(Vector3.zero);
+        _zPos = -5;
+        Jump(15);
     }
 
     private void Instance_Player_Collect(object sender, CollectEventArgs e)
@@ -101,6 +114,11 @@ public class Player : KinematicObject3D
         if(e.Instance.PowerUpType != PowerUps.None)
         {
             AddPowerUp(e.Instance.PowerUpType);
+        }
+
+        if(e.Instance.Lives != 0)
+        {
+            LevelProperties.GetInstance().AddGameDataLives(e.Instance.Lives);
         }
     }
 
@@ -205,45 +223,49 @@ public class Player : KinematicObject3D
 
     public override void GameUpdate()
     {
-        _crouchHeight = _originHeight;
-        _crouchOffsetY = _originOffsetY;
-        _isUsing = false;
-        bool isGrounded = IsGrounded;
-        _isCrouching = false;
-        _velocity = Velocity;
-        var axis = ControllerMaster.Input.GetAxis();
-            
-        // Crouching
-        // Make sure pressing downwards has priority over pressing sidewards while crouching
-        if (axis.y < 0 && isGrounded)
+        if (_playerData.HP > 0)
         {
-            axis.x = 0;
-            _isCrouching = true;
-            _crouchHeight = _originHeight * 0.5f;
-            _crouchOffsetY = (_originOffsetY * 0.5f) - 0.01f;
+            _crouchHeight = _originHeight;
+            _crouchOffsetY = _originOffsetY;
+            _isUsing = false;
+            bool isGrounded = IsGrounded;
+            _isCrouching = false;
+            _velocity = Velocity;
+            var axis = ControllerMaster.Input.GetAxis();
+
+            // Crouching
+            // Make sure pressing downwards has priority over pressing sidewards while crouching
+            if (axis.y < 0 && isGrounded)
+            {
+                axis.x = 0;
+                _isCrouching = true;
+                _crouchHeight = _originHeight * 0.5f;
+                _crouchOffsetY = (_originOffsetY * 0.5f) - 0.01f;
+            }
+
+            // Use powerup
+            if (ControllerMaster.Input.GetUseButton())
+            {
+                Use();
+            }
+
+            // Horizontal Movement
+            _velocity.x = axis.x * Data.Speed;
+
+            float duration = 0;
+            // Jumping
+            if (ControllerMaster.Input.GetJumpButton(out duration) && isGrounded)
+            {
+                Vector3 pos = transform.position;
+                StartCoroutine(Jump(duration, pos.y + Data.MinJumpHeight, pos.y + Data.MaxJumpHeight));
+            }
+
+            _cController.height = _crouchHeight;
+            _cController.center = new Vector3(_cController.center.x, _crouchOffsetY, _cController.center.z);
+
+            PlatformDetection();
         }
 
-        // Use powerup
-        if (ControllerMaster.Input.GetUseButton())
-        {
-            Use();
-        }
-
-        // Horizontal Movement
-        _velocity.x = axis.x * Data.Speed;
-
-        float duration = 0;
-        // Jumping
-        if (ControllerMaster.Input.GetJumpButton(out duration) && isGrounded)
-        {
-            Vector3 pos = transform.position;
-            StartCoroutine(Jump(duration, pos.y + Data.MinJumpHeight, pos.y + Data.MaxJumpHeight));
-        }
-
-        _cController.height = _crouchHeight;
-        _cController.center = new Vector3(_cController.center.x, _crouchOffsetY, _cController.center.z);
-        
-        PlatformDetection();
         base.GameUpdate();
     }
 

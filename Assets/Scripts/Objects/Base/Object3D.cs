@@ -87,7 +87,7 @@ public class Object3D : MonoBehaviour
     protected float _spawnRate;
     private Vector3 _origin;
     private float _time = -1;
-    private bool _isDying;
+    protected bool _isDying;
     private int _originLayer;
 
     public virtual bool SpawnInstance(int ownerID, int index, Vector3 origin, Vector3 dir, float spawnRate = 0)

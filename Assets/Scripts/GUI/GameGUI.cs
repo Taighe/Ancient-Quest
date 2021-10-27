@@ -14,6 +14,7 @@ public class GameGUI : SingletonObject<GameGUI>
     public Image HitPointsFront;
     public Image Fade;
     public TextMeshProUGUI LevelName;
+    public TextMeshProUGUI Lives;
     private float _hpIconHeight;
     public bool IsTransitionDone 
     {
@@ -38,6 +39,11 @@ public class GameGUI : SingletonObject<GameGUI>
         var backValue = _hpIconHeight * hpMax;
         HitPointsBack.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, backValue);
         HitPointsFront.rectTransform.sizeDelta = new Vector2(HitPointsFront.rectTransform.sizeDelta.x, -Mathf.Abs(backValue - frontValue) );
+    }
+
+    public void UpdateLives(int lives)
+    {
+        Lives.text = $"x{lives}";
     }
 
     public void UpdateLevelName(string name)

@@ -10,4 +10,7 @@ public class LevelPropertiesData : ScriptableObject
     private string _previousBackgroundMusic;
     public float PreviousAudioTime { get { return _previousAudioTime; } set { _previousAudioTime = value; } }
     private float _previousAudioTime;
+
+    public Dictionary<string, bool> PersistantCollectables { get { return _persistantCollectables; } set { _persistantCollectables = value; } }
+    private Dictionary<string, bool> _persistantCollectables;
 }

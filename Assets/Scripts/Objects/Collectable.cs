@@ -8,13 +8,26 @@ using UnityEngine;
 public class Collectable : Object3D
 {
     [Header("Game Properties")]
+    public bool IsPersistant;
     public int Score;
     public int HP;
     public int Lives;
     public PowerUps PowerUpType = PowerUps.None;
+    public int PersistantId;
+
+    public override void Awake()
+    {
+        base.Awake();
+    }
+
     public override void Start()
     {
         base.CollisionBounds = _collider.bounds.size;
+        if (IsPersistant)
+        {
+            bool collected = LevelProperties.GetInstance().HasBeenCollected(this);
+            gameObject.SetActive(!collected);
+        }
     }
 
     public override void GameUpdate()
@@ -26,13 +39,16 @@ public class Collectable : Object3D
         if (DetectCollisonCast(gameObject.GetInstanceID(), (int)Layers.Player, out hit))
         {
             GameEvents.Instance.Player_OnCollect(new CollectEventArgs(this));
-            gameObject.SetActive(false);
+            OnCollected();
         }
     }
 
     public virtual void OnCollected() 
     {
+        if (IsPersistant)
+            LevelProperties.GetInstance().UpdatePersistantCollectable(PersistantId, true);
 
+        gameObject.SetActive(false);
     }
 
 #if UNITY_EDITOR

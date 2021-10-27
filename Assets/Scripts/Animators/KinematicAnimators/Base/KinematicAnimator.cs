@@ -20,8 +20,8 @@ public class KinematicAnimator : AnimatorController
 
         if (Animator != null && Animator.runtimeAnimatorController != null)
         {
-            int ground = Convert.ToInt32(_kinematicObj.IsGrounded);
-            int air = Convert.ToInt32(!_kinematicObj.IsGrounded);
+            int ground = _kinematicObj.IsGrounded ? 1 : 0;
+            int air = ground == 0 ? 1 : 0;
 
             Animator.SetLayerWeight(0, ground);
             Animator.SetLayerWeight(1, air);

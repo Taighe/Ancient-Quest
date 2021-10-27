@@ -116,6 +116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 637b3c034799c5a4e8c21ade457dc677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsIndestructable: 0
   SpawnInstanceOnDeathIndex: -1
   DamageDelay: 1
   IsInvulnerableDuringDelay: 1
@@ -123,7 +124,7 @@ MonoBehaviour:
   InstanceObjects:
   - {fileID: 4180133046805574723, guid: 6cb09a726a6263747990e77c0209680d, type: 3}
   FlashRate: 0.1
-  DeathDelay: 0
+  DeathDelay: 1
   Data: {fileID: 11400000, guid: 0b238f71d397e554483305ef81c47a1a, type: 2}
   HP: 3
   MaxHP: 3

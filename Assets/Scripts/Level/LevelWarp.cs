@@ -11,6 +11,7 @@ public class LevelWarp : MonoBehaviour
     public float Width = 3;
     public float Height = 3;
     public bool ActivatedByButton;
+    public bool UpdateCheckpoint = true;
 #if UNITY_EDITOR
     public SceneAsset ToScene;
 #endif
@@ -54,8 +55,12 @@ public class LevelWarp : MonoBehaviour
     {
         if(!string.IsNullOrEmpty(ToSceneName) && !_isWarping)
         {
+            if(UpdateCheckpoint)
+            {
+                LevelProperties.GetInstance().UpdateGameDataCheckpoint(ExitPoint);
+            }
             StartCoroutine(TransistionToSceneAsync());
-            _isWarping = true;     
+            _isWarping = true;
         }
     }
 

@@ -9,6 +9,7 @@ using UnityEngine;
 public class LevelProperties : SingletonObject<LevelProperties>
 {
     public LevelPropertiesData Data;
+    public GameData GameData;
     public string LevelName;
     public AudioClip BackgroundMusic;
     public float FadeOutTime = 0.3f;
@@ -23,11 +24,14 @@ public class LevelProperties : SingletonObject<LevelProperties>
     {
         base.Awake();
         _camera = Camera.main;
+        Data.PersistantCollectables = Data.PersistantCollectables == null ? new Dictionary<string, bool>() : Data.PersistantCollectables;
     }
 
     private void Start()
     {
         GameGUI.GetInstance().UpdateLevelName(LevelName);
+        GameGUI.GetInstance().UpdateLives(GameData.Lives);
+
         Application.targetFrameRate = 60;
 
         if (Data == null)
@@ -57,7 +61,19 @@ public class LevelProperties : SingletonObject<LevelProperties>
         {
             Data.PreviousBackgroundMusic = null;
         }
+
         StartCoroutine(FadeOut());
+    }
+
+    public void AddGameDataLives(int lives)
+    {
+        GameData.Lives += lives;
+        GameGUI.GetInstance().UpdateLives(GameData.Lives);
+    }
+
+    public void UpdateGameDataCheckpoint(Vector3 point)
+    {
+        GameData.Checkpoint = point;
     }
 
     private IEnumerator FadeOut()
@@ -95,6 +111,31 @@ public class LevelProperties : SingletonObject<LevelProperties>
         }
 
         return false;
+    }
+
+    public bool HasBeenCollected(Collectable collectable)
+    {
+        var key = $"{collectable.PersistantId}";
+        
+        if (Data.PersistantCollectables.ContainsKey(key))
+        {
+            return Data.PersistantCollectables[key];
+        }
+        else
+        {
+            Data.PersistantCollectables.Add(key, false);
+        }
+
+        return false;
+    }
+
+    public void UpdatePersistantCollectable(int id, bool collected)
+    {
+        string key = id.ToString();
+        if (Data.PersistantCollectables.ContainsKey(key))
+            Data.PersistantCollectables[key] = collected;
+        else
+            Data.PersistantCollectables.Add(key, collected);
     }
 
     public bool CloseToCamera(Vector3 instancePosition, Vector2 size)
