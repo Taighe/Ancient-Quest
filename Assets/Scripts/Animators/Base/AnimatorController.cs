@@ -8,16 +8,20 @@ public class AnimatorController : MonoBehaviour
     public Animator Animator;
     public float TurnSpeed;
     protected Object3D _obj3D;
+    protected AnimEvents _animEvents;
     // Start is called before the first frame update
     public virtual void Awake()
     {
         _obj3D = GetComponent<Object3D>();
+        _animEvents = Animator.gameObject.GetComponent<AnimEvents>();
     }
 
     public virtual bool UpdateAnimations()
     {
         // Facing towards direction
-        _obj3D.transform.rotation = Quaternion.RotateTowards(_obj3D.transform.rotation, Quaternion.Euler(0, (float)_obj3D.Direction, 0), TurnSpeed * Time.fixedDeltaTime);
+        Quaternion to = !_animEvents.NoFaceDirection ? Quaternion.Euler(0, (float)_obj3D.Direction, 0) : Quaternion.Euler(0, 0, 0);
+
+        _obj3D.transform.rotation = Quaternion.RotateTowards(_obj3D.transform.rotation, to, TurnSpeed * Time.fixedDeltaTime);
 
         if (Animator != null && Animator.runtimeAnimatorController != null)
         {

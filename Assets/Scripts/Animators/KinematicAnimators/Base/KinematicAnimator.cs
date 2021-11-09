@@ -10,13 +10,14 @@ public class KinematicAnimator : AnimatorController
     public override void Awake()
     {
         _kinematicObj = GetComponent<KinematicObject3D>();
+        _animEvents = Animator.gameObject.GetComponent<AnimEvents>();
     }
 
     public override bool UpdateAnimations()
     {
         // Facing towards direction
-        _kinematicObj.transform.rotation = Quaternion.RotateTowards(_kinematicObj.transform.rotation, Quaternion.Euler(0, (float)_kinematicObj.Direction, 0), TurnSpeed * Time.fixedDeltaTime);
-
+        Quaternion to = !_animEvents.NoFaceDirection ? Quaternion.Euler(0, (float)_kinematicObj.Direction, 0) : Quaternion.Euler(0, (float)Direction.FRONT, 0);
+        _kinematicObj.transform.rotation = Quaternion.RotateTowards(_kinematicObj.transform.rotation, to, TurnSpeed * Time.fixedDeltaTime);
 
         if (Animator != null && Animator.runtimeAnimatorController != null)
         {
@@ -29,6 +30,10 @@ public class KinematicAnimator : AnimatorController
             Animator.SetFloat("velX", Mathf.Abs(_kinematicObj.Velocity.x));
             Animator.SetFloat("velY", _kinematicObj.Velocity.y);
             Animator.SetBool("canFidget", _kinematicObj.CanFidget());
+            float death = !_kinematicObj.IsAlive ? 1.0f : 0;
+            Animator.SetLayerWeight(6, death);
+            Animator.SetBool("isAlive", _kinematicObj.IsAlive);
+
             return true;
         }
 

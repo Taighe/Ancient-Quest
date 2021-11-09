@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(AudioSource))]
 public class LevelProperties : SingletonObject<LevelProperties>
@@ -18,6 +19,8 @@ public class LevelProperties : SingletonObject<LevelProperties>
     private float _activeWidth = 35;
     private float _activeHeight = 15;
     private int _lastNumberActive;
+    private Player _player;
+    private bool _isWarping;
 
     // Start is called before the first frame update
     public override void Awake()
@@ -29,6 +32,7 @@ public class LevelProperties : SingletonObject<LevelProperties>
 
     private void Start()
     {
+        _player = GameObject.FindGameObjectWithTag("Player")?.GetComponent<Player>();
         GameGUI.GetInstance().UpdateLevelName(LevelName);
         GameGUI.GetInstance().UpdateLives(GameData.Lives);
 
@@ -71,9 +75,11 @@ public class LevelProperties : SingletonObject<LevelProperties>
         GameGUI.GetInstance().UpdateLives(GameData.Lives);
     }
 
-    public void UpdateGameDataCheckpoint(Vector3 point)
+    public void UpdateGameDataCheckpoint(Vector3 point, string sceneName, Direction facing)
     {
-        GameData.Checkpoint = point;
+        GameData.Checkpoint.Position = point;
+        GameData.Checkpoint.SceneName = sceneName;
+        GameData.Checkpoint.Facing = facing;
     }
 
     private IEnumerator FadeOut()
@@ -89,10 +95,82 @@ public class LevelProperties : SingletonObject<LevelProperties>
 
     public void WarpLevelProperties()
     {
-        if(_audSource.clip != null)
+        if (_audSource.clip != null)
         {
             Data.PreviousBackgroundMusic = _audSource.clip.name;
             Data.PreviousAudioTime = _audSource.time;
+        }
+    }
+
+    public void RetryFromCheckPoint()
+    {
+        TransistionToScene(GameData.RetryTransistionTime, GameData.RetryTransistionDelayTime, GameData.Checkpoint.SceneName, GameData.Checkpoint.Position, GameData.Checkpoint.Facing);
+        StartCoroutine(RetryFromCheckPointAsync());
+    }
+
+    private IEnumerator RetryFromCheckPointAsync()
+    {
+        var ui = GameGUI.GetInstance();
+        while (!ui.IsTransitionDone)
+        {
+            yield return null;
+        }
+        // Fully heal the player. HP is clamped to Maximum for player.
+        _player.Editor_SetHP(100);
+    }
+
+    public void GameOver()
+    {
+        TransistionToScene(0.3f, 1, "GameOver", new Vector3(8.5f, 9.5f, 0), Direction.RIGHT, true);
+        StartCoroutine(GameOverAsync());
+    }
+
+    private IEnumerator GameOverAsync()
+    {
+        var ui = GameGUI.GetInstance();
+        while (!ui.IsTransitionDone)
+        {
+            yield return null;
+        }
+        // Fully heal the player. HP is clamped to Maximum for player.
+        _player.Editor_SetHP(100);
+        GameData.Lives = 3;
+    }
+
+    public void TransistionToScene(float transitionTime, float transitionDelayTime, string sceneName, Vector3 exitPoint, Direction direction = Direction.RIGHT, bool updateCheckPoint = false)
+    {
+        if (!string.IsNullOrEmpty(sceneName) && !_isWarping)
+        {
+            if (updateCheckPoint)
+            {
+                UpdateGameDataCheckpoint(exitPoint, sceneName, direction);
+            }
+
+            StartCoroutine(TransistionToSceneAsync(transitionTime, transitionDelayTime, sceneName, exitPoint, direction, updateCheckPoint));
+            _isWarping = true;
+        }
+    }
+
+    IEnumerator TransistionToSceneAsync(float transitionTime, float transitionDelayTime, string sceneName, Vector3 exitPoint, Direction direction, bool updateCheckPoint)
+    {
+        Time.timeScale = 0;
+        var ui = GameGUI.GetInstance();
+        StartCoroutine(ui.TransitionFade(transitionTime));
+        while (!ui.IsTransitionDone)
+        {
+            yield return null;
+        }
+
+        // Simulate extra delay
+        yield return new WaitForSecondsRealtime(transitionDelayTime);
+
+        var asyncLoad = SceneManager.LoadSceneAsync(sceneName);
+        _player.WarpToPointNextScene(exitPoint, direction);
+
+        while (!asyncLoad.isDone)
+        {
+            LevelProperties.GetInstance().WarpLevelProperties();
+            yield return null;
         }
     }
 

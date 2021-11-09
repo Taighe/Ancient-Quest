@@ -30,6 +30,14 @@ public class Player : KinematicObject3D
     public bool SwordPowerUp;
     public bool ShieldPowerUp;
 
+    public override bool IsAlive
+    {
+        get
+        {
+            return _playerData.HP > 0;
+        }
+    }
+
     public bool IsStandingStill
     {
         get
@@ -101,12 +109,23 @@ public class Player : KinematicObject3D
 
     public override void OnDeath()
     {
+        _playerData.PowerUpMask = 0;
         base.OnDeath();
-        StopAllCoroutines();
+        _isFlashing = false;
         Flash(true);
         Move(Vector3.zero);
         _zPos = -5;
         Jump(15);
+    }
+
+    protected override void OnAfterDeathDelay()
+    {
+        var level = LevelProperties.GetInstance();
+        level.GameData.Lives = Mathf.Clamp(level.GameData.Lives - 1, 0, 99);
+        if (level.GameData.Lives > 0)
+            level.RetryFromCheckPoint();
+        else
+            level.GameOver();
     }
 
     private void Instance_Player_Collect(object sender, CollectEventArgs e)

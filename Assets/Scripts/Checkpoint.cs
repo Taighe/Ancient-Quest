@@ -3,11 +3,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Checkpoint : MonoBehaviour
 {
     public Vector3 TriggerArea;
     public Transform SpawnPoint;
+    public Direction Facing;
+
+    public void Start()
+    {
+
+    }
 
     public void FixedUpdate()
     {
@@ -15,7 +22,7 @@ public class Checkpoint : MonoBehaviour
         var colliders = Physics.OverlapBox(center, TriggerArea * 0.5f, transform.rotation, (int)Layers.Player, QueryTriggerInteraction.Collide);
         if(colliders.Length > 0)
         {
-            LevelProperties.GetInstance().UpdateGameDataCheckpoint(SpawnPoint.position);
+            LevelProperties.GetInstance().UpdateGameDataCheckpoint(SpawnPoint.position, SceneManager.GetActiveScene().name, Facing);
         }
     }
 

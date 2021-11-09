@@ -13,7 +13,6 @@ public class PlayerEditor : Editor
         //Init Player variables
         obj.Editor_SetHP(obj.HP);
         obj.Editor_SetMaxHP(obj.MaxHP);
-        Debug.Log("Init");
         obj.Editor_RemoveAllPowerUps();
         if (obj.SlingPowerUp)
             obj.AddPowerUp(PowerUps.Sling);

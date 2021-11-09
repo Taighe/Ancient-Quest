@@ -27,7 +27,6 @@ public class Object3D : MonoBehaviour
     public int SpawnInstanceOnDeathIndex = -1;
     public float DamageDelay = 0.5f;
     public bool IsInvulnerableDuringDelay = true;
-    protected Collider _collider;
     public bool CanSpawnInstance 
     {
         get
@@ -68,7 +67,7 @@ public class Object3D : MonoBehaviour
             return IsInvulnerableDuringDelay && !DamageFinished;
         }
     }
-    private bool _isFlashing;
+
     public bool DamageFinished
     {
         get
@@ -85,9 +84,12 @@ public class Object3D : MonoBehaviour
     protected float _zPos;
     protected float _spawnRateTimer = -1;
     protected float _spawnRate;
+    protected bool _isFlashing;
+    protected bool _isDying;
+    protected Collider _collider;
+
     private Vector3 _origin;
     private float _time = -1;
-    protected bool _isDying;
     private int _originLayer;
 
     public virtual bool SpawnInstance(int ownerID, int index, Vector3 origin, Vector3 dir, float spawnRate = 0)
@@ -169,7 +171,13 @@ public class Object3D : MonoBehaviour
             OnDeathSpawn();
         }
         yield return new WaitForSeconds(DeathDelay);
+        OnAfterDeathDelay();
         gameObject.SetActive(false);
+    }
+
+    protected virtual void OnAfterDeathDelay()
+    {
+
     }
 
     protected float IncreaseTimer(float timer, float min, float max)

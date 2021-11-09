@@ -2,12 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "GameData", menuName = "ScriptableObjects/GameData", order = 1)]
+public struct CheckpointData
+{
+    public string SceneName;
+    public Vector3 Position;
+    public Direction Facing;
+}
 
+[CreateAssetMenu(fileName = "GameData", menuName = "ScriptableObjects/GameData", order = 1)]
 public class GameData : ScriptableObject
 {   
     public int Lives = 3;
     public int Score = 0;
-    public Vector3 Checkpoint;
-
+    public CheckpointData Checkpoint;
+    public float RetryTransistionTime;
+    public float RetryTransistionDelayTime;
 }

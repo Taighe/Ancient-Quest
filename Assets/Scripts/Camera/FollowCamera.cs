@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 public class FollowCamera : MonoBehaviour
 {
-    public GameObject Player;
+    public Object3D Player;
     public LevelBounds CameraBounds;
     public Vector2 Offset;
     private Camera _camera;
@@ -33,6 +33,9 @@ public class FollowCamera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!Player.IsAlive)
+            return;
+
         Vector3 pos = transform.position;
         Vector3 newPos = pos;
         float zPos = transform.position.z;

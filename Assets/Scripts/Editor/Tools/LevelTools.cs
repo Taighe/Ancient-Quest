@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using UnityEditor;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Object = UnityEngine.Object;
@@ -187,7 +188,7 @@ public class LevelTools : EditorWindow
             // Create Player Object
             GameObject player = GameObject.FindGameObjectWithTag("Player");
             player = player != null ? ObjectExists<GameObject>(player, "Player already exists in scene.") : (GameObject)PrefabUtility.InstantiatePrefab(_playerPrefab);
-            followCam.Player = player;
+            followCam.Player = player.GetComponent<Object3D>();
             
             UpdateDisplayProgress(title, info, 0.5f);
 
@@ -226,6 +227,7 @@ public class LevelTools : EditorWindow
             UpdateDisplayProgress(title, info, 1.0f);
 
             EditorUtility.ClearProgressBar();
+            EditorSceneManager.SaveScene(SceneManager.GetActiveScene());
             Debug.Log("Setup Level complete.");
         }
         catch (Exception e)

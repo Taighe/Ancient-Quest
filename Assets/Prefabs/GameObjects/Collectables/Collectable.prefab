@@ -61,6 +61,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7517fd4b8d48e94a87a2ef8d3ccf2d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsIndestructable: 0
   SpawnInstanceOnDeathIndex: -1
   DamageDelay: 0.5
   IsInvulnerableDuringDelay: 1
@@ -68,10 +69,12 @@ MonoBehaviour:
   InstanceObjects: []
   FlashRate: 0.2
   DeathDelay: 0
+  IsPersistant: 0
   Score: 0
   HP: 0
   Lives: 0
   PowerUpType: 0
+  PersistantId: 0
 --- !u!114 &7364876458015536957
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -206,6 +209,7 @@ GameObject:
   - component: {fileID: 7364876458313864828}
   - component: {fileID: 7364876458313864829}
   - component: {fileID: 7364876458313864831}
+  - component: {fileID: 6400328454534713989}
   m_Layer: 7
   m_Name: Cube
   m_TagString: Untagged
@@ -295,3 +299,15 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &6400328454534713989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7364876458313864771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 881bd958c59bc3b4fa2235c5e7ecb1f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -49,6 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Animator: {fileID: 7556835970408853271}
+  TurnSpeed: 0
 --- !u!82 &7556835970348950449
 AudioSource:
   m_ObjectHideFlags: 0
@@ -157,17 +158,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9178c99731ec96b448ad2a5c1091bb1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsIndestructable: 0
+  SpawnInstanceOnDeathIndex: -1
   DamageDelay: 1
   IsInvulnerableDuringDelay: 1
   Direction: 0
   InstanceObjects: []
   FlashRate: 0.1
+  DeathDelay: 0
   CollisionMask:
     serializedVersion: 2
     m_Bits: 1
   Speed: 8
   ImpactForce: 5
   ResetDelay: 2
+  CompareTags: 0
   CollisionBounds: {x: 0.5, y: 0.5, z: 0.5}
   ProjectileMaxInstancesAlive: 2
   ProjectileSpawnRate: 0.2
@@ -213,6 +218,7 @@ GameObject:
   - component: {fileID: 7556835970408853268}
   - component: {fileID: 7556835970408853269}
   - component: {fileID: 7556835970408853271}
+  - component: {fileID: 2382471678572626177}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -302,3 +308,15 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2382471678572626177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7556835970408853275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 881bd958c59bc3b4fa2235c5e7ecb1f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

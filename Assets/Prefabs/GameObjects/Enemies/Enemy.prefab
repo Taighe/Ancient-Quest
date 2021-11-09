@@ -70,6 +70,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6285719531110834592}
   - component: {fileID: 152329411138232213}
+  - component: {fileID: 7115361041546663199}
   m_Layer: 7
   m_Name: Animator
   m_TagString: Untagged
@@ -110,6 +111,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &7115361041546663199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6943044335000752662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 881bd958c59bc3b4fa2235c5e7ecb1f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7838664583459658667
 GameObject:
   m_ObjectHideFlags: 0
@@ -257,14 +270,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e7f2e5c28de457498cbebe2736a6b8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsIndestructable: 0
+  SpawnInstanceOnDeathIndex: -1
   DamageDelay: 0.5
   IsInvulnerableDuringDelay: 1
   Direction: 0
   InstanceObjects: []
   FlashRate: 0.2
+  DeathDelay: 0
   HP: 1
   Strength: 1
   CollisionBounds: {x: 1, y: 2, z: 1}
+  ProjectileIndex: -1
+  ProjectileSpawnOffset: {x: 0, y: 0, z: 0}
+  FireRate: 0
+  FireDelay: 0
 --- !u!114 &2892979585099722837
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -9,7 +9,8 @@ using UnityEngine.InputSystem;
 public enum Direction
 {
     LEFT = -180,
-    RIGHT = 0
+    RIGHT = 0,
+    FRONT = 90
 }
 
 [RequireComponent(typeof(KinematicAnimator), typeof(CharacterController))]

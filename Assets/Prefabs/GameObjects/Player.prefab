@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3673290990450450081}
   - component: {fileID: 4020023173951440622}
+  - component: {fileID: 3595957475831570427}
   m_Layer: 8
   m_Name: Animator
   m_TagString: Untagged
@@ -51,6 +52,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &3595957475831570427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4022955977207431902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 881bd958c59bc3b4fa2235c5e7ecb1f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6799936128359615769
 GameObject:
   m_ObjectHideFlags: 0
@@ -124,7 +137,7 @@ MonoBehaviour:
   InstanceObjects:
   - {fileID: 4180133046805574723, guid: 6cb09a726a6263747990e77c0209680d, type: 3}
   FlashRate: 0.1
-  DeathDelay: 1
+  DeathDelay: 2
   Data: {fileID: 11400000, guid: 0b238f71d397e554483305ef81c47a1a, type: 2}
   HP: 3
   MaxHP: 3

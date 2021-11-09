@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Assets.Scripts.Globals;
 
 [SelectionBase]
 public class LevelWarp : MonoBehaviour
@@ -37,54 +38,9 @@ public class LevelWarp : MonoBehaviour
         _material = new Material(Shader.Find("Custom/shader_fade"));
     }
 
-    private bool PointWithinBox(Vector2 point, float width, float height)
-    {
-        var pos = transform.position;
-        if (point.x >= pos.x && point.x <= pos.x + width)
-        {
-            if (point.y >= pos.y && point.y <= pos.y + height)
-            {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
     private void WarpToScene()
     {
-        if(!string.IsNullOrEmpty(ToSceneName) && !_isWarping)
-        {
-            if(UpdateCheckpoint)
-            {
-                LevelProperties.GetInstance().UpdateGameDataCheckpoint(ExitPoint);
-            }
-            StartCoroutine(TransistionToSceneAsync());
-            _isWarping = true;
-        }
-    }
-
-    IEnumerator TransistionToSceneAsync()
-    {
-        Time.timeScale = 0;
-        var ui = GameGUI.GetInstance();
-        StartCoroutine(ui.TransitionFade(TransitionTime));
-        while (!ui.IsTransitionDone)
-        {
-            yield return null;
-        }
-
-        // Simulate extra delay
-        yield return new WaitForSecondsRealtime(TransitionDelayTime);
-
-        var asyncLoad = SceneManager.LoadSceneAsync(ToSceneName);
-        _player.WarpToPointNextScene(ExitPoint, ExitDirection);
-
-        while (!asyncLoad.isDone)
-        {
-            LevelProperties.GetInstance().WarpLevelProperties();
-            yield return null;
-        }
+        LevelProperties.GetInstance().TransistionToScene(TransitionTime, TransitionDelayTime, ToSceneName, ExitPoint, ExitDirection, UpdateCheckpoint);
     }
 
     // Update is called once per frame
@@ -92,7 +48,8 @@ public class LevelWarp : MonoBehaviour
     {
         if (_player != null)
         {
-            if (PointWithinBox(_player.transform.position, Width, Height))
+            Vector2 max = new Vector2(transform.position.x + Width, transform.position.y + Height);
+            if (SharedFunctions.PointWithinBox(_player.transform.position, transform.position, max))
             {
                 if(ActivatedByButton && ControllerMaster.Input.GetAxis().y == 1 && _player.IsGrounded)
                 {

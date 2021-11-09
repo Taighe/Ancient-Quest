@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Lives: 3
   Score: 0
+  RetryTransistionTime: 0.3
+  RetryTransistionDelayTime: 1
