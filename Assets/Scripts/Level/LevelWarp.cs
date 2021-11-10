@@ -51,7 +51,7 @@ public class LevelWarp : MonoBehaviour
             Vector2 max = new Vector2(transform.position.x + Width, transform.position.y + Height);
             if (SharedFunctions.PointWithinBox(_player.transform.position, transform.position, max))
             {
-                if(ActivatedByButton && ControllerMaster.Input.GetAxis().y == 1 && _player.IsGrounded)
+                if(ActivatedByButton && ControllerMaster.Input.GetInteractButton() && _player.IsGrounded)
                 {
                     WarpToScene();
                 }

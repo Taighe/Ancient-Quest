@@ -17,7 +17,10 @@ public class GameGUI : SingletonObject<GameGUI>
     public TextMeshProUGUI Lives;
     public Image MessageBox;
     public TextMeshProUGUI Message;
+    public Animator MessageBoxConfirm;
     private float _hpIconHeight;
+    private int _pageIndex;
+
     public bool IsTransitionDone 
     {
         get
@@ -67,6 +70,9 @@ public class GameGUI : SingletonObject<GameGUI>
     private IEnumerator StartMessageAsync(string[] pages, float rate, float delay)
     {
         int index = 0;
+        Message.text = "";
+        MessageBoxConfirm.SetBool("isLastPage", false);
+        MessageBoxConfirm.SetBool("isReading", true);
         StartCoroutine(MessageBoxDisplayAsync(0.3f));
 
         while(!IsTransitionDone)
@@ -74,12 +80,17 @@ public class GameGUI : SingletonObject<GameGUI>
 
         while (index < pages.Length)
         {
+            if(index == pages.Length-1)
+                MessageBoxConfirm.SetBool("isLastPage", true);
+
             StartCoroutine(DisplayMessageTextAsync(pages[index], rate, delay));
 
             while (!IsTransitionDone)
                 yield return new WaitForEndOfFrame();
 
             index++;
+            _pageIndex = index;
+            StopCoroutine("DisplayMessageTextAsync");
         }
 
         StartCoroutine(MessageBoxDisplayAsync(0.3f, false));
@@ -92,24 +103,42 @@ public class GameGUI : SingletonObject<GameGUI>
 
     private IEnumerator DisplayMessageTextAsync(string message, float rate, float delay)
     {
-        Message.text = "";
-        var m = message;
         _counter = 0;
-        _time = m.Length;
-        while (_counter < _time)
+        MessageBoxConfirm.SetBool("isReading", true);
+        bool endByButton = false;
+        if (delay == 0)
+        {
+            _time = 1;
+            endByButton = true;
+        }
+        else
+            _time = delay;
+
+        Message.text = "";
+        int index = 0;
+        int length = message.Length;
+        while (index <= length)
         {
             yield return new WaitForSecondsRealtime(rate);
-            Message.text = m.Substring(0, (int)_counter);
-            _counter++;
+            Message.text = message.Substring(0, index);
+            index++;
         }
 
-        _counter = 0;
-        _time = delay;
+        MessageBoxConfirm.SetBool("isReading", false);
 
         while (_counter < _time)
         {
             yield return new WaitForEndOfFrame();
-            _counter = Mathf.Min(_counter + 1.0f * Time.unscaledDeltaTime, _time);
+
+            if (endByButton && ControllerMaster.Input.GetUseButton())
+            {
+                _counter = 1;
+            }
+
+            if (!endByButton)
+            {
+                _counter = Mathf.Min(_counter + 1.0f * Time.unscaledDeltaTime, _time);
+            }
         }
 
         _counter = _time;
@@ -121,7 +150,7 @@ public class GameGUI : SingletonObject<GameGUI>
         _time = time;
         Vector3 toScale = display ? new Vector3(1, 1, 1) : Vector3.zero;
         Vector3 currentScale = MessageBox.rectTransform.localScale;
-        Debug.Log("Displayed once");
+
         while (_counter < _time)
         {
             yield return new WaitForEndOfFrame();

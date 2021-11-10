@@ -31,7 +31,7 @@ public class MessageBox : MonoBehaviour
             Vector3 max = new Vector3(transform.position.x + Max.x, transform.position.y + Max.y, 0);
             if (SharedFunctions.PointWithinBox(_player.transform.position, min, max))
             {
-                if (ControllerMaster.Input.GetAxis().y == 1 && _player.IsGrounded)
+                if (ControllerMaster.Input.GetInteractButton() && _player.IsGrounded)
                 {
                     _gui.StartMessage(Message.ToArray(), MessageDisplayRate, MessageDelay);
                 }
