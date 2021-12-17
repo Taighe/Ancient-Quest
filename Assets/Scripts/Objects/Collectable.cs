@@ -7,8 +7,15 @@ using UnityEngine;
 [SelectionBase]
 public class Collectable : Object3D
 {
+    public bool IsPersistant 
+    {
+        get
+        {
+            return PersistantId >= 0;
+        }
+    }
+
     [Header("Game Properties")]
-    public bool IsPersistant;
     public int Score;
     public int HP;
     public int Lives;

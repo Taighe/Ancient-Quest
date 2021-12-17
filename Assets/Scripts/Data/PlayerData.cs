@@ -32,7 +32,7 @@ public class PlayerData : ActorData
         }
     }
 
-    private int _hp = 3;
+    private int _hp = 2;
     public int MaxHP
     {
         get
@@ -44,5 +44,5 @@ public class PlayerData : ActorData
             _maxHP = value >= _hp ? value : _maxHP;
         }
     }
-    private int _maxHP = 3;
+    private int _maxHP = 2;
 }

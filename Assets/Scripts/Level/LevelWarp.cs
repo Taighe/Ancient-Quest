@@ -5,6 +5,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Assets.Scripts.Globals;
+using Assets.Scripts.Managers;
 
 [SelectionBase]
 public class LevelWarp : MonoBehaviour

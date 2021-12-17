@@ -88,7 +88,24 @@ public class Player : KinematicObject3D
         GameEvents.Instance.Damaged += Instance_Damaged;
         GameEvents.Instance.Hit += Instance_Hit;
         GameEvents.Instance.Player_Collect += Instance_Player_Collect;
+        GameEvents.Instance.Game_Load += Instance_Game_Load;
+        GameEvents.Instance.Game_Save += Instance_Game_Save;
         _id = gameObject.GetInstanceID();
+    }
+
+    private void Instance_Game_Save(object sender, SaveEventArgs e)
+    {
+        e.SaveData.HP = _playerData.HP;
+        e.SaveData.MaxHP = _playerData.MaxHP;
+        e.SaveData.PowerUpMask = _playerData.PowerUpMask;
+    }
+
+    protected override void OnGameLoad(SaveData data)
+    {
+        _playerData.PowerUpMask = data.PowerUpMask;
+        Editor_SetHP(data.HP);
+        Editor_SetMaxHP(data.MaxHP);
+        SetPosition(new Vector3(data.CheckpointX, data.CheckpointY, data.CheckpointZ), data.CheckpointFacing);
     }
 
     public override void Instance_Damaged(object sender, DamagedEventArgs e)
@@ -160,6 +177,10 @@ public class Player : KinematicObject3D
     {
         _playerData = _playerData != null ? _playerData : (PlayerData)Data;
         MaxHP = _playerData.MaxHP = value;
+        if (Application.isPlaying)
+        {
+            GameGUI.GetInstance().UpdateHitPoints(_playerData.HP, _playerData.MaxHP);
+        }
     }
 
     protected override void OnDamaged(int damage)
@@ -195,6 +216,16 @@ public class Player : KinematicObject3D
             _cController.enabled = true;
             _playerData.IsWarping = false;
         }
+    }
+
+    void SetPosition(Vector3 position, Direction facing)
+    {
+        _cController.enabled = false;
+        transform.position = position;
+        _cController.transform.position = transform.position;
+        SetDirectionInstant(facing);
+        _velocity.x = 0;
+        _cController.enabled = true;
     }
 
     public void AddPowerUp(PowerUps powerUp)
@@ -355,6 +386,7 @@ public class Player : KinematicObject3D
 
         PlaySFX(_playerData.JumpSfx);
     }
+
 #if UNITY_EDITOR
     public override void OnDrawGizmos()
     {

@@ -11,6 +11,8 @@ public class LevelPropertiesData : ScriptableObject
     public float PreviousAudioTime { get { return _previousAudioTime; } set { _previousAudioTime = value; } }
     private float _previousAudioTime;
 
+    public bool UpdateCheckpoint { get { return _updateCheckpoint; } set { _updateCheckpoint = value; } }
+    private bool _updateCheckpoint;
     public Dictionary<string, bool> PersistantCollectables { get { return _persistantCollectables; } set { _persistantCollectables = value; } }
     private Dictionary<string, bool> _persistantCollectables;
 }

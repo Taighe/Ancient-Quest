@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [CustomEditor(typeof(Player), true)]
 public class PlayerEditor : Editor 
@@ -9,6 +10,9 @@ public class PlayerEditor : Editor
     [InitializeOnEnterPlayMode]
     static void InitializeOnPlay()
     {
+        if (SceneManager.GetActiveScene().name == "MainMenu")
+            return;
+
         var obj = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         //Init Player variables
         obj.Editor_SetHP(obj.HP);

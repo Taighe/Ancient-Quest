@@ -87,10 +87,13 @@ public class Object3D : MonoBehaviour
     protected bool _isFlashing;
     protected bool _isDying;
     protected Collider _collider;
+    protected bool _isLoadingGameData;
 
     private Vector3 _origin;
+    private Direction _originFacing;
     private float _time = -1;
     private int _originLayer;
+    private SaveData _saveData;
 
     public virtual bool SpawnInstance(int ownerID, int index, Vector3 origin, Vector3 dir, float spawnRate = 0)
     {
@@ -109,9 +112,25 @@ public class Object3D : MonoBehaviour
         return false;
     }
 
+    protected virtual void Instance_Game_Load(object sender, LoadEventArgs e)
+    {
+        _saveData = e.SaveData;
+        _isLoadingGameData = true;
+    }
+
+    protected virtual void OnGameLoad(SaveData data)
+    {
+        
+    }
+
     public void OnEnable()
     {
-        transform.position = _origin;
+        Collider hit = null;
+        if(DetectCollisonCast(gameObject.GetInstanceID(), LayerHelper.LayerMask(gameObject.layer), out hit))
+        {
+            transform.position = _origin;
+        }
+        Direction = _originFacing;
     }
 
     public virtual void DisableObject(bool disable)
@@ -135,6 +154,7 @@ public class Object3D : MonoBehaviour
             InstanceManager.Instance.AddInstancePrefabs(gameObject.GetInstanceID(), InstanceObjects);
 
         _origin = transform.position;
+        _originFacing = Direction;
     }
 
     public void ResetDamageDelay()
@@ -318,6 +338,40 @@ public class Object3D : MonoBehaviour
     public virtual void Start()
     {
         _originLayer = gameObject.layer;
+        StartLoadGameData();
+    }
+
+    private bool StartLoadGameData()
+    {
+        bool success = false;
+        if(_isLoadingGameData)
+        {
+            if (LoadGameData())
+            {
+                success = true;
+            }
+            else
+            {
+                Debug.LogWarning($"Object3D {name} tried to load game data but was unsuccesful");
+            }
+        }
+
+        _isLoadingGameData = false;
+        return success;
+    }
+
+    public bool LoadGameData()
+    {
+        bool success = false;
+
+        if(_saveData != null)
+        {
+            OnGameLoad(_saveData);
+            _saveData = null;
+            success = true;
+        }
+
+        return success;
     }
 
     public bool DetectCollisonCast(int instanceID, Vector3 dir, float distance, int layerMask, out RaycastHit hitInfo)

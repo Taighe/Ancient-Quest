@@ -1,4 +1,5 @@
 using Assets.Scripts.Globals;
+using Assets.Scripts.Managers;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -11,6 +12,8 @@ public class Checkpoint : MonoBehaviour
     public Transform SpawnPoint;
     public Direction Facing;
 
+    private bool _activated;
+
     public void Start()
     {
 
@@ -20,10 +23,13 @@ public class Checkpoint : MonoBehaviour
     {
         Vector3 center = new Vector3(transform.position.x + TriggerArea.x * 0.5f, transform.position.y + TriggerArea.y * 0.5f, transform.position.z);
         var colliders = Physics.OverlapBox(center, TriggerArea * 0.5f, transform.rotation, (int)Layers.Player, QueryTriggerInteraction.Collide);
-        if(colliders.Length > 0)
+        if (colliders.Length > 0 && !_activated)
         {
-            LevelProperties.GetInstance().UpdateGameDataCheckpoint(SpawnPoint.position, SceneManager.GetActiveScene().name, Facing);
+             LevelProperties.GetInstance().UpdateGameDataCheckpoint(SpawnPoint.position, SceneManager.GetActiveScene().name, Facing);
+            _activated = true;
         }
+        else if(colliders.Length <= 0)
+            _activated = false;
     }
 
 #if UNITY_EDITOR

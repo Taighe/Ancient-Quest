@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4eadac783be7c2d4ea1180342e3d7d90, type: 3}
   m_Name: GameData
   m_EditorClassIdentifier: 
-  Lives: 3
+  Lives: 2
   Score: 0
   RetryTransistionTime: 0.3
   RetryTransistionDelayTime: 1

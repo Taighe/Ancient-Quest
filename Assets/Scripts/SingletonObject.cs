@@ -15,6 +15,11 @@ public class SingletonObject<T> : MonoBehaviour
         return _ref;
     }
 
+    public static T GetInstanceInvoked()
+    {
+        return _ref;
+    }
+
     public static T GetInstance(string gameObjectName)
     {
 #if UNITY_EDITOR

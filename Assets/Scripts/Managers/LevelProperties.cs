@@ -1,5 +1,6 @@
 using Assets.Scripts.Events;
 using Assets.Scripts.Globals;
+using Assets.Scripts.Managers;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -26,13 +27,38 @@ public class LevelProperties : SingletonObject<LevelProperties>
     public override void Awake()
     {
         base.Awake();
-        _camera = Camera.main;
+        GameEvents.Instance.Game_Save += Instance_Game_Save;
         Data.PersistantCollectables = Data.PersistantCollectables == null ? new Dictionary<string, bool>() : Data.PersistantCollectables;
+    }
+
+    private void Instance_Game_Save(object sender, SaveEventArgs e)
+    {
+        var data = GameData.GetData();
+        e.SaveData.Lives = data.Lives;
+        e.SaveData.CheckpointSceneDisplayName = LevelName;
+        e.SaveData.CheckpointSceneName = data.CheckpointSceneName;
+        e.SaveData.CheckpointX = data.CheckpointX;
+        e.SaveData.CheckpointY = data.CheckpointY;
+        e.SaveData.CheckpointZ = data.CheckpointZ;
+        e.SaveData.CheckpointFacing = data.CheckpointFacing;
+        e.SaveData.Score = data.Score;
+        e.SaveData.SaveSlot = GameData.SaveSlot;
     }
 
     private void Start()
     {
+        _camera = FollowCamera.GetInstance().Camera;
         _player = GameObject.FindGameObjectWithTag("Player")?.GetComponent<Player>();
+        
+        // Trigger GameLoad Event
+        SaveData saveData = null;
+        if(GameData.HasSaveDataLoaded(out saveData))
+        {
+            GameData.Lives = saveData.Lives;
+            GameEvents.Instance.Game_OnLoad(new LoadEventArgs(saveData));
+
+        }
+
         GameGUI.GetInstance().UpdateLevelName(LevelName);
         GameGUI.GetInstance().UpdateLives(GameData.Lives);
 
@@ -66,6 +92,13 @@ public class LevelProperties : SingletonObject<LevelProperties>
             Data.PreviousBackgroundMusic = null;
         }
 
+        // Trigger GameSave Event if warping updates the checkpoint
+        if (Data.UpdateCheckpoint)
+        {
+            SaveManager.Save();
+            Data.UpdateCheckpoint = false;
+        }
+
         StartCoroutine(FadeOut());
     }
 
@@ -80,6 +113,8 @@ public class LevelProperties : SingletonObject<LevelProperties>
         GameData.Checkpoint.Position = point;
         GameData.Checkpoint.SceneName = sceneName;
         GameData.Checkpoint.Facing = facing;
+        Data.UpdateCheckpoint = true;
+        SaveManager.Save();
     }
 
     private IEnumerator FadeOut()
@@ -104,7 +139,7 @@ public class LevelProperties : SingletonObject<LevelProperties>
 
     public void RetryFromCheckPoint()
     {
-        TransistionToScene(GameData.RetryTransistionTime, GameData.RetryTransistionDelayTime, GameData.Checkpoint.SceneName, GameData.Checkpoint.Position, GameData.Checkpoint.Facing);
+        TransistionToScene(GameData.RetryTransistionTime, GameData.RetryTransistionDelayTime, GameData.Checkpoint.SceneName, GameData.Checkpoint.Position, GameData.Checkpoint.Facing, true);
         StartCoroutine(RetryFromCheckPointAsync());
     }
 

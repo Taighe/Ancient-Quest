@@ -4,11 +4,18 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class FollowCamera : MonoBehaviour
+public class FollowCamera : SingletonObject<FollowCamera>
 {
     public Object3D Player;
     public LevelBounds CameraBounds;
     public Vector2 Offset;
+    public Camera Camera
+    {
+        get
+        {
+            return _camera == null ? GetComponent<Camera>() : _camera;
+        }
+    }
     private Camera _camera;
     private Vector2 _previousPos;
     private float _cornerDistX;
@@ -19,8 +26,9 @@ public class FollowCamera : MonoBehaviour
     private Vector3 _bottomEdge;
 
     // Start is called before the first frame update
-    void Awake()
+    public override void Awake()
     {
+        base.Awake();
         _camera = GetComponent<Camera>();
         _previousPos = transform.position;
         Vector3[] frustumCorners = new Vector3[4];

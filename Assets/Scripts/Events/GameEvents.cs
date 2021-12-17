@@ -50,11 +50,33 @@ namespace Assets.Scripts.Events
             Instance = instance;
         }
     }
+
+    public class LoadEventArgs : EventArgs
+    {
+        public SaveData SaveData { get; }
+        public LoadEventArgs(SaveData saveData)
+        {
+            SaveData = saveData;
+        }
+    }
+    public class SaveEventArgs : EventArgs
+    {
+        public SaveData SaveData { get; set; }
+        public SaveEventArgs(ref SaveData saveData)
+        {
+            SaveData = saveData;
+        }
+    }
+
     //
     public class GameEvents : MonoBehaviour
     {
         private Dictionary<string, Delegate> _instanceEvents;
         private object objectLock = new object();
+        // Game Events
+        public event EventHandler<LoadEventArgs> Game_Load;
+        public event EventHandler<SaveEventArgs> Game_Save;
+
         // InstanceManager Events
         public event EventHandler<DeathEventArgs> InstanceManager_Death;
 
@@ -208,6 +230,16 @@ namespace Assets.Scripts.Events
         public void InstanceManager_OnDeath(DeathEventArgs e)
         {
             HandleEvent(InstanceManager_Death, e);
+        }
+
+        public void Game_OnLoad(LoadEventArgs e)
+        {
+            HandleEvent(Game_Load, e);
+        }
+
+        public void Game_OnSave(SaveEventArgs e)
+        {
+            HandleEvent(Game_Save, e);
         }
 
         public void Player_OnCollect(CollectEventArgs e)

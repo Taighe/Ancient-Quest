@@ -17,13 +17,13 @@ public class SkyScroll : MonoBehaviour
     {
         _filter = GetComponent<MeshFilter>();
         _render = GetComponent<MeshRenderer>();
-        _lastPosition = Camera.main.transform.position;
+        _lastPosition = FollowCamera.GetInstance().transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        var pos = Camera.main.transform.position;
+        var pos = FollowCamera.GetInstance().transform.position;
 
         if (AutoScroll)
             _offset += ScrollSpeed * Time.deltaTime;
