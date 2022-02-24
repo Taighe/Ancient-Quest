@@ -1,0 +1,20 @@
+# Created by Kenney (www.kenney.nl)
+
+newmtl metalLight(Clone)
+Kd 0.883 0.361 0.189
+map_Kd Textures/metalLight(Clone).png
+
+newmtl wood(Clone)
+Kd 0.84 0.435 0.305
+
+newmtl bricksDark(Clone)
+Kd 0.249 0.615 0.897
+map_Kd Textures/bricksDark(Clone).png
+
+newmtl bricks(Clone)
+Kd 1 0.896 0.691
+map_Kd Textures/bricks(Clone).png
+
+newmtl glass(Clone)
+Kd 0 0 0
+

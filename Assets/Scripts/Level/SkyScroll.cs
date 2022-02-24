@@ -18,6 +18,7 @@ public class SkyScroll : MonoBehaviour
         _filter = GetComponent<MeshFilter>();
         _render = GetComponent<MeshRenderer>();
         _lastPosition = FollowCamera.GetInstance().transform.position;
+        _offset = _render.material.GetTextureOffset("_MainTex");
     }
 
     // Update is called once per frame

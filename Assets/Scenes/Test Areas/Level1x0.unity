@@ -853,6 +853,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8019953983130423315, guid: f591ec18f82aa5c4e82b82b8c446e7ff, type: 3}
+      propertyPath: PersistantId
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 8019953983130423316, guid: f591ec18f82aa5c4e82b82b8c446e7ff, type: 3}
       propertyPath: m_Name
       value: ShieldPowerUp Variant
@@ -1418,7 +1422,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh53184
+  m_Name: pb_Mesh101092
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2961,7 +2965,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh52982
+  m_Name: pb_Mesh100890
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -5515,7 +5519,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh52916
+  m_Name: pb_Mesh100824
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -6775,7 +6779,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh52898
+  m_Name: pb_Mesh100806
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -7690,7 +7694,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh52866
+  m_Name: pb_Mesh100774
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -9186,7 +9190,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh53016
+  m_Name: pb_Mesh100924
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -11947,7 +11951,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh52738
+  m_Name: pb_Mesh100646
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -12111,7 +12115,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh53086
+  m_Name: pb_Mesh100994
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -13170,7 +13174,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh52756
+  m_Name: pb_Mesh100664
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -15028,7 +15032,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh52676
+  m_Name: pb_Mesh100584
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -16344,7 +16348,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh53172
+  m_Name: pb_Mesh101080
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -23145,7 +23149,7 @@ MonoBehaviour:
   Data: {fileID: 11400000, guid: a46b11595b4143e4098d0eaed1f4bf5b, type: 2}
   GameData: {fileID: 11400000, guid: 74a323b398ee2cb4e980c139bd941182, type: 2}
   LevelName: Vertigo
-  BackgroundMusic: {fileID: 0}
+  BackgroundMusic: {fileID: 8300000, guid: 5af2297f3174c4947884103418475faf, type: 3}
   FadeOutTime: 0.3
 --- !u!82 &1841699219
 AudioSource:
@@ -23159,7 +23163,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -23276,7 +23280,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh53102
+  m_Name: pb_Mesh101010
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

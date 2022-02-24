@@ -9,25 +9,28 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 05a361d71b2ca44408c9a4009f477da3
   - enabled: 1
-    path: Assets/Scenes/Level0x0.unity
-    guid: fde64f8d0cb9c5547a069bad39d01bf3
-  - enabled: 1
-    path: Assets/Scenes/Level0x1.unity
-    guid: eb3cbfe1179f05746be3e55e8af561ae
-  - enabled: 1
-    path: Assets/Scenes/Level0x2.unity
-    guid: 4fd6d08540d8ed64781125becf0c0999
-  - enabled: 1
-    path: Assets/Scenes/Level0x3.unity
-    guid: 16239bafea305af4b9b6ac2484d933c5
-  - enabled: 1
-    path: Assets/Scenes/Level1x0.unity
-    guid: 6eab1e9de6d4b4140951297cf2a674cf
-  - enabled: 1
-    path: Assets/Scenes/Level2x0.unity
-    guid: 644bb6c2152293b4c88876ea5818367c
+    path: Assets/Scenes/0x0.unity
+    guid: 9ec7a6d891c613743b43cee7a2a5ca2d
   - enabled: 1
     path: Assets/Scenes/GameOver.unity
     guid: 16ea85c9363393541bdab6a982eec244
+  - enabled: 1
+    path: Assets/Scenes/Test Areas/Level0x0.unity
+    guid: fde64f8d0cb9c5547a069bad39d01bf3
+  - enabled: 1
+    path: Assets/Scenes/Test Areas/Level0x1.unity
+    guid: eb3cbfe1179f05746be3e55e8af561ae
+  - enabled: 1
+    path: Assets/Scenes/Test Areas/Level0x2.unity
+    guid: 4fd6d08540d8ed64781125becf0c0999
+  - enabled: 1
+    path: Assets/Scenes/Test Areas/Level0x3.unity
+    guid: 16239bafea305af4b9b6ac2484d933c5
+  - enabled: 1
+    path: Assets/Scenes/Test Areas/Level1x0.unity
+    guid: 6eab1e9de6d4b4140951297cf2a674cf
+  - enabled: 1
+    path: Assets/Scenes/Test Areas/Level2x0.unity
+    guid: 644bb6c2152293b4c88876ea5818367c
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: fdeaf078926660045a6c8962cc5e0399, type: 2}

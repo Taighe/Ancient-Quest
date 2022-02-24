@@ -22,6 +22,7 @@ public class LevelTools : EditorWindow
     private static Object _canvasPrefab;
     private static Object _eventPrefab;
     private static Object _skyPrefab;
+    private static bool _close;
 
     private static void InitData()
     {
@@ -54,6 +55,7 @@ public class LevelTools : EditorWindow
     [MenuItem("Tools/Level Tools/Level Settings")]
     public static void LevelSettings()
     {
+        _close = false;
         InitData();
 
         // Get existing open window or if none, make a new one:
@@ -150,6 +152,12 @@ public class LevelTools : EditorWindow
         obj = component.gameObject.GetComponent<T>();
 
         return noWarnings;
+    }
+
+    private void Update()
+    {
+        if (_close)
+            Close();
     }
 
     [MenuItem("Tools/Level Tools/Setup Level")]
