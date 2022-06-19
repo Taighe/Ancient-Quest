@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEditor.UIElements;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 public class LevelTree : EditorWindow
@@ -35,7 +36,7 @@ public class LevelTree : EditorWindow
         bool t = false;
         VisualElement root = rootVisualElement;
         VisualElement sub = new VisualElement { style = { flexDirection = FlexDirection.Row, alignContent = Align.Auto } };
-        sub.Add(new Button(delegate() { AddNode(); }){ text = "Add Node", style = { maxWidth = 125 } });
+        sub.Add(new Button(delegate() { UpdateNodes(); }){ text = "Add Node", style = { maxWidth = 125 } });
         sub.Add(new Button { text = "Test Button 2", style = { maxWidth = 125 } });
         root.Add(sub);
         root.Bind(new SerializedObject(this));
@@ -47,11 +48,20 @@ public class LevelTree : EditorWindow
             Close();
     }
 
-    public LevelTreeNode AddNode()
+    public void UpdateNodes()
+    {
+        int count = SceneManager.sceneCountInBuildSettings;
+        for(int i = 0; i < count; i++)
+        {
+            var scene = SceneManager.GetSceneByBuildIndex(i);
+        }
+    }
+
+    public LevelTreeNode AddNode(string name)
     {
         Debug.Log("Add Node");
         Rect pos = new Rect(_graphView.contentRect.xMax / 2, _graphView.contentRect.yMax / 2, 100, 100);
-        var node = new LevelTreeNode("Level0x0", pos);
+        var node = new LevelTreeNode(name, pos);
         var port = _graphView.GeneratePort("Exit 0", node, UnityEditor.Experimental.GraphView.Orientation.Horizontal, UnityEditor.Experimental.GraphView.Direction.Output,
             UnityEditor.Experimental.GraphView.Port.Capacity.Multi, typeof(LevelTreeNode));
         node.outputContainer.Add(port);
