@@ -4,9 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-interface IKinematicObject
+namespace AQEngine.Objects.KinematicObjects
 {
-    void GameUpdate();
-    void AnimationUpdate();
-    void PropertiesOverrideUpdate();
+    interface IKinematicObject
+    {
+        void GameUpdate();
+        void AnimationUpdate();
+        void PropertiesOverrideUpdate();
+    }
 }

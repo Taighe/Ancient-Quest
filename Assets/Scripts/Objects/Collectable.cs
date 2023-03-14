@@ -1,67 +1,72 @@
-using Assets.Scripts.Events;
-using Assets.Scripts.Globals;
+using AQEngine.Events;
+using AQEngine.Globals;
+using AQEngine.Level;
+using AQEngine.Managers;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[SelectionBase]
-public class Collectable : Object3D
+namespace AQEngine.Objects
 {
-    public bool IsPersistant 
+    [SelectionBase]
+    public class Collectable : Object3D
     {
-        get
+        public bool IsPersistant
         {
-            return PersistantId >= 0;
+            get
+            {
+                return PersistantId >= 0;
+            }
         }
-    }
 
-    [Header("Game Properties")]
-    public int Score;
-    public int HP;
-    public int Lives;
-    public PowerUps PowerUpType = PowerUps.None;
-    public int PersistantId;
+        [Header("Game Properties")]
+        public int Score;
+        public int HP;
+        public int Lives;
+        public PowerUps PowerUpType = PowerUps.None;
+        public int PersistantId;
 
-    public override void Awake()
-    {
-        base.Awake();
-    }
-
-    public override void Start()
-    {
-        base.CollisionBounds = _collider.bounds.size;
-        if (IsPersistant)
+        public override void Awake()
         {
-            bool collected = LevelProperties.GetInstance().HasBeenCollected(this);
-            gameObject.SetActive(!collected);
+            base.Awake();
         }
-    }
 
-    public override void GameUpdate()
-    {
-        if (NotActiveWhenFarFromCamera())
-            return;
-
-        Collider hit;
-        if (DetectCollisonCast(gameObject.GetInstanceID(), (int)Layers.Player, out hit))
+        public override void Start()
         {
-            GameEvents.Instance.Player_OnCollect(new CollectEventArgs(this));
-            OnCollected();
+            base.CollisionBounds = _collider.bounds.size;
+            if (IsPersistant)
+            {
+                bool collected = LevelProperties.GetInstance().HasBeenCollected(this);
+                gameObject.SetActive(!collected);
+            }
         }
-    }
 
-    public virtual void OnCollected() 
-    {
-        if (IsPersistant)
-            LevelProperties.GetInstance().UpdatePersistantCollectable(PersistantId, true);
+        public override void GameUpdate()
+        {
+            if (NotActiveWhenFarFromCamera())
+                return;
 
-        gameObject.SetActive(false);
-    }
+            Collider hit;
+            if (DetectCollisonCast(gameObject.GetInstanceID(), (int)Layers.Player, out hit))
+            {
+                GameEvents.Instance.Player_OnCollect(new CollectEventArgs(this));
+                OnCollected();
+            }
+        }
+
+        public virtual void OnCollected()
+        {
+            if (IsPersistant)
+                LevelProperties.GetInstance().UpdatePersistantCollectable(PersistantId, true);
+
+            gameObject.SetActive(false);
+        }
 
 #if UNITY_EDITOR
-    public override void OnDrawGizmos()
-    {
-        base.OnDrawGizmos();
-    }
+        public override void OnDrawGizmos()
+        {
+            base.OnDrawGizmos();
+        }
 #endif
+    }
 }

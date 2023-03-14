@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Events;
+﻿using AQEngine.Events;
+using AQEngine.Objects.SpawnableObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,13 +8,13 @@ using System.Threading.Tasks;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace Assets.Scripts.Managers
+namespace AQEngine.Managers
 {
     public class InstanceManager : MonoBehaviour
     {
         private static InstanceManager _manager;
-        private Dictionary<string, IInstanceObject> _aliveInstanceCollection;
-        private Dictionary<string, Queue<IInstanceObject>> _instanceCollection;
+        private Dictionary<string, ISpawnableObject> _aliveInstanceCollection;
+        private Dictionary<string, Queue<ISpawnableObject>> _instanceCollection;
         public static InstanceManager Instance
         {
             get
@@ -30,8 +31,8 @@ namespace Assets.Scripts.Managers
         private InstanceManager Init()
         {
             transform.position = new Vector3(-1000, 0, 0);
-            _instanceCollection = new Dictionary<string, Queue<IInstanceObject>>();
-            _aliveInstanceCollection = new Dictionary<string, IInstanceObject>();
+            _instanceCollection = new Dictionary<string, Queue<ISpawnableObject>>();
+            _aliveInstanceCollection = new Dictionary<string, ISpawnableObject>();
             GameEvents.Instance.InstanceManager_Death += Instance_InstanceManager_Death;
             return this;
         }
@@ -66,12 +67,12 @@ namespace Assets.Scripts.Managers
         {
             foreach (var prefab in prefabs)
             {
-                IInstanceObject instancePrefab= prefab.GetComponent<IInstanceObject>();
+                ISpawnableObject instancePrefab= prefab.GetComponent<ISpawnableObject>();
                 if (instancePrefab == null)
-                    throw new Exception($"{nameof(InstanceManager)} tried to add a prefab that does not inherit from {nameof(IInstanceObject)}.");
+                    throw new Exception($"{nameof(InstanceManager)} tried to add a prefab that does not inherit from {nameof(ISpawnableObject)}.");
 
                 var key = $"{ownerInstanceId}{instancePrefab.GameObject.GetInstanceID()}";
-                _instanceCollection.Add(key, new Queue<IInstanceObject>());
+                _instanceCollection.Add(key, new Queue<ISpawnableObject>());
                 // Clone the number of required instances.
                 for (int i = 0; i < instancePrefab.MaxInstancesAlive; i++)
                 {
@@ -82,7 +83,7 @@ namespace Assets.Scripts.Managers
             }
         }
 
-        public IInstanceObject SpawnInstance(int ownerInstanceId, GameObject prefab, Vector3 origin, Vector3 dir)
+        public ISpawnableObject SpawnInstance(int ownerInstanceId, GameObject prefab, Vector3 origin, Vector3 dir)
         {
             var key = $"{ownerInstanceId}{prefab.GetInstanceID()}";
             if (_instanceCollection[key].Any())

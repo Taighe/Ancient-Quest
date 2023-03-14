@@ -1,7 +1,12 @@
+using AQEngine.Data;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UEditor = UnityEditor.Editor;
 
-[CustomEditor(typeof(ActorData), true)]
-public class ActorDataEditor : Editor { }
+namespace AQEngine.Editor
+{
+    [CustomEditor(typeof(ActorData), true)]
+    public class ActorDataEditor : UEditor { }
+}

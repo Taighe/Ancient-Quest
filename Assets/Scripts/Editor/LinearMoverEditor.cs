@@ -4,25 +4,30 @@ using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static UnityEngine.GraphicsBuffer;
+using UEditor = UnityEditor.Editor;
 
-[CustomEditor(typeof(LinearMover), true)]
-public class LinearMoverEditor : Editor 
+namespace AQEngine.Editor
 {
-    private LinearMover _mover;
-    public void Awake()
+    [CustomEditor(typeof(LinearMover), true)]
+    public class LinearMoverEditor : UEditor
     {
-        _mover = (LinearMover)target;
-        _mover.PointsInit();
-    }
-
-    public override void OnInspectorGUI()
-    {
-        base.OnInspectorGUI();
-        if(GUILayout.Button("Reset Points"))
+        private LinearMover _mover;
+        public void Awake()
         {
-            if(_mover != null)
+            _mover = (LinearMover)target;
+            _mover.PointsInit();
+        }
+
+        public override void OnInspectorGUI()
+        {
+            base.OnInspectorGUI();
+            if (GUILayout.Button("Reset Points"))
             {
-                _mover.PointsReset();
+                if (_mover != null)
+                {
+                    _mover.PointsReset();
+                }
             }
         }
     }

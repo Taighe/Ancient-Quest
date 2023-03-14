@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
-public class LevelTreeNode : Node
+namespace AQEngine.Editor.Tools
 {
-    public int Number;
-    public bool IsFoo;
-    public LevelTreeNode(string name, Rect position)
+    public class LevelTreeNode : Node
     {
-        title = name;
-        SetPosition(position);
+        public int Number;
+        public bool IsFoo;
+        public LevelTreeNode(string name, Rect position)
+        {
+            title = name;
+            SetPosition(position);
+        }
     }
 }

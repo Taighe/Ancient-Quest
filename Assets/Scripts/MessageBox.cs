@@ -1,52 +1,58 @@
-using Assets.Scripts.Globals;
-using System.Collections;
+using AQEngine.Globals;
+using AQEngine.GUI;
+using AQEngine.Input;
+using AQEngine.Objects.KinematicObjects;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-public class MessageBox : MonoBehaviour
+namespace AQEngine
 {
-    public Vector2 Min;
-    public Vector2 Max = new Vector2(2, 2);
-    public List<string> Message;
-    public float MessageDisplayRate;
-    public float MessageDelay;
-
-    private Player _player;
-    private GameGUI _gui;
-
-    // Start is called before the first frame update
-    void Start()
+    public class MessageBox : MonoBehaviour
     {
-        _player = GameObject.FindGameObjectWithTag("Player")?.GetComponent<Player>();
-        _gui = GameGUI.GetInstance();
-    }
+        public Vector2 Min;
+        public Vector2 Max = new Vector2(2, 2);
+        public List<string> Message;
+        public float MessageDisplayRate;
+        public float MessageDelay;
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (_player != null)
+        private Player _player;
+        private GameGUI _gui;
+
+        // Start is called before the first frame update
+        void Start()
         {
-            Vector3 min = new Vector3(transform.position.x + Min.x, transform.position.y + Min.y, 0);
-            Vector3 max = new Vector3(transform.position.x + Max.x, transform.position.y + Max.y, 0);
-            if (SharedFunctions.PointWithinBox(_player.transform.position, min, max))
+            _player = GameObject.FindGameObjectWithTag("Player")?.GetComponent<Player>();
+            _gui = GameGUI.GetInstance();
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            if (_player != null)
             {
-                if (ControllerMaster.Input.GetInteractButton() && _player.IsGrounded)
+                Vector3 min = new Vector3(transform.position.x + Min.x, transform.position.y + Min.y, 0);
+                Vector3 max = new Vector3(transform.position.x + Max.x, transform.position.y + Max.y, 0);
+                if (SharedFunctions.PointWithinBox(_player.transform.position, min, max))
                 {
-                    _gui.StartMessage(Message.ToArray(), MessageDisplayRate, MessageDelay);
+                    if (ControllerMaster.Input.GetInteractButton() && _player.IsGrounded)
+                    {
+                        _gui.StartMessage(Message.ToArray(), MessageDisplayRate, MessageDelay);
+                    }
                 }
             }
         }
-    }
 
 #if UNITY_EDITOR
-    void OnDrawGizmos()
-    {
-        Vector3 min = new Vector3(transform.position.x + Min.x, transform.position.y + Min.y, 0);
-        Vector3 max = new Vector3(transform.position.x + Max.x, transform.position.y + Max.y, 0);
-        Vector3 center = new Vector3((min.x + max.x) * 0.5f, (min.y + max.y) * 0.5f);
-        Handles.color = Color.red;
-        Handles.DrawWireCube(center, max - min);
-    }
+        void OnDrawGizmos()
+        {
+            Vector3 min = new Vector3(transform.position.x + Min.x, transform.position.y + Min.y, 0);
+            Vector3 max = new Vector3(transform.position.x + Max.x, transform.position.y + Max.y, 0);
+            Vector3 center = new Vector3((min.x + max.x) * 0.5f, (min.y + max.y) * 0.5f);
+            Handles.color = Color.red;
+            Handles.DrawWireCube(center, max - min);
+        }
 #endif
+    }
+
 }

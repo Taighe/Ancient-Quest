@@ -1,17 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class AnimEvents : MonoBehaviour
+namespace AQEngine
 {
-    public bool NoFaceDirection { get; set; }
-    public void StartNoFaceAnimEvent()
+    public class AnimEvents : MonoBehaviour
     {
-        NoFaceDirection = true;
-    }
+        public bool NoFaceDirection { get; set; }
+        public void StartNoFaceAnimEvent()
+        {
+            NoFaceDirection = true;
+        }
 
-    public void EndNoFaceAnimEvent()
-    {
-        NoFaceDirection = false;
+        public void EndNoFaceAnimEvent()
+        {
+            NoFaceDirection = false;
+        }
     }
 }

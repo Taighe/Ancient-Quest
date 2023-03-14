@@ -3,34 +3,37 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class GUIElementText : GUIElement
+namespace AQEngine.GUI
 {
-    public TextMeshProUGUI Text;
-    public List<string> PropertyBind;
-
-    private string _text;
-
-    public override void Start()
+    public class GUIElementText : GUIElement
     {
-        base.Start();
-        _propInfo = GetBinding(PropertyBind);
-        _text = Text.text;
-        UpdateBinding();
-    }
+        public TextMeshProUGUI Text;
+        public List<string> PropertyBind;
 
-    public override void UpdateBinding()
-    {
-        if (_propInfo != null && _instance != null)
+        private string _text;
+
+        public override void Start()
         {
-            object val = _propInfo.GetValue(_instance);
-            if (val is int)
-                Text.text = _text + string.Format("{0,5:D8}", val);
-            else
-                Text.text = _text + val.ToString();
+            base.Start();
+            _propInfo = GetBinding(PropertyBind);
+            _text = Text.text;
+            UpdateBinding();
         }
-        else
+
+        public override void UpdateBinding()
         {
-            Text.text = "";
+            if (_propInfo != null && _instance != null)
+            {
+                object val = _propInfo.GetValue(_instance);
+                if (val is int)
+                    Text.text = _text + string.Format("{0,5:D8}", val);
+                else
+                    Text.text = _text + val.ToString();
+            }
+            else
+            {
+                Text.text = "";
+            }
         }
     }
 }

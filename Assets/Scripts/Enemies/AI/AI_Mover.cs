@@ -1,8 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
+using AQEngine.Globals;
+using AQEngine.Objects;
+using AQEngine.Objects.KinematicObjects;
 using UnityEngine;
 
-namespace GameAI
+namespace AQEngine.Enemies.AI
 {
     public class AI_Mover : MonoBehaviour
     {

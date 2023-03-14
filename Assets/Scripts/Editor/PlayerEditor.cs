@@ -1,30 +1,34 @@
-using System.Collections;
-using System.Collections.Generic;
+using AQEngine.Globals;
+using AQEngine.Objects.KinematicObjects;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UEditor = UnityEditor.Editor; 
 
-[CustomEditor(typeof(Player), true)]
-public class PlayerEditor : Editor 
+namespace AQEngine.Editor
 {
-    [InitializeOnEnterPlayMode]
-    static void InitializeOnPlay()
+    [CustomEditor(typeof(Player), true)]
+    public class PlayerEditor : UEditor
     {
-        if (SceneManager.GetActiveScene().name == "MainMenu")
-            return;
+        [InitializeOnEnterPlayMode]
+        static void InitializeOnPlay()
+        {
+            if (SceneManager.GetActiveScene().name == "MainMenu")
+                return;
 
-        var obj = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
-        //Init Player variables
-        obj.Editor_SetHP(obj.HP);
-        obj.Editor_SetMaxHP(obj.MaxHP);
-        obj.Editor_RemoveAllPowerUps();
-        if (obj.SlingPowerUp)
-            obj.AddPowerUp(PowerUps.Sling);
+            var obj = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+            //Init Player variables
+            obj.Editor_SetHP(obj.HP);
+            obj.Editor_SetMaxHP(obj.MaxHP);
+            obj.Editor_RemoveAllPowerUps();
+            if (obj.SlingPowerUp)
+                obj.AddPowerUp(PowerUps.Sling);
 
-        if (obj.SwordPowerUp)
-            obj.AddPowerUp(PowerUps.Sword);
+            if (obj.SwordPowerUp)
+                obj.AddPowerUp(PowerUps.Sword);
 
-        if (obj.ShieldPowerUp)
-            obj.AddPowerUp(PowerUps.Shield);
+            if (obj.ShieldPowerUp)
+                obj.AddPowerUp(PowerUps.Shield);
+        }
     }
 }

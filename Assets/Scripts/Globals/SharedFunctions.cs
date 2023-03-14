@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Assets.Scripts.Globals
+namespace AQEngine.Globals
 {
     public static class SharedFunctions
     {

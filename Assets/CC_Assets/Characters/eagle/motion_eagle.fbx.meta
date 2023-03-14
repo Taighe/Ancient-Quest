@@ -1,0 +1,897 @@
+fileFormatVersion: 2
+guid: 53cfbc2cba92ce046ab0443b11a85d88
+ModelImporter:
+  serializedVersion: 20200
+  internalIDToNameTable:
+  - first:
+      74: 6121895296435977923
+    second: Default
+  - first:
+      74: -5252816984213320552
+    second: idle
+  - first:
+      74: -6758483313513240000
+    second: eagle_death
+  - first:
+      74: 3797074850507798075
+    second: eagle_idle
+  externalObjects: {}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 1
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Default
+      takeName: Default
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 33
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: eagle_idle
+      takeName: idle
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 33
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: ' 1'
+        weight: 1
+      - path: sroot
+        weight: 0
+      - path: sroot/spine6
+        weight: 1
+      - path: sroot/spine6/spine5
+        weight: 1
+      - path: sroot/spine6/spine5/part34
+        weight: 1
+      - path: sroot/spine6/spine5/spine4
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/bone12
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/bone12/bone13
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/bone12/bone13/bone14
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/bone12/bone13/bone14/part26
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/bone12/bone13/bone14/part26/internal106
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/bone12/bone13/bone14/part26/internal106/internal107
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/bone12/bone13/bone14/part26/internal106/internal107/internal108
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/bone12/bone13/bone14/part26/internal106/internal109
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/bone12/bone13/bone14/part26/internal106/internal109/internal110
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/bone12/bone13/bone14/part26/internal106/internal111
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/bone12/bone13/bone14/part26/internal106/internal111/internal112
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/bone12/bone13/bone14/part26/internal106/internal113
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/bone12/bone13/bone14/part26/internal106/internal113/internal114
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/bone12/part25
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/bone12/part25/internal86
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/bone12/part25/internal86/internal87
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/bone12/part25/internal86/internal87/internal88
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/bone12/part25/internal86/internal87/internal88/internal89
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/bone12/part25/internal86/internal87/internal88/internal89/internal90
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/bone12/part25/internal86/internal87/internal88/internal89/internal90/internal91
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/bone12/part25/internal86/internal87/internal88/internal89/internal90/internal91/internal92
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/bone12/part25/internal86/internal87/internal88/internal89/internal90/internal91/internal92/internal93
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/bone12/part25/internal86/internal87/internal88/internal89/internal90/internal94
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/bone12/part25/internal86/internal87/internal88/internal89/internal90/internal94/internal95
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/bone12/part25/internal86/internal87/internal88/internal89/internal90/internal94/internal95/internal96
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/bone12/part25/internal86/internal87/internal88/internal89/internal90/internal97
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/bone12/part25/internal86/internal87/internal88/internal89/internal90/internal97/internal98
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/bone12/part25/internal86/internal87/internal88/internal89/internal90/internal97/internal98/internal99
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/bone12/part25/internal86/internal87/internal88/internal89/internal90/internal100
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/bone12/part25/internal86/internal87/internal88/internal89/internal90/internal100/internal101
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/bone12/part25/internal86/internal87/internal88/internal89/internal90/internal100/internal101/internal102
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/bone12/part25/internal86/internal87/internal88/internal89/internal90/internal103
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/bone12/part25/internal86/internal87/internal88/internal89/internal90/internal103/internal104
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/bone12/part25/internal86/internal87/internal88/internal89/internal90/internal103/internal104/internal105
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/bone12/part38
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/bone15
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/bone15/bone16
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/bone15/bone16/bone17
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/bone15/bone16/bone17/part28
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/bone15/bone16/bone17/part28/internal135
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/bone15/bone16/bone17/part28/internal135/internal136
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/bone15/bone16/bone17/part28/internal135/internal136/internal137
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/bone15/bone16/bone17/part28/internal135/internal138
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/bone15/bone16/bone17/part28/internal135/internal138/internal139
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/bone15/bone16/bone17/part28/internal135/internal140
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/bone15/bone16/bone17/part28/internal135/internal140/internal141
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/bone15/bone16/bone17/part28/internal135/internal142
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/bone15/bone16/bone17/part28/internal135/internal142/internal143
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/bone15/part27
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/bone15/part27/internal115
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/bone15/part27/internal115/internal116
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/bone15/part27/internal115/internal116/internal117
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/bone15/part27/internal115/internal116/internal117/internal118
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/bone15/part27/internal115/internal116/internal117/internal118/internal119
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/bone15/part27/internal115/internal116/internal117/internal118/internal119/internal120
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/bone15/part27/internal115/internal116/internal117/internal118/internal119/internal120/internal121
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/bone15/part27/internal115/internal116/internal117/internal118/internal119/internal120/internal121/internal122
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/bone15/part27/internal115/internal116/internal117/internal118/internal119/internal123
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/bone15/part27/internal115/internal116/internal117/internal118/internal119/internal123/internal124
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/bone15/part27/internal115/internal116/internal117/internal118/internal119/internal123/internal124/internal125
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/bone15/part27/internal115/internal116/internal117/internal118/internal119/internal126
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/bone15/part27/internal115/internal116/internal117/internal118/internal119/internal126/internal127
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/bone15/part27/internal115/internal116/internal117/internal118/internal119/internal126/internal127/internal128
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/bone15/part27/internal115/internal116/internal117/internal118/internal119/internal129
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/bone15/part27/internal115/internal116/internal117/internal118/internal119/internal129/internal130
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/bone15/part27/internal115/internal116/internal117/internal118/internal119/internal129/internal130/internal131
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/bone15/part27/internal115/internal116/internal117/internal118/internal119/internal132
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/bone15/part27/internal115/internal116/internal117/internal118/internal119/internal132/internal133
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/bone15/part27/internal115/internal116/internal117/internal118/internal119/internal132/internal133/internal134
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/bone15/part39
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/part33
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/spine3
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/spine3/spine2
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/spine3/spine2/spine1
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/spine3/spine2/spine1/part31
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/spine3/spine2/spine1/part31/internal168
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/spine3/spine2/spine1/part31/internal168/internal169
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/spine3/spine2/spine1/part31/internal168/internal169/internal170
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/spine3/spine2/spine1/part31/part32
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/spine3/spine2/spine1/part31/part32/internal171
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/spine3/spine2/spine1/part31/part32/internal171/internal172
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/spine3/spine2/spine1/spine0
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/spine3/spine2/spine1/spine0/part22
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/spine3/spine2/spine1/spine0/part22/internal64
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/spine3/spine2/spine1/spine0/part22/internal64/internal65
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/spine3/spine2/spine1/spine0/part22/internal64/internal65/internal66
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/spine3/spine2/spine1/spine0/part22/internal64/internal65/internal66/internal67
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/spine3/spine2/spine1/spine0/part22/internal64/internal65/internal66/internal67/internal68
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/spine3/spine2/spine1/spine0/part22/internal64/internal65/internal66/internal67/internal68/internal69
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/spine3/spine2/spine1/spine0/part22/internal64/internal65/internal66/internal70
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/spine3/spine2/spine1/spine0/part22/internal64/internal65/internal66/internal71
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/spine3/spine2/spine1/spine0/part22/internal64/internal65/internal72
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/spine3/spine2/spine1/spine0/part22/internal64/internal65/internal72/internal73
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/spine3/spine2/spine1/spine0/part22/internal64/internal65/internal72/internal74
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/spine3/spine2/spine1/spine0/part22/internal64/internal65/internal72/internal75
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/spine3/spine2/spine1/spine0/part22/part23
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/spine3/spine2/spine1/spine0/part22/part23/internal76
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/spine3/spine2/spine1/spine0/part22/part23/internal76/internal77
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/spine3/spine2/spine1/spine0/part22/part23/internal76/internal77/internal78
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/spine3/spine2/spine1/spine0/part22/part23/internal76/internal77/internal79
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/spine3/spine2/spine1/spine0/part22/part23/internal76/internal77/internal80
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/spine3/spine2/spine1/spine0/part22/part24
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/spine3/spine2/spine1/spine0/part22/part24/internal81
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/spine3/spine2/spine1/spine0/part22/part24/internal81/internal82
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/spine3/spine2/spine1/spine0/part22/part24/internal81/internal82/internal83
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/spine3/spine2/spine1/spine0/part22/part24/internal81/internal82/internal84
+        weight: 1
+      - path: sroot/spine6/spine5/spine4/spine3/spine2/spine1/spine0/part22/part24/internal81/internal82/internal85
+        weight: 1
+      - path: sroot/spine6/spine7
+        weight: 1
+      - path: sroot/spine6/spine7/spine8
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/bone19
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/bone19/part29
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/bone19/part29/internal144
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/bone19/part29/internal144/internal145
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/bone19/part29/internal144/internal145/internal146
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/bone19/part29/internal144/internal147
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/bone19/part29/internal144/internal147/internal148
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/bone19/part29/internal144/internal147/internal148/internal149
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/bone19/part29/internal144/internal150
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/bone19/part29/internal144/internal150/internal151
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/bone19/part29/internal144/internal150/internal151/internal152
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/bone19/part29/internal144/internal153
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/bone19/part29/internal144/internal153/internal154
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/bone19/part29/internal144/internal153/internal154/internal155
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/bone19/part42
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/bone19/part42/internal205
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/bone19/part42/internal205/internal206
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/bone19/part42/internal205/internal206/internal207
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/bone19/part42/internal205/internal206/internal207/internal208
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/bone19/part42/internal205/internal206/internal207/internal208/internal209
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/bone19/part42/internal205/internal206/internal207/internal208/internal209/internal210
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/bone19/part43
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/bone19/part43/internal211
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/bone19/part43/internal211/internal212
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/bone19/part43/internal211/internal212/internal213
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/bone19/part43/internal211/internal212/internal213/internal214
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/bone19/part43/internal211/internal212/internal213/internal214/internal215
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/bone19/part43/internal211/internal212/internal213/internal214/internal215/internal216
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/bone19/part44
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/bone19/part44/internal217
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/bone19/part44/internal217/internal218
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/bone19/part44/internal217/internal218/internal219
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/bone19/part44/internal217/internal218/internal219/internal220
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/bone19/part44/internal217/internal218/internal219/internal220/internal221
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/bone19/part44/internal217/internal218/internal219/internal220/internal221/internal222
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/bone19/part45
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/bone19/part45/internal223
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/bone19/part45/internal223/internal224
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/bone19/part45/internal223/internal224/internal225
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/bone19/part45/internal223/internal224/internal225/internal226
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/bone19/part45/internal223/internal224/internal225/internal226/internal227
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/bone19/part45/internal223/internal224/internal225/internal226/internal227/internal228
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/bone19/part46
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/bone19/part46/internal229
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/bone19/part46/internal229/internal230
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/bone19/part46/internal229/internal230/internal231
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/bone19/part46/internal229/internal230/internal231/internal232
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/bone19/part46/internal229/internal230/internal231/internal232/internal233
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/bone19/part46/internal229/internal230/internal231/internal232/internal233/internal234
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/bone19/part47
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/bone19/part47/internal235
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/bone19/part47/internal235/internal236
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/bone19/part47/internal235/internal236/internal237
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/bone19/part47/internal235/internal236/internal237/internal238
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/bone19/part47/internal235/internal236/internal237/internal238/internal239
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/bone19/part47/internal235/internal236/internal237/internal238/internal239/internal240
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/bone19/part48
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/bone19/part48/internal241
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/bone19/part48/internal241/internal242
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/bone19/part48/internal241/internal242/internal243
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/bone19/part48/internal241/internal242/internal243/internal244
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/bone19/part48/internal241/internal242/internal243/internal244/internal245
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/bone19/part48/internal241/internal242/internal243/internal244/internal245/internal246
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/bone19/part49
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/bone19/part49/internal247
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/bone19/part49/internal247/internal248
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/bone19/part49/internal247/internal248/internal249
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/bone19/part49/internal247/internal248/internal249/internal250
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/bone19/part49/internal247/internal248/internal249/internal250/internal251
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/bone19/part49/internal247/internal248/internal249/internal250/internal251/internal252
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/bone19/part50
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/bone19/part50/internal253
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/bone19/part50/internal253/internal254
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/bone19/part50/internal253/internal254/internal255
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/bone19/part50/internal253/internal254/internal255/internal256
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/bone19/part50/internal253/internal254/internal255/internal256/internal257
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/bone19/part50/internal253/internal254/internal255/internal256/internal257/internal258
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/bone19/part51
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/bone19/part51/internal259
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/bone19/part51/internal259/internal260
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/bone19/part51/internal259/internal260/internal261
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/bone19/part51/internal259/internal260/internal261/internal262
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/bone19/part51/internal259/internal260/internal261/internal262/internal263
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/bone19/part51/internal259/internal260/internal261/internal262/internal263/internal264
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/part40
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/part40/internal185
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/part40/internal185/internal186
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/part40/internal185/internal186/internal187
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/part40/internal185/internal186/internal187/internal188
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/part40/internal185/internal189
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/part40/internal185/internal189/internal190
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/part40/internal185/internal189/internal190/internal191
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/part40/internal185/internal192
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/part40/internal185/internal192/internal193
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/part40/internal185/internal192/internal193/internal194
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/part41
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/part41/internal195
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/part41/internal195/internal196
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/part41/internal195/internal196/internal197
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/part41/internal195/internal196/internal197/internal198
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/part41/internal195/internal199
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/part41/internal195/internal199/internal200
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/part41/internal195/internal199/internal200/internal201
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/part41/internal195/internal202
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/part41/internal195/internal202/internal203
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone18/part41/internal195/internal202/internal203/internal204
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/bone21
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/bone21/part30
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/bone21/part30/internal156
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/bone21/part30/internal156/internal157
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/bone21/part30/internal156/internal157/internal158
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/bone21/part30/internal156/internal159
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/bone21/part30/internal156/internal159/internal160
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/bone21/part30/internal156/internal159/internal160/internal161
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/bone21/part30/internal156/internal162
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/bone21/part30/internal156/internal162/internal163
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/bone21/part30/internal156/internal162/internal163/internal164
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/bone21/part30/internal156/internal165
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/bone21/part30/internal156/internal165/internal166
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/bone21/part30/internal156/internal165/internal166/internal167
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/bone21/part54
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/bone21/part54/internal285
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/bone21/part54/internal285/internal286
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/bone21/part54/internal285/internal286/internal287
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/bone21/part54/internal285/internal286/internal287/internal288
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/bone21/part54/internal285/internal286/internal287/internal288/internal289
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/bone21/part54/internal285/internal286/internal287/internal288/internal289/internal290
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/bone21/part55
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/bone21/part55/internal291
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/bone21/part55/internal291/internal292
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/bone21/part55/internal291/internal292/internal293
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/bone21/part55/internal291/internal292/internal293/internal294
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/bone21/part55/internal291/internal292/internal293/internal294/internal295
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/bone21/part55/internal291/internal292/internal293/internal294/internal295/internal296
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/bone21/part56
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/bone21/part56/internal297
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/bone21/part56/internal297/internal298
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/bone21/part56/internal297/internal298/internal299
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/bone21/part56/internal297/internal298/internal299/internal300
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/bone21/part56/internal297/internal298/internal299/internal300/internal301
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/bone21/part56/internal297/internal298/internal299/internal300/internal301/internal302
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/bone21/part57
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/bone21/part57/internal303
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/bone21/part57/internal303/internal304
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/bone21/part57/internal303/internal304/internal305
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/bone21/part57/internal303/internal304/internal305/internal306
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/bone21/part57/internal303/internal304/internal305/internal306/internal307
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/bone21/part57/internal303/internal304/internal305/internal306/internal307/internal308
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/bone21/part58
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/bone21/part58/internal309
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/bone21/part58/internal309/internal310
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/bone21/part58/internal309/internal310/internal311
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/bone21/part58/internal309/internal310/internal311/internal312
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/bone21/part58/internal309/internal310/internal311/internal312/internal313
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/bone21/part58/internal309/internal310/internal311/internal312/internal313/internal314
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/bone21/part59
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/bone21/part59/internal315
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/bone21/part59/internal315/internal316
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/bone21/part59/internal315/internal316/internal317
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/bone21/part59/internal315/internal316/internal317/internal318
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/bone21/part59/internal315/internal316/internal317/internal318/internal319
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/bone21/part59/internal315/internal316/internal317/internal318/internal319/internal320
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/bone21/part60
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/bone21/part60/internal321
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/bone21/part60/internal321/internal322
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/bone21/part60/internal321/internal322/internal323
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/bone21/part60/internal321/internal322/internal323/internal324
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/bone21/part60/internal321/internal322/internal323/internal324/internal325
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/bone21/part60/internal321/internal322/internal323/internal324/internal325/internal326
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/bone21/part61
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/bone21/part61/internal327
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/bone21/part61/internal327/internal328
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/bone21/part61/internal327/internal328/internal329
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/bone21/part61/internal327/internal328/internal329/internal330
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/bone21/part61/internal327/internal328/internal329/internal330/internal331
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/bone21/part61/internal327/internal328/internal329/internal330/internal331/internal332
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/bone21/part62
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/bone21/part62/internal333
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/bone21/part62/internal333/internal334
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/bone21/part62/internal333/internal334/internal335
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/bone21/part62/internal333/internal334/internal335/internal336
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/bone21/part62/internal333/internal334/internal335/internal336/internal337
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/bone21/part62/internal333/internal334/internal335/internal336/internal337/internal338
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/bone21/part63
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/bone21/part63/internal339
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/bone21/part63/internal339/internal340
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/bone21/part63/internal339/internal340/internal341
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/bone21/part63/internal339/internal340/internal341/internal342
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/bone21/part63/internal339/internal340/internal341/internal342/internal343
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/bone21/part63/internal339/internal340/internal341/internal342/internal343/internal344
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/part52
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/part52/internal265
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/part52/internal265/internal266
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/part52/internal265/internal266/internal267
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/part52/internal265/internal266/internal267/internal268
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/part52/internal265/internal269
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/part52/internal265/internal269/internal270
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/part52/internal265/internal269/internal270/internal271
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/part52/internal265/internal272
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/part52/internal265/internal272/internal273
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/part52/internal265/internal272/internal273/internal274
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/part53
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/part53/internal275
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/part53/internal275/internal276
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/part53/internal275/internal276/internal277
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/part53/internal275/internal276/internal277/internal278
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/part53/internal275/internal279
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/part53/internal275/internal279/internal280
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/part53/internal275/internal279/internal280/internal281
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/part53/internal275/internal282
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/part53/internal275/internal282/internal283
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/bone20/part53/internal275/internal282/internal283/internal284
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/part35
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/part35/internal173
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/part35/internal173/internal174
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/spine10
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/spine10/part36
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/spine10/part36/internal175
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/spine10/part36/internal175/internal176
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/spine10/part36/internal175/internal176/internal177
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/spine10/part36/internal175/internal176/internal177/internal178
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/spine10/part36/internal175/internal176/internal177/internal178/internal179
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/spine10/part37
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/spine10/part37/internal180
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/spine10/part37/internal180/internal181
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/spine10/part37/internal180/internal181/internal182
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/spine10/part37/internal180/internal181/internal182/internal183
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/spine10/part37/internal180/internal181/internal182/internal183/internal184
+        weight: 1
+      - path: sroot/spine6/spine7/spine8/spine9/spine10/spine11
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: eagle_death
+      takeName: death
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 33
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 4510ef0d56b89f642a881e32649f5555, type: 3}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 2
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

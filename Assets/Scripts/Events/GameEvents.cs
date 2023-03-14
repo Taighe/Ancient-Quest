@@ -1,10 +1,12 @@
+using AQEngine.Data;
+using AQEngine.Objects;
+using AQEngine.Objects.SpawnableObjects;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
 
-namespace Assets.Scripts.Events
+namespace AQEngine.Events
 {
     // Event Arguements
     public class DamagedEventArgs : EventArgs
@@ -43,9 +45,9 @@ namespace Assets.Scripts.Events
 
     public class DeathEventArgs : EventArgs
     {
-        public IInstanceObject Instance { get; }
+        public ISpawnableObject Instance { get; }
 
-        public DeathEventArgs(IInstanceObject instance)
+        public DeathEventArgs(ISpawnableObject instance)
         {
             Instance = instance;
         }

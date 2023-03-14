@@ -1,89 +1,90 @@
-using Assets.Scripts.Events;
+using AQEngine.Globals;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-[Serializable]
-public struct CheckpointData
+namespace AQEngine.Data
 {
-    public string SceneName { get; set; }
-    [NonSerialized]
-    public Vector3 Position;
-    public Direction Facing { get; set; }
-}
-
-[CreateAssetMenu(fileName = "GameData", menuName = "ScriptableObjects/GameData", order = 1)]
-public class GameData : ScriptableObject
-{   
-    public int Lives = 3;
-    public int Score = 0;
-    public CheckpointData Checkpoint;
-    public float RetryTransistionTime;
-    public float RetryTransistionDelayTime;
-
-    public int SaveSlot => _saveSlot;
-    private int _saveSlot;
-    [NonSerialized]
-    private SaveData _loadedSaveData = null;
-
-    public void LoadSaveData(int slot, SaveData saveData)
+    [Serializable]
+    public struct CheckpointData
     {
-        SetData(slot, saveData);
-        _loadedSaveData = saveData;
+        public string SceneName { get; set; }
+        [NonSerialized]
+        public Vector3 Position;
+        public Direction Facing { get; set; }
     }
 
-    public bool HasSaveDataLoaded(out SaveData saveData)
+    [CreateAssetMenu(fileName = "GameData", menuName = "ScriptableObjects/GameData", order = 1)]
+    public class GameData : ScriptableObject
     {
-        saveData = null;
+        public int Lives = 3;
+        public int Score = 0;
+        public CheckpointData Checkpoint;
+        public float RetryTransistionTime;
+        public float RetryTransistionDelayTime;
 
-        if (_loadedSaveData != null)
+        public int SaveSlot => _saveSlot;
+        private int _saveSlot;
+        [NonSerialized]
+        private SaveData _loadedSaveData = null;
+
+        public void LoadSaveData(int slot, SaveData saveData)
         {
-            saveData = _loadedSaveData.Clone();
-            _loadedSaveData = null;
+            SetData(slot, saveData);
+            _loadedSaveData = saveData;
         }
 
-        return saveData != null;
-    }
-
-    public void SetData(int slot, SaveData saveData)
-    {
-        _saveSlot = slot;
-        Lives = saveData.Lives;
-        Score = saveData.Score;
-        Checkpoint = new CheckpointData
+        public bool HasSaveDataLoaded(out SaveData saveData)
         {
-            SceneName = saveData.CheckpointSceneName,
-            Facing = saveData.CheckpointFacing,
-            Position = new Vector3(saveData.CheckpointX, saveData.CheckpointY, saveData.CheckpointZ),
-        };
-    }
+            saveData = null;
 
-    public void ResetToDefaults()
-    {
-        Lives = 2;
-        Score = 0;
-        Checkpoint = new CheckpointData
+            if (_loadedSaveData != null)
+            {
+                saveData = _loadedSaveData.Clone();
+                _loadedSaveData = null;
+            }
+
+            return saveData != null;
+        }
+
+        public void SetData(int slot, SaveData saveData)
         {
-            Facing = Direction.RIGHT,
-            Position = new Vector3(3, 3),
-            SceneName = "Level0x0"
-        };
-    }
+            _saveSlot = slot;
+            Lives = saveData.Lives;
+            Score = saveData.Score;
+            Checkpoint = new CheckpointData
+            {
+                SceneName = saveData.CheckpointSceneName,
+                Facing = saveData.CheckpointFacing,
+                Position = new Vector3(saveData.CheckpointX, saveData.CheckpointY, saveData.CheckpointZ),
+            };
+        }
 
-    public SaveData GetData()
-    {
-        SaveData saveData = new SaveData()
+        public void ResetToDefaults()
         {
-            Lives = Lives,
-            Score = Score,
-            CheckpointSceneName = Checkpoint.SceneName,
-            CheckpointX = Checkpoint.Position.x,
-            CheckpointY = Checkpoint.Position.y,
-            CheckpointZ = Checkpoint.Position.z,
-            CheckpointFacing = Checkpoint.Facing
-        };
+            Lives = 2;
+            Score = 0;
+            Checkpoint = new CheckpointData
+            {
+                Facing = Direction.RIGHT,
+                Position = new Vector3(3, 3),
+                SceneName = "Level0x0"
+            };
+        }
 
-        return saveData;
+        public SaveData GetData()
+        {
+            SaveData saveData = new SaveData()
+            {
+                Lives = Lives,
+                Score = Score,
+                CheckpointSceneName = Checkpoint.SceneName,
+                CheckpointX = Checkpoint.Position.x,
+                CheckpointY = Checkpoint.Position.y,
+                CheckpointZ = Checkpoint.Position.z,
+                CheckpointFacing = Checkpoint.Facing
+            };
+
+            return saveData;
+        }
     }
 }
